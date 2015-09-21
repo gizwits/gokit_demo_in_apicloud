@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+		<title>APP</title>
+		<link rel="stylesheet" type="text/css" href="../css/api.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<style>
+			
+			.loginContent {
+				position: relative;
+				text-align: center;
+				font-size: 17px;
+			}
+			.title {
+				font-size: 15px;
+				margin-top: 8%;
+				margin-bottom: 10%;
+			}
+			.content.textField {
+				margin-bottom: 10%;
+			}
+			.content .textField input {
+				margin-bottom: 8%;
+				border: 1px #DDDDDD solid;
+				border-radius: 5px;
+				width: 60%;
+				height: 30px;
+				-webkit-appearance: none;
+			}
+			.content .loginBtn {
+				margin-bottom: 8%;
+			}
+			.content .loginBtn input {
+				width: 60%;
+				color: #0033CC;
+			}
+			.content .forgetPassword {
+				margin-bottom: 8%;
+				margin-right: 13%;
+				text-align: right;
+			}
+			.content .forgetPassword input {
+				width: 30%;
+				text-align: right;
+				color: #0033CC;
+			}
+		</style>
+	</head>
+	<body>
+		<div >
+			<div class="loginContent">
+				<div id='sys-info'></div>
+				<div class = 'title'>
+					<div>
+						请使用普通帐号登录以体现真实用户操作流程
+					</div>
+				</div>
+				<div class = 'content'>
+					<div class="textField">
+						<div>
+							账 &nbsp&nbsp  号：
+							<input type="text" placeholder="请输入注册手机号" class="admin" id="admin"/>
+						</div>
+						<div>
+							密 &nbsp&nbsp  码：
+							<input type="password" placeholder="请输入密码" class="password" id="pwd"/>
+						</div>
+					</div>
+					<div class="forgetPassword">
+						<input type="button" value="忘记密码?" onclick="onForgetPwd()"/>
+					</div>
+					<div class="loginBtn">
+						<input type="button" value="登录" onclick="onLogin()"/>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../script/GobalConfig.js"></script>
+	<script type="text/javascript" src="../script/IotLogin.js"></script>
+	<script type="text/javascript" src="../script/sort.js"></script>
+	<script type="text/javascript" src="../script/common.js"></script>
+</html>

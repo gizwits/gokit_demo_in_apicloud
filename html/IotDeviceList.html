@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+    <title>APP</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/global.css"/>
+    <style>
+
+    </style>
+</head>
+<body>
+<div class="devListContent">
+    <div class="content">
+        <h3 class="title2">绑定设备</h3>
+        <ul class="ui-list ui-list-text ui-list-link ui-border-tb" id="bindingDev">
+            <li class="ui-border-t" tapmode="liActive" data-href=""><div class="ui-list-info"><h4>没有设备</h4></div></li>
+            <!--					<li class="ui-border-t" tapmode="background-color: #3ABA63;" data-href="">-->
+            <!--						<div class="ui-list-info">-->
+            <!--							<h4>小白</h4>-->
+            <!--							<p>-->
+            <!--								C89346462F12-->
+            <!--							</p>-->
+            <!--						</div>-->
+            <!--						<div class="ui-list-action">-->
+            <!--							远程在线-->
+            <!--						</div>-->
+            <!--					</li>-->
+            <!--					<li class="ui-border-t" tapmode="background-color: #3ABA63;" data-href="sort.html?mac=123321&did=321321">-->
+            <!--						<a href="sort.html"  class="ui-list-info"><div>-->
+            <!--							<h4>小白</h4>-->
+            <!--							<p>-->
+            <!--								C89346462F12-->
+            <!--							</p>-->
+            <!--						</div>-->
+            <!--						<div class="ui-list-action">-->
+            <!--							远程在线-->
+            <!--						</div>-->
+            <!--							</a>-->
+            <!--					</li>-->
+            <!--					<li class="ui-border-t" tapmode="background-color: #3ABA63;" data-href="">-->
+            <!--						<div class="ui-list-info">-->
+            <!--							<h4>小白</h4>-->
+            <!--							<p>-->
+            <!--								C89346462F12-->
+            <!--							</p>-->
+            <!--						</div>-->
+            <!--						<div class="ui-list-action">-->
+            <!--							远程在线-->
+            <!--						</div>-->
+            <!--					</li>-->
+            <!--					<input type="hidden" value="">-->
+        </ul>
+        <h3 class="title2">发现新设备</h3>
+        <ul class="ui-list ui-list-text ui-list-link ui-border-tb" id="newDev">
+            <li class="ui-border-t" tapmode="liActive" data-href=""><div class="ui-list-info"><h4>没有设备</h4></div></li>
+            <!--					<li class="ui-border-t" data-href="" tapmode="liActive">-->
+            <!--						<div class="ui-list-info  ">-->
+            <!--							<h4>小白</h4>-->
+            <!--							<p>-->
+            <!--								C89346462F12-->
+            <!--							</p>-->
+            <!--						</div>-->
+            <!--						<div class="ui-list-action">-->
+            <!--							未绑定-->
+            <!--						</div>-->
+            <!--					</li>-->
+            <!--					<li class="ui-border-t" data-href="" tapmode="liActive">-->
+            <!--						<div class="ui-list-info  ">-->
+            <!--							<h4>小白</h4>-->
+            <!--							<p>-->
+            <!--								C89346462F12-->
+            <!--							</p>-->
+            <!--						</div>-->
+            <!--						<div class="ui-list-action">-->
+            <!--							未绑定-->
+            <!--						</div>-->
+            <!--					</li>-->
+            <!--					<li class="ui-border-t" data-href="" tapmode="liActive">-->
+            <!--						<div class="ui-list-info  ">-->
+            <!--							<h4>小白</h4>-->
+            <!--							<p>-->
+            <!--								C89346462F12-->
+            <!--							</p>-->
+            <!--						</div>-->
+            <!--						<div class="ui-list-action">-->
+            <!--							未绑定-->
+            <!--						</div>-->
+            <!--					</li>-->
+        </ul>
+        <h3 class="title2">离线设备</h3>
+        <ul class="ui-list ui-list-text ui-list-link ui-border-tb" id="offLineDev">
+            <li class="ui-border-t" tapmode="liActive" data-href=""><div class="ui-list-info"><h4>没有设备</h4></div></li>
+            <!--					<li class="ui-border-t" data-href="" tapmode="liActive">-->
+            <!--						<div class="ui-list-info  ">-->
+            <!--							<h4>小白</h4>-->
+            <!--							<p>-->
+            <!--								C89346462F12-->
+            <!--							</p>-->
+            <!--						</div>-->
+            <!--						<div class="ui-list-action">-->
+            <!--							离线-->
+            <!--						</div>-->
+            <!--					</li>-->
+            <!--					<li class="ui-border-t" data-href="" tapmode="liActive">-->
+            <!--						<div class="ui-list-info  ">-->
+            <!--							<h4>小白</h4>-->
+            <!--							<p>-->
+            <!--								C89346462F12-->
+            <!--							</p>-->
+            <!--						</div>-->
+            <!--						<div class="ui-list-action">-->
+            <!--							离线-->
+            <!--						</div>-->
+            <!--					</li>-->
+            <!--					<li class="ui-border-t" data-href="" tapmode="liActive">-->
+            <!--						<div class="ui-list-info  ">-->
+            <!--							<h4>小白</h4>-->
+            <!--							<p>-->
+            <!--								C89346462F12-->
+            <!--							</p>-->
+            <!--						</div>-->
+            <!--						<div class="ui-list-action">-->
+            <!--							离线-->
+            <!--						</div>-->
+            <!--					</li>-->
+        </ul>
+    </div>
+</div>
+</div>
+<script type="text/javascript" src="../script/GobalConfig.js"></script>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/Device.js"></script>
+<script type="text/javascript" src="../script/common.js"></script>
+<script type="text/javascript" src="../script/sort.js"></script>
+<script type="text/javascript" src="../script/IotDeviceList.js"></script>
+
+<link rel="stylesheet" type="text/css" href="../css/deviceList.css"/>
+
+</body>
+
+</html>

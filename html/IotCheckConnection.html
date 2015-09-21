@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+		<title>APP</title>
+		<link rel="stylesheet" type="text/css" href="../css/api.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+        <link rel="stylesheet" type="text/css" href="../frozenui/1.2.1/css/global.css"/>
+        <link rel="stylesheet" type="text/css" href="../css/deviceList.css"/>
+		<style>
+            .liActive {
+                background-color: #3ABA63;
+            }
+            #loadingView {
+                opacity: 0.2; /* 通用，其他浏览器  有效*/
+                height: 100%;
+                width: 100%;
+                background-color: #000000;
+                display: none;
+                top:50%;
+            }
+		</style>
+	</head>
+	<body>
+        <div id="loadingView">
+            <div class="ui-loading-wrap">
+                <p>加载中</p>
+                <i class="ui-loading"></i>
+            </div>
+        </div>
+	</body>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript">
+	apiready = function() {
+
+    }
+       function showLoading(){
+            document.getElementById('loadingView').style.display = 'block';
+        }
+        function hideLoading(){
+            document.getElementById('loadingView').style.display = 'none';
+        }
+        
+	</script>
+</html>

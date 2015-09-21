@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<title>Hello APP</title>
+		<link rel="stylesheet" type="text/css" href="./css/api.css" />
+		<link rel="stylesheet" type="text/css" href="./css/common.css" />
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="header">
+				<h1>设备列表</h1>
+			</div>
+			<div id="main"></div>
+			<!--<div id="footer">
+			<h5>Copyright &copy;2014 </h5>
+			</div>-->
+		</div>
+	</body>
+	<script type="text/javascript" src="./script/api.js"></script>
+	<script type="text/javascript" src="./script/GobalConfig.js"></script>
+    <script type="text/javascript" src="./script/common.js"></script>
+	<script type="text/javascript">
+		apiready = function() {
+			var header = $api.byId('header');
+			$api.fixIos7Bar(header);
+			var headerPos = $api.offset(header);
+			var main = $api.byId('main');
+			var mainPos = $api.offset(main);
+
+			api.openFrame({
+				name : 'main',
+				url : 'html/main.html',
+				bounces : false,
+				rect : {
+					x : 0,
+					y : headerPos.h,
+					w : headerPos.w,
+					h : mainPos.h
+				}
+			});
+			api.openSlidLayout({
+				type : 'left',
+				fixedOn : true,
+				leftEdge : 60,
+				fixedPane : {
+					name : 'fixed',
+					url : 'html/fixed.html'
+				},
+				slidPane : {
+					name : 'slide',
+					url : 'html/slide.html'
+				}
+			}, function(ret) {
+				if(ret.event=='open'){
+					api.unlockSlidPane();
+				}
+				if(ret.event=='close'){
+					api.lockSlidPane();
+				}
+			});
+		};
+	</script>
+</html>

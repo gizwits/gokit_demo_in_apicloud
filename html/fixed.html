@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/api.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/common.css"/>
+		<style>
+			html, body {
+				background-color: #dfdede !important;
+			}
+			ul {
+				margin-top: 10%;
+
+			}
+			li {
+				position: relative;
+				padding: 3px 10px;
+				border-bottom: 1px solid #d4d3d3;
+				background-size: 10px;
+				background-repeat: no-repeat;
+				background-position: 78%;
+			}
+			li:first-child {
+				height: 46px;
+				display: -webkit-box;
+				-webkit-box-align: center;
+			}
+			.liActive {
+				background-color: #3ABA63;
+			}
+			li a {
+				display: block;
+				padding: 10px 30px;
+				background-size: 20px;
+				background-repeat: no-repeat;
+				background-position: center;
+			}
+			.liControlPage {
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<nav>
+			<ul>
+				<li tapmode="liActive" onclick="sortTo.toDevList()" class="liDevList">
+					<a class="home active">设备列表</a>
+				</li>
+				<li tapmode="liActive" onclick="sortTo.toQrCodeScan()" class="liDevList">
+					<a class="nearby">二维码扫描</a>
+				</li>
+				<li tapmode="liActive" onclick="sortTo.toAddDev()" class="liDevList">
+					<a class="nearby">添加设备</a>
+				</li>
+				<li tapmode="liActive" onclick="sortTo.toLogin()" class="liDevList">
+					<a class="maldives" id="loginFlag">登录</a>
+				</li>
+				<li tapmode="liActive" onclick="sortTo.toRegister()" class="liDevList" id="register">
+					<a class="maldives" >注册</a>
+				</li>
+				<li tapmode="liActive" onclick="menuItem.disconnect()" class="liControlPage">
+					<a class="maldives">断开连接</a>
+				</li>
+				<li tapmode="liActive" onclick="menuItem.unbind()" class="liControlPage">
+					<a class="maldives">解除绑定</a>
+				</li>
+				<li tapmode="liActive" onclick="menuItem.status()" class="liControlPage">
+					<a class="maldives ">获取设备状态</a>
+				</li>
+				<li tapmode="liActive" onclick="sortTo.toDevList()" class="liControlPage">
+					<a class="maldives">设备列表</a>
+				</li>
+
+				<!--<li tapmode="liActive" onclick=""><a class="Europe">频道5</a></li>-->
+			</ul>
+		</nav>
+	</body>
+	<script type="text/javascript" src="../script/api.js"></script>
+    <script type="text/javascript" src="../script/GobalConfig.js"></script>
+    <script type="text/javascript" src="../script/common.js"></script>
+	<script type="text/javascript" src="../script/sort.js"></script>
+
+	<script>
+		var title;
+		var name;
+		var url;
+		apiready = function() {         
+			api.setStatusBarStyle({
+				style : 'dark'
+			});
+			$api.fixIos7Bar($api.dom('nav'));
+
+			hideLiControl();
+			api.addEventListener({
+				name: 'fixed'
+			}, function (ret, err) {
+				if(ret.value.name == 'control'){
+					showLiControl();
+				}else{
+					hideLiControl();
+				}
+			});
+		};
+
+		var loginBtn = function (){
+			window.isLogin = isUserLogin();
+			if(window.isLogin=="true"){
+				document.getElementById('loginFlag').innerHTML = "注销";
+				document.getElementById('register').style.visibility="hidden";
+			} else {
+				document.getElementById('loginFlag').innerHTML = "登录";
+				document.getElementById('register').style.visibility="visible";
+			}
+			
+		}
+		var showLiControl = function () {
+			getClass('liControlPage', function (res) {
+				res.style.display = 'block';
+			});
+			getClass('liDevList', function (res) {
+				res.style.display = 'none';
+			});
+		};
+		var hideLiControl = function () {
+			getClass('liControlPage', function (res) {
+				res.style.display = 'none';
+			});
+			getClass('liDevList', function (res) {
+				res.style.display = 'block';
+
+			});
+		};
+
+	</script>
+</html>

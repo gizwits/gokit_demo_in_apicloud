@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width"/>
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/api.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../frozenui/1.2.1/css/global.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/IotController.css"/>
+
+
+	</head>
+	<body>
+		<div id="content">
+			<div class="listSelector">
+				<table class="table">
+					<tr>
+						<th class="thOne">
+						<p  class="listTitleText" >
+							开启/关闭红色灯
+						</p></th>
+						<th class="thTwo">
+						<select   class="selector" id="showText_LED_on_off" onchange="selectorListener(1)">
+							<option value=0>关闭</option>
+							<option value=1>开启</option>
+						</select></th>
+					</tr>
+				</table>
+			</div>
+			<div class="listSelector">
+				<table class="table">
+					<tr>
+						<th class="thOne">
+						<p  class="listTitleText" >
+							设定LED组合颜色
+						</p></th>
+						<th class="thTwo">
+						<select  class="selector" id="showText_LED_combind" onchange="selectorListener(2)">
+							<option value=0>自定义</option>
+							<option value=1>黄色</option>
+							<option value=2>紫色</option>
+							<option value=3>粉色</option>
+						</select></th>
+					</tr>
+				</table>
+			</div>
+			<div class="list" id="setLED_Red">
+				<table class="tableForSlider">
+					<tr>
+						<th class="thOne">
+						<p  class="listTitleText" >
+							设定LED红色值
+						</p></th>
+						<th class="thTwo">
+						<p  id="showText_LED_red" class="listShowText">
+							127
+						</p></th>
+					</tr>
+				</table>
+				<table class="tableForSlider">
+					<tr>
+						<th class="thOne2">
+						<p class="addSubText" onclick="sub(1)">
+							﹣
+						</p></th>
+						<th class="thTwo2">
+						<div class="listSlider">
+							<div class="divRangeBg">
+								<p class="rangeBg"></p>
+							</div>
+							<input class="range" id="positionLED_red" type="range" min="0" max="254"
+								   onchange="sliderShowText(1)"/>
+						</div></th>
+						<th
+						class="thThree2">
+						<p class="addSubText" onclick="add(1)">
+							﹢
+						</p></th>
+					</tr>
+				</table>
+			</div>
+			<div class="list" id="setLED_GREEN">
+				<table class="tableForSlider">
+					<tr>
+						<th class="thOne">
+						<p  class="listTitleText" >
+							设定LED绿色值
+						</p></th>
+						<th class="thTwo">
+						<p class="listShowText" id="showText_LED_green">
+							127
+						</p></th>
+					</tr>
+				</table>
+				<table class="tableForSlider">
+					<tr>
+						<th class="thOne2">
+						<p class="addSubText" onclick="sub(2)" style="font-size: 30px">
+							﹣
+						</p></th>
+						<th class="thTwo2">
+						<div class="listSlider">
+							<div class="divRangeBg">
+								<p class="rangeBg"></p>
+							</div>
+							<input class="range"id="positionLED_green" type="range" min="0" max="254"
+							onchange="sliderShowText(2)" />
+						</div></th>
+						<th
+						class="thThree2">
+						<p class="addSubText" onclick="add(2)" style="font-size:30px;">
+							﹢
+						</p></th>
+					</tr>
+				</table>
+			</div>
+			<div class="list" id="setLED_BLUE">
+				<table class="tableForSlider">
+					<tr>
+						<th class="thOne">
+						<p  class="listTitleText" >
+							设定LED蓝色值
+						</p></th>
+						<th class="thTwo">
+						<p class="listShowText" id="showText_LED_blue">
+							127
+						</p></th>
+					</tr>
+				</table>
+				<table class="tableForSlider">
+					<tr>
+						<th class="thOne2">
+						<p class="addSubText" onclick="sub(3)">
+							﹣
+						</p></th>
+						<th class="thTwo2">
+						<div class="listSlider">
+							<div class="divRangeBg">
+								<p class="rangeBg"></p>
+							</div>
+							<input class="range"id="positionLED_blue" type="range" min="0" max="254"
+							onchange="sliderShowText(3)"  />
+						</div></th>
+						<th
+						class="thThree2">
+						<p class="addSubText" onclick="add(3)">
+							＋
+						</p></th>
+					</tr>
+				</table>
+			</div>
+			<div class="list" id="setLED_Motor">
+				<table class="tableForSlider">
+					<tr>
+						<th class="thOne">
+						<p  class="listTitleText" >
+							设定电机转速
+						</p></th>
+						<th class="thTwo">
+						<p class="listShowText" id="showText_LED_motor">
+							0
+						</p></th>
+					</tr>
+				</table>
+				<table class="tableForSlider">
+					<tr>
+						<th class="thOne2">
+						<p class="addSubText" onclick="sub(4)">
+							﹣
+						</p></th>
+						<th class="thTwo2">
+						<div class="listSlider">
+							<div class="divRangeBg">
+								<p class="rangeBg"></p>
+							</div>
+							<input class="range"id="positionLED_motor" type="range" min="-5" max="5"
+							onchange="sliderShowText(4)"  />
+						</div></th>
+						<th
+						class="thThree2">
+						<p class="addSubText" onclick="add(4)">
+							＋
+						</p></th>
+					</tr>
+				</table>
+			</div>
+			<div class="listSelector">
+				<table class="table">
+					<tr>
+						<th class="thOne">
+						<p  class="listTitleText" >
+							红外探测
+						</p></th>
+						<th class="thTwo">
+						<select  class="selector" id="showText_LED_infrared" disabled="disabled">
+							<option value=0>关闭</option>
+							<option value=1>开启</option>
+						</select></th>
+					</tr>
+				</table>
+			</div>
+			<div class="listShow">
+				<table class="table">
+					<tr>
+						<th class="thOne">
+						<p  class="listTitleText" >
+							环境温度
+						</p></th>
+						<th class="thTwo">
+						<p class="listShowText" id="showText_temp">
+							50
+						</p></th>
+					</tr>
+				</table>
+			</div>
+			<div class="listShow">
+				<table class="table">
+					<tr>
+						<th class="thOne">
+						<p  class="listTitleText" >
+							环境湿度
+						</p></th>
+						<th class="thTwo">
+						<p class="listShowText" id="showText_hum">
+							50
+						</p></th>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</body>
+
+	<script type = "text/javascript" src = "../script/GobalConfig.js"></script>
+    <script type="text/javascript" src="../script/api.js"></script>
+	<script type = "text/javascript" src = "../script/common.js"></script>
+    <script type="text/javascript" src="../script/sort.js"></script>
+	<script type = "text/javascript" src = "../script/IotController.js"></script>
+
+</html>

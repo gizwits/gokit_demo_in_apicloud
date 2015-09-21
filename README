@@ -1,5 +1,5 @@
-gokit-ios
-Gizwits GoKit iOS Demo App
+apicloud-gokit-ios
+Gizwits Apicloud GoKit iOS Demo App
 
 这是一款使用XPGWifiSDK的开源代码示例APP，可以帮助开发者快速入手，使用XPGWifiSDK开发连接机智云的物联APP。
 功能介绍
@@ -14,13 +14,15 @@ GoKit主要展示如何使用XPGWifiSDK，开发基于GAgent智能硬件APP。�
 ▪ 绑定或解绑设备
 ▪ 设备登录
 ▪ 设备控制
+▪ 扫描二维码
+
 项目依赖和安装
 
 ▪ GizWifiSDK框架
     登录ApiCloud官方网站http://www.apicloud.com/的模块Store添加最新版本的SDK。
     添加后，在项目目录的模块目录中的自定义模块找到并且添加GizWifiSDK。
 
-▪ gokitDemo代码使用说明
+▪ GokitDemo代码使用说明
     1、登录ApiCloud官方网站http://www.apicloud.com/ 的下载开发工具
     2、导入该项目代码。
     3、登录Apicloud官方网站，进入控制台选择相应的项目目录，添加GizWifiSDK模块后，进入云编译打包即可。

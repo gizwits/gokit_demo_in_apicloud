@@ -32,6 +32,15 @@
             -webkit-appearance: none;
 
         }
+        .content .textField select {
+        	font-size: 18px;
+            margin-bottom: 8%;
+            border: 1px #DDDDDD solid;
+            border-radius: 5px;
+            width: 60%;
+            height: 30px;
+
+        }
 
         .content .config {
             margin-bottom: 8%;
@@ -66,6 +75,18 @@
         </div>
         <div class='content'>
             <div class="textField">
+            	<div>
+                    Wifi模块：
+                    <select id="GAgentType">
+					  <option value="0" selected="selected">庆科</option>
+					  <option value="1">汉枫</option>
+					  <option value="2">RealTek</option>
+					  <option value="3">联盛德</option>
+					  <option value="4">乐鑫</option>
+					  <option value="5">高通</option>
+					  <option value="6">TI</option>
+					</select>
+                </div>
                 <div>
                     网络SSID：<input type="text" placeholder="请输入SSID" class="admin" id="admin" disabled="disabled"/>
                 </div>
@@ -122,9 +143,12 @@
             "key": document.getElementById('pwd').value,
             "mode": window.airlinkMode,
             "softAPSSIDPrefix": '',
-            "timeout": 60
+            "timeout": 60,
+            "gagentTypes": [parseInt(document.getElementById('GAgentType').value)]
         };
 //        isGetResult=false;
+//		alert(JSON.stringify(params));
+//		return;
 
         gizWifiSDK.setDeviceWifi(params, function (ret, err) {
 //            if(isGetResult=="true")
@@ -140,6 +164,7 @@
                 api.hideProgress();
                 document.getElementById('configBtn').disabled = "";
                 alert('成功配置' + ret.device.mac);
+                sortTo.toDevList();
             }
         });
         document.getElementById('configBtn').disabled = "disabled";

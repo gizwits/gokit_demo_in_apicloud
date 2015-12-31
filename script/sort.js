@@ -173,7 +173,7 @@ var sortTo = {
 //控制设备界面的菜单栏
 var menuItem = {
     disconnect: function () {
-        sortTo.toControl();
+//      sortTo.toControl();
         api.sendEvent({
             name: 'disconnect',
             extra: {
@@ -184,7 +184,6 @@ var menuItem = {
 
     },
     unbind: function () {
-        sortTo.toControl();
         api.sendEvent({
             name: 'unbind',
             extra: {

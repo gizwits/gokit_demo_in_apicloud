@@ -2,7 +2,6 @@
  * Created by chaoso on 15/5/21.
  */
 
-
 //隐藏Loading对话框
 var hideLoading = function () {
     api.hideProgress();

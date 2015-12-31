@@ -138,12 +138,16 @@
 <script type="text/javascript" src="../script/api.js"></script>
 <script type="text/javascript" src="../script/GobalConfig.js"></script>
 <script type="text/javascript" src="../script/common.js"></script>
+<script type="text/javascript" src="../script/sort.js"></script>
 <script type="text/javascript">
     var gizwitsSDK;
     var softApList;
     var timeoutFlag = true;
     apiready = function () {
-        gizwitsSDK = api.require('gizWifiSDK');
+    	gizwitsSDK = api.require('gizWifiSDK');
+    	var params = {appID: window.appId};
+    	gizwitsSDK.startWithAppID(params);
+//  	alert(window.appId);
         setTimeout("setSSIDList()",200);
     };
     
@@ -165,10 +169,13 @@
         gizwitsSDK.setDeviceWifi(params, function (ret, err) {
             if (err) {
                 alert('配置失败');
+                api.hideProgress();
             } else {
                 alert('成功配置' + ret.device.mac);
+                api.hideProgress();
+                sortTo.toDevList();
             }
-            api.hideProgress();
+            
         });
     };
 

@@ -28,6 +28,24 @@ apiready = function () {
     GizwitsDevice = api.require("gizWifiDevice");
     //GizwitsSDK.setLogLevel({"logLevel": "all", "printDataLevel": true});
 
+    if(api.systemType == 'ios') {
+    	$api.setStorage('isBinding',false);
+    
+	    params = {
+	        "device": {
+	            "mac": deviceMac,
+	            "did": deviceDid
+	        }
+	    };
+	    GizwitsDevice.getIsOnline(params, function(ret, err){
+	    	if (!ret.isOnline) {
+	                //设备已断开
+	                	alert('设备断开连接');
+	                	back2DeviceList();
+	            }
+	    });
+	}
+
     //恢复Frame事件监听器注册
     api.addEventListener({
         name: 'control'
@@ -35,6 +53,7 @@ apiready = function () {
         updateInfo();
         getDevOnline();
     });
+    
     updateInfo();
     getDevOnline();
 
@@ -100,14 +119,14 @@ function getDevOnline() {
         }
     };
 
-    GizwitsDevice.getIsOnline(params,function(ret, err){
-        if(ret.isOnline){
+    GizwitsDevice.getIsConnected(params,function(ret, err){
+        if(ret.isConnected){
             GizwitsDevice.registerNotifications(params, onMyStatus);
             setTimeout(function () {
                 getStatus();
             }, 500);
         }else{
-            alert('设备不在线，不可以做控制，但可以解除绑定');
+        	alert('设备不在线，不可以做控制，但可以解除绑定');
         }
     });
 }
@@ -156,21 +175,42 @@ var loginDevice = function (macDevice, didDevice, passcodeDevice) {
 
 //设备状态回调
 function onMyStatus(ret, err) {
-    if (AntiShake > 0) {
-        return;
-    }
+//	alert($api.jsonToStr(ret)+' ==123321== '+$api.jsonToStr(err));
+//  if (AntiShake > 0) {
+//      return;
+//  }
     if (ret) {
+     if(api.systemType == 'ios') {
+     	var isBinding = $api.getStorage('isBinding');
+ 	// if(isBinding) alert('断开aaaaa：'+isBinding);
+//  	alert('onMyStatus: '+$api.jsonToStr(ret));
         if (typeof(ret.isConnected) != "undefined") {
             if (!ret.isConnected) {
                 //设备已断开
-                alert('设备断开连接');
-                back2DeviceList();
-                return;
+//              alert('isBinding: '+isBinding);
+
+                if(isBinding=='false') {
+                	alert('设备断开连接');
+                	back2DeviceList();
+                	return;
+                }
             }
         }
-
+     }
+     else {
+     	if (typeof(ret.isConnected) != "undefined") {
+            if (!ret.isConnected) {
+                	alert('设备断开连接');
+                	back2DeviceList();
+                	return;
+            }
+        }
+     }
+     
+//      if (!mStatus) return;
         mStatus = ret.status.data.entity0;
-        //alert(mStatus.Infrared);
+//      alert($api.jsonToStr(mStatus));
+        if (!mStatus.LED_R) return;
         //状态更新
         LED_R.value = mStatus.LED_R ? mStatus.LED_R : 0;
         LED_G.value = mStatus.LED_G ? mStatus.LED_G : 0 ;
@@ -214,8 +254,12 @@ function disconnect() {
             "did": deviceDid
         }
     };
+//  alert(JSON.stringify(params));
+//  alert('disconnect_start');
 
     GizwitsDevice.disconnect(params, function (ret, err) {
+//  	alert('disconnect_end');
+//  	alert(JSON.stringify(ret)+' === '+JSON.stringify(err));
         if (ret) {
             if (!ret.isConnected) {
                 //断开连接跳界面
@@ -227,7 +271,6 @@ function disconnect() {
 
 //解绑设备
 function unBind() {
-
     params = {
         "uid": uid,
         "token": token,

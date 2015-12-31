@@ -2,9 +2,8 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <meta name="viewport"
-          content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
-    <title>slide</title>
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>slidPane</title>
     <link rel="stylesheet" type="text/css" href="../css/api.css"/>
     <style>
         * {
@@ -64,8 +63,6 @@
             -o-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
         }
-
-        /*header*/
     </style>
 </head>
 <body>
@@ -84,16 +81,14 @@
 <script type="text/javascript" src="../script/GobalConfig.js"></script>
 <script type="text/javascript" src="../script/common.js"></script>
 <script type="text/javascript" src="../script/sort.js"></script>
-
 <script>
     var header = $api.byId('header');
     var headerPos;
     apiready = function () {
-        $api.fixIos7Bar(header);
+		$api.fixIos7Bar(header);
         headerPos = $api.offset(header);
         setKeyAndParams('headerPos', headerPos);
-        sortTo.toDevList();
-        api.lockSlidPane();
+	    sortTo.toDevList();
         api.addEventListener({
             name: 'keyback'
         }, function (ret, err) {
@@ -104,19 +99,22 @@
         }, function (ret, err) {
             document.getElementById('titleContent').innerHTML = ret.value.title;
         });
-    };
-    var showBackButton = function () {
-        document.getElementById('back').style.display = 'block';
-        document.getElementById('slide').style.display = 'none';
+	};
+	var showBackButton = function () {
+//      document.getElementById('back').style.display = 'block';
+//      document.getElementById('slide').style.display = 'none';
     };
     var hideBackButton = function () {
-        document.getElementById('back').style.display = 'none';
-        document.getElementById('slide').style.display = 'block';
+//      document.getElementById('back').style.display = 'none';
+//      document.getElementById('slide').style.display = 'block';
     };
     var back = function (page) {
         sortTo.toLogin();
         hideBackButton();
     };
+//  var sliding = function () {
+//      api.openSlidPane({type: 'left'});
+//  }
     var sliding = function () {
         api.execScript({
             name: 'fixed',

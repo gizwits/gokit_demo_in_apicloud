@@ -30,7 +30,16 @@ var isShowGetListDialog=0;
 apiready = function () {
     gizwitsSDK = api.require("gizWifiSDK");
     GizWifiDevice = api.require("gizWifiDevice");
-    //gizwitsSDK.setLogLevel({logLevel:2});
+    
+//    gizwitsSDK.setLogLevel({logLevel:3});
+//    gizwitsSDK.setLogLevel({"logLevel": 3,"printDataLevel":true});
+    
+//  gizwitsSDK.getVersion(function(ret, err) {
+//	        alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
+//	});
+
+	var GizWifiLogLevelAll = 3;
+	gizwitsSDK.setLogLevel({"logLevel": GizWifiLogLevelAll});
 
     initSDK();
 
@@ -63,8 +72,7 @@ apiready = function () {
 
     });
     gizwitsSDK.getPhoneSSID(function(ret, err){
-
-        if(ret.SSID){
+        if(ret && ret.SSID){
             if(( ret.SSID.indexOf("XPG-GAgent") )!= -1){
                 sortTo.toSoftAp();
                 return;
@@ -159,7 +167,7 @@ var anonymousLogin = function () {
             return;
 
         if (err) {
-            if (err.errorCode != 1){
+            if (err.errorCode != 0){
                 alert("匿名登录失败,请重试");
                 hideProgress();
             }
@@ -288,8 +296,9 @@ var loginDevice = function (macDevice, didDevice, passcodeDevice) {
 };
 //绑定设备
 var bindDevice = function (didDevice, passcodeDevice, remark) {
+//	alert('开始绑定aaaaa：'+isBinding);
+	if(api.systemType == 'ios') $api.setStorage('isBinding','true');
     showLoading('正在绑定设备');
-    BindDeviceFlag = 0;
     BindDeviceTimeOut=setTimeout(function () {
         if (BindDeviceFlag == 0) {
             hideProgress();
@@ -309,17 +318,22 @@ var bindDevice = function (didDevice, passcodeDevice, remark) {
         "did": didDevice,
         "remark": remark
     };
+//  alert('asdf');
     gizwitsSDK.bindDevice(params, function (ret, err) {
-        if (BindDeviceFlag == 1)
-            return;
+    // alert('bindDevice: '+JSON.stringify(ret)+'==<br>=='+JSON.stringify(err));
+    // alert('BindDeviceFlag:'+BindDeviceFlag);
+        // if (BindDeviceFlag == 1) return;
 
         if (err) {
-            alert('设备绑定失败');
+//          alert('设备绑定失败'+JSON.stringify(err));
         } else {
             alert('设备绑定成功');
             setTimeout(function(){
                 getDevices();
             },500);
+         setTimeout(function(){
+             if(api.systemType == 'ios') $api.setStorage('isBinding','false');
+         },3000);
         }
         hideProgress();
     });
@@ -358,6 +372,7 @@ var getDevices = function () {
             alert("获取设备失败");
         }
         if (ret) {
+//      	alert('getBoundDevices: '+JSON.stringify(ret));
             devicesList = [];
             devicesList = ret.devices;
 
@@ -426,9 +441,12 @@ var sortDevicesList = function () {
         });
     }
 
-    if(isGetJsonFileSuccess==0&&isShowGetListDialog==0){
+//  if(isGetJsonFileSuccess==0&&isShowGetListDialog==0){
+//      alert('配置文件未加载成功，请刷新列表');
+//      isShowGetListDialog=1;
+//  }
+	if(isGetJsonFileSuccess==0){
         alert('配置文件未加载成功，请刷新列表');
-        isShowGetListDialog=1;
     }
 };
 var buildList = function () {
@@ -448,8 +466,8 @@ var buildUl = function (devicesList, listType) {
         liContent = '<li class="ui-border-t" tapmode="liActive" data-href="">' + '<div class="ui-list-info">' + '<h4>没有设备</h4>' + '</div>' + '</li>' + liContent;
         return liContent;
     }
+//  alert(JSON.stringify(devicesList));
     for (var i = 0; i < devicesList.length; i++) {
-        //alert(JSON.stringify(devicesList));
         var device = devicesList[i];
         var mac = device.mac;
         var did = device.did;
@@ -460,7 +478,7 @@ var buildUl = function (devicesList, listType) {
             status = "离线";
         } else {
             if (listType == 1) {
-                status == "未绑定";
+                status = "未绑定";
             }
         }
         liContent = '<li class="ui-border-t" tapmode="liActive" data-href=>'
@@ -500,6 +518,7 @@ var isBind = function (device, callback) {
 //listType 1：新发现设备 ，2：离线设备 ，0：绑定设备
 
 var toControlPage = function (mac, did, passcode, listType) {
+//	alert('listType: '+listType);
     param = {
         "mac": mac,
         "did": did,

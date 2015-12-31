@@ -86,11 +86,11 @@
 		var title;
 		var name;
 		var url;
-		apiready = function() {         
+		apiready = function() {    
 			api.setStatusBarStyle({
-				style : 'dark'
+				style : 'light'
 			});
-			$api.fixIos7Bar($api.dom('nav'));
+			//$api.fixIos7Bar($api.dom('nav'));
 
 			hideLiControl();
 			api.addEventListener({
@@ -102,6 +102,7 @@
 					hideLiControl();
 				}
 			});
+			setTimeout('sortTo.toDevList()', 0);
 		};
 
 		var loginBtn = function (){

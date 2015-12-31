@@ -4,6 +4,9 @@ var gizwits;
 var dialogTimeOut;
 var dialogTimeOutflag;
 
+var captchaCodeToken;
+var captchaId;
+
 apiready = function() {
     gizwits = api.require("gizWifiSDK");//api.require
     api.lockSlidPane();
@@ -14,8 +17,8 @@ apiready = function() {
 	}, function (ret, err) {
 		updateInfo();
 	});
+	getCaptchaCode();
 	updateInfo();
-
 };
 
 //更新对应信息
@@ -35,9 +38,23 @@ function updateInfo(){
 	document.getElementById("textVerifyCode").value="";
 };
 
+// 获取图片验证码
+function getCaptchaCode() {
+	gizwits.getCaptchaCode({
+        "appSecret": window.appSecret
+	}, function(ret, err) {
+//	        alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err))
+			captchaCodeToken = ret.token;
+			captchaId = ret.captchaId;
+	        document.getElementById('captchaCode').src = ret.captchaURL;
+//			alert('captchaCodeToken:'+captchaCodeToken+',captchaId:'+captchaId+',ret.captchaURL:'+ret.captchaURL);
+	});
+}
+
 //获取验证码
 function getVerifyCode() {
     var phone = document.getElementById('phone').value;
+    var captchaCode = document.getElementById('textVerifyCode').value;
 
 	if(isEmpty(phone,11,null)!=0){
 		alert('手机号码不正确');
@@ -45,26 +62,29 @@ function getVerifyCode() {
 	}
 
 	var params = {
-		"phone" : phone
+		"token": captchaCodeToken,
+        "captchaId": captchaId,
+        "captchaCode": captchaCode,
+		"phone": phone
 	};
-    gizwits.requestSendVerifyCode(params, function(ret, err) {
+//	alert($api.jsonToStr(params));
+    gizwits.requestSendPhoneSMSCode(params, function(ret, err) {
         if(err){
-           alert("获取验证码失败");
-
+           alert("验证码输入有误，请重试");
         }
         else{
-           alert("获取成功");
+        	document.getElementById('content_getCaptchaCode').style.display="none";
+			document.getElementById('content_register').style.display="block";
         }
-
     });
 };
 
-//注册或者重置
+//注册
 function registOrReset() {
     var phone = document.getElementById("phone").value;
     var password = document.getElementById("newPassword").value;
     var passwordConfirm = document.getElementById("confirmPassword").value;
-	var verifyCode = document.getElementById("textVerifyCode").value;
+	var textSMSVerifyCode = document.getElementById("textSMSVerifyCode").value;
     
 	var params;
 
@@ -83,7 +103,7 @@ function registOrReset() {
 		return;
 	}
 
-	if(isEmpty(verifyCode,29,null)!=0){
+	if(isEmpty(textSMSVerifyCode,29,null)!=0){
 		alert('验证码格式不正确');
 		return;
 	}
@@ -107,7 +127,7 @@ function registOrReset() {
 		params = {
 			"phone" : phone,
 			"password" : password,
-			"code" : verifyCode
+			"code" : textSMSVerifyCode
 		};
 		gizwits.registerUserByPhoneAndCode(params, function(ret, err) {
 			if (dialogTimeOutflag == 1)
@@ -130,13 +150,15 @@ function registOrReset() {
 		showLoading("正在重置");
 		params = {
 			"phone" : phone,
-			"code" : verifyCode,
+			"code" : textSMSVerifyCode,
 			"newPassword" : password
 		};
+//		alert(JSON.stringify(params));
 		gizwits.changeUserPasswordByCode(params, function(ret, err) {
+//			alert('ret:'+JSON.stringify(ret));
+//  		alert('err:'+JSON.stringify(err));
 			if (dialogTimeOutflag == 1)
 				return;
-
 			hideProgress();
 			if (err) {//失败
 				if(err.errorCode==9010){
@@ -146,6 +168,7 @@ function registOrReset() {
 				}
 			} else {//成功
 				alert("重置成功");
+				sortTo.toDevList();
 			}
 		});
 	}
@@ -158,3 +181,9 @@ hideProgress=function(){
 
 	api.hideProgress();
 }
+
+function backToFristReg(){
+	document.getElementById('content_getCaptchaCode').style.display="block";
+	document.getElementById('content_register').style.display="none";
+}
+

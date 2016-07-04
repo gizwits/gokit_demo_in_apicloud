@@ -210,7 +210,7 @@ function onMyStatus(ret, err) {
 //      if (!mStatus) return;
         mStatus = ret.status.data.entity0;
 //      alert($api.jsonToStr(mStatus));
-        if (!mStatus.LED_R) return;
+//      if (!mStatus.LED_R) return;
         //状态更新
         LED_R.value = mStatus.LED_R ? mStatus.LED_R : 0;
         LED_G.value = mStatus.LED_G ? mStatus.LED_G : 0 ;

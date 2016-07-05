@@ -78,6 +78,7 @@ apiready = function () {
                 return;
             }
         }
+		setTimeout("onLogin()", 2000);
         onLogin();
 
     });

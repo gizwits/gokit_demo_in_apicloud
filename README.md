@@ -3,7 +3,11 @@ gokit_demo_in_apicloud
 
 Gizwits GoKit Demo App
 
-    这是一款使用 gizWifiSDK 模块的 HTML5 开源代码示例 APP，可以帮助开发者快速入手，开发连接机智云的物联 APP。
+    APICloud GoKit App是一款使用 gizWifiSDK 模块的 HTML5 开源代码示例 APP，可以帮助开发者快速入手开发连接机智云的物联 APP。
+    
+    与原生的iOS和Android APP不一样的是，APICloud GoKit用JS写成，一次开发的版本可以同时支持iOS和Android平台，大大降低了手机APP开发的门槛。
+    
+    APICloud GoKit功能包含配置入网、设备搜索、设备绑定、设备登陆、设备控制、远程控制、状态更新、本地远程切换等。
 
 gizWifiSDK 模块版本号
 
@@ -51,4 +55,4 @@ GoKit 硬件依赖
 问题反馈
 
 	您可以给机智云的技术支持人员发送邮件，反馈您在使用过程中遇到的任何问题。
-	邮箱：janel@gizwits.com
+	邮箱：club@gizwits.com

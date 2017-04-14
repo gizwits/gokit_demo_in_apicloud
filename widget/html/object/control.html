@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <style>
+    	body{ line-height: 300px; text-align: center; }
+    </style>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+    var device;
+
+	apiready = function(){
+        device = api.pageParam.pageParam;
+        var title = device.productName;
+        if (device.alias) {
+            title = device.alias;
+        }
+        api.execScript({
+            name: 'win_control',
+            script: 'fnSetNavigationTitle({"name": ".controlTitle", "value": "' + title + '"})'
+        });
+		document.body.innerHTML = device.mac;
+	}
+
+    function fnUnsubscribe() {
+        var gizWifiDevice = api.require("gizWifiDevice");
+        gizWifiDevice.setSubscribe({device: device, subscribed: false}, function(ret, err) {});
+    }
+</script>
+</html>

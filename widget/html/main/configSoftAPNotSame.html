@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <link rel="stylesheet" href="../../css/api.css">
+    <style>
+        .bg-select{ background: none; text-align: center; color: #999; font-size: 12px; font-family: "Microsoft YaHei"}
+        .btns .submit{ background-color: #f3d41d; color: #333333; line-height: 35px; border-radius: 35px; text-align: center; font-size: 15px; margin: 50px 0; }
+     </style>
+</head>
+<body>
+    <br><div class="bg-select">检测到连接设备的Wi-Fi与手机连的Wi-Fi不一致</div><br>
+    <div class="bg-select">请将手机的Wi-Fi连接到“<label class="selectWiFi">&lt;unknown ssid&gt;</label>”后，返回app</div>
+	<div class="btns">
+		<div tapmode="opacity" onclick="fnTip()" class="submit">去连接</div>
+	</div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/base.js"></script>
+<script type="text/javascript">
+    var gizWifiSDK;
+    var dstSSID;
+    apiready = function(){
+        dstSSID = api.pageParam.pageParam;
+        gizWifiSDK = api.require("gizWifiSDK");
+        $api.dom('.selectWiFi').innerHTML = dstSSID;
+        api.addEventListener({name: 'viewappear'}, fnAppear);
+        api.addEventListener({name: 'viewdisappear'}, fnDisappear);
+        fnAppear();
+    }
+
+    function fnAppear() {
+        api.addEventListener({
+            name:'resume'
+        }, function(ret, err){        
+            gizWifiSDK.getPhoneSSID(function(ret, err) {
+                if (ret) {
+                    if (ret.SSID !== '<unknown ssid>') {
+                        $api.dom('.selectWiFi').innerHTML = ret.SSID;
+                        if (ret.SSID === dstSSID) {
+                            api.closeToWin({name: 'win_deviceList'});       
+                        }
+                    }
+                }
+            });
+        });
+    }
+    
+    function fnDisappear() {
+        api.removeEventListener({
+            name: 'resume'
+        });
+    }
+
+    function fnTip() {
+        if (api.systemType === 'ios') {
+            if (parseInt(api.systemVersion) >= 10) {
+                fnPopup({msg:'请手动点击桌面的"设置"图标，然后选择 "无线局域网"'});
+            }
+            param = {iosUrl: 'prefs:root=WIFI'};
+        } else {
+            param = {androidPkg:'android.settings.WIFI_SETTINGS'};
+        }
+        api.openApp(param);
+    }
+</script>
+</html>

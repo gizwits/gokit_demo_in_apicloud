@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport"
+		content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width"/>
+		<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+		<link rel="stylesheet" href="../../css/api.css">
+		<style>
+			.deviceList {
+				display: none;
+			}
+			.deviceList ul {
+				padding-top: 30px;
+				overflow: hidden;
+			}
+			.deviceList ul li {
+				padding: 0 16px;
+				background-color: white;
+				position: relative;
+			}
+			.deviceList ul li .title1, .title2, .title3 {
+				background-color: #ededed;
+				margin: 0 -16px;
+				padding: 6px 16px;
+				color: #999;
+				font-size: 12px;
+			}
+			.deviceList ul li .flex-wrap {
+				background-position: left center;
+				background-size: 30px auto;
+				padding: 8px 0;
+				padding-left: 35px;
+			}
+			.deviceList ul li .flex-wrap .flex-con {
+				padding-top: 6px;
+			}
+			.deviceList ul li.empty  li+ li .flex-wrap {
+				border-top: 1px solid #ddd;
+			}
+			.deviceList ul li .flex-wrap h6 {
+				font-size: 14px;
+				color: #333;
+			}
+			.deviceList ul li .flex-wrap p {
+				font-size: 10px;
+				color: #999;
+			}
+			.deviceList ul li .flex-wrap .ic-arrow-r {
+				display: none;
+				margin-left: 10px;
+				padding-right: 28px;
+				background-position: right center;
+				background-size: 18px auto;
+				display: table;
+				height: 44px;
+			}
+			.deviceList ul li .flex-wrap .ic-arrow-r span {
+				display: table-cell;
+				vertical-align: middle;
+				font-size: 13px;
+				color: #999;
+			}
+			.deviceList ul li .flex-wrap .ic-arrow-r.no-arrow {
+				background-image: none;
+				padding-right: 0;
+			}
+			.deviceList ul li.empty {
+				line-height: 44px;
+				font-size: 13px;
+			}
+			.deviceList ul li.animation {
+				-webkit-transition: .3s all;
+				transition: .3s all;
+			}
+			.deviceList ul li .right-btns {
+				position: absolute;
+				left: 100%;
+				top: 0;
+				bottom: 0;
+			}
+			.deviceList ul li .right-btns .red {
+				width: 70px;
+				text-align: center;
+				background-color: #ff4c00;
+				color: white;
+				display: table;
+				white-space: nowrap;
+				height: 100%;
+			}
+			.deviceList ul li .right-btns .red span {
+				display: table-cell;
+				vertical-align: middle;
+			}
+			.addDevice {
+				height: 100%;
+				display: none;
+			}
+			.addDevice > .flex-wrap {
+				height: 100%;
+			}
+			.bg-add {
+				padding-top: 240px;
+				background-size: 150px auto;
+			}
+			.bg-add .btn {
+				color: #333;
+				font-size: 14px;
+				line-height: 32px;
+				border: 1px solid #999;
+				border-radius: 32px;
+				text-align: center;
+				margin: 0 23px;
+			}
+			.hint {
+				line-height: 60px;
+				text-align: center;
+				color: #9a9a9a;
+				font-size: 12px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="addDevice show">
+			<div class="flex-wrap flex-vertical">
+				<div class="flex-con">
+					<div class="bg-add">
+						<div tapmode="opacity" onclick="fnJumpWin({name: 'selectWiFi', path: '/main'});" class="btn">
+							暂无设备，请添加
+						</div>
+					</div>
+				</div>
+				<div class="hint">
+					提示：暂不支持 5G 频道的 Wi-Fi 网络
+				</div>
+			</div>
+		</div>
+		<div class="deviceList ">
+			<ul class="canDo">
+				<li>
+					<div class="title1">
+						已绑定设备
+					</div>
+				</li>
+				<li class="empty">
+					没有设备
+				</li>
+				<!--			<li class="list" >
+				<div class="flex-wrap ic-device-ok">
+				<div class="flex-con">
+				<h6>机智云空气净化器</h6>
+				<p>A456435345345</p>
+				</div>
+				<div class="ic-arrow-r">
+				<span>局域网</span>
+				</div>
+				</div>
+				<div class="right-btns">
+				<div class="red" ><span>删除</span></div>
+				</div>
+				</li>-->
+			</ul>
+			<ul>
+				<li>
+					<div class="title2">
+						发现新设备
+					</div>
+				</li>
+				<li class="empty">
+					没有设备
+				</li>
+				<!--<li>
+				<div class="flex-wrap ic-device-ok">
+				<div class="flex-con">
+				<h6>机智云空气净化器</h6>
+				<p>A456435345345</p>
+				</div>
+				<div class="ic-arrow-r">
+				<span>局域网</span>
+				</div>
+				</div>
+				</li>
+				<li>
+				<div class="flex-wrap ic-device-ok">
+				<div class="flex-con">
+				<h6>机智云空气净化器</h6>
+				<p>A456435345345</p>
+				</div>
+				<div class="ic-arrow-r">
+				<span>局域网</span>
+				</div>
+				</div>
+				</li>-->
+			</ul>
+			<ul class="canDo">
+				<li>
+					<div class="title3">
+						离线设备
+					</div>
+				</li>
+				<li class="empty">
+					没有设备
+				</li>
+				<!--			<li>
+				<div class="flex-wrap ic-device-no">
+				<div class="flex-con row-nowrap">
+				<h6>机智云空气净化器</h6>
+				<p class="row-nowrap">A456435345345A456435345345A456435345345</p>
+				</div>
+				<div class="ic-arrow-r">
+				<span>局域网</span>
+				</div>
+				</div>
+				</li>
+				<li>
+				<div class="flex-wrap ic-device-no">
+				<div class="flex-con row-nowrap">
+				<h6>机智云空气净化器</h6>
+				<p class="row-nowrap">A456435345345A456435345345A456435345345</p>
+				</div>
+				<div class="ic-arrow-r">
+				<span>局域网</span>
+				</div>
+				</div>
+				</li>-->
+			</ul>
+		</div>
+		<br>
+		<br>
+		<br>
+		<br>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/base.js"></script>
+	<script type="text/javascript">
+		var gizWifiSDK, gizWifiDevice;
+		apiready = function() {
+			gizWifiSDK = api.require("gizWifiSDK");
+			gizWifiDevice = api.require("gizWifiDevice");
+			api.addEventListener({
+				name : 'viewappear'
+			}, fnAppear);
+			fnAppear();
+		}
+		function fnAppear() {
+			fnGetListInfo();
+			api.execScript({
+				name : 'root',
+				script : 'fnRegisterNotifications(' + JSON.stringify({
+					winName : api.winName,
+					frameName : api.frameName
+				}) + ')'
+			});
+		}
+
+		//	获取缓存的设备列表
+		function fnGetListInfo() {
+			gizWifiSDK.getListInfo(function(ret, err) {
+				receive_fnGetListInfo(ret, err);
+			});
+		}
+
+		function receive_fnBindDevice(ret, err) {
+			if (ret) {
+				fnPopup({
+					msg : '扫码添加成功'
+				}, function() {	
+				});
+			} else {
+				fnScannerfailed();
+			}
+//			api.execScript({
+//				name : 'root',
+//				script : 'fnRegisterNotifications(' + JSON.stringify({
+//					winName : api.winName,
+//					frameName : api.frameName
+//				}) + ')'
+//			});
+		fnAppear();
+			// alert( 'receive_fnBindDevice'+JSON.stringify( ret ) )
+			//alert( 'receive_fnBindDevice'+JSON.stringify( err ) )
+		}
+
+		//	设备绑定
+		function fnBindDevice(obj) {
+			api.getPrefs({
+				key : 'user'
+			}, function(ret, err) {
+				api.showProgress({
+					animationType : 'zoom',
+					title : '绑定中...'
+				});
+				var uid = null;
+				var token = null;
+				if (ret && ret.value) {
+					uid = JSON.parse(ret.value).uid;
+					token = JSON.parse(ret.value).token;
+				}
+				gizWifiSDK.bindDevice({
+					uid : uid,
+					token : token,
+					did : obj.data.did,
+					passcode : obj.data.passcode
+				}, function(ret, err) {
+					api.hideProgress();
+					receive_fnBindDevice(ret, err);
+				});
+			});
+		}
+
+		//  二维码解析失败
+		function fnBindDeviceByQRCode(obj) {
+			api.getPrefs({
+				key : 'user'
+			}, function(ret, err) {
+				api.showProgress({
+					animationType : 'zoom',
+					title : '绑定中...'
+				});
+				var uid = null;
+				var token = null;
+				if (ret && ret.value) {
+					uid = JSON.parse(ret.value).uid;
+					token = JSON.parse(ret.value).token;
+				}
+				// alert("QRContent = " + obj.data);
+				gizWifiSDK.bindDeviceByQRCode({
+					uid : JSON.parse(ret.value).uid,
+					token : JSON.parse(ret.value).token,
+					QRContent : obj.data
+				}, function(ret, err) {
+					// alert("ret = " + JSON.stringify(ret));
+					// alert("err = " + JSON.stringify(err));
+					api.hideProgress();
+					receive_fnBindDevice(ret, err);
+				});
+			});
+		}
+
+		function fnGetBoundDevices() {
+			api.showProgress({
+				animationType : 'zoom',
+				title : '加载中...'
+			});
+			api.getPrefs({
+				key : 'user'
+			}, function(ret, err) {
+				var uid = null;
+				var token = null;
+				if (ret.value) {
+					uid = JSON.parse(ret.value).uid;
+					token = JSON.parse(ret.value).token;
+				}
+				gizWifiSDK.getBoundDevices({
+					uid : uid,
+					token : token
+					// specialProductKeys:
+				}, function(ret, err) {
+					receive_fnGetBoundDevices(ret, err);
+				});
+			});
+		}
+
+		function receive_fnGetBoundDevices(ret, err) {
+			//alert(JSON.stringify(ret));
+			api.hideProgress();
+			if (ret) {
+			receive_fnGetListInfo(ret, err);
+			} else {
+				fnNotes(err);
+			}
+		}
+
+		function receive_fnSetSubscribe(ret, err) {
+			api.hideProgress();
+			if (ret) {
+				fnJumpWin({
+					name : 'control',
+					path : '/object',
+					pageParam : $api.getStorage('device_message')
+				});
+				fnAppear();
+			} else {
+				fnNotes(err);
+			}
+		}
+
+		function receive_fnRegisterNotifications(ret, err) {
+			//alert(JSON.stringify(ret));
+			receive_fnGetListInfo(ret, err);
+		//	setTimeout(receive_fnGetListInfo(ret, err), 3000);
+			//setTimeout("receive_fnGetListInfo(ret, err)",5000)
+			if (err) {
+				//alert( '3' );
+				fnNotes(err);
+			}
+		}
+
+		function receive_fnGetListInfo(ret, err) {
+			//alert(JSON.stringify(ret));
+			if (ret && typeof (ret.devices) != 'undefined' && ret.devices.length) {
+				var eLi = $api.domAll('li.list');
+				for (var i = 0; i < eLi.length; i++) {
+					$api.remove(eLi[i]);
+				}
+				$api.addCls($api.dom('.deviceList'), 'show');
+				$api.removeCls($api.dom('.addDevice'), 'show');
+				var parent = $api.dom('.title2');
+				for (var x in ret.devices ) {
+					var li = $api.domAll('.id_' + ret.devices[x].did);
+					if (li.length) {
+						for (var i = 0; i < li.length; i++) {
+							$api.remove(li[i]);
+						}
+					}
+					if (ret.devices[x].netStatus) {
+						if (ret.devices[x].isBind) {
+							var vPosition = 1;
+						} else {
+							var vPosition = 2;
+						}
+					} else {
+						//if( ret.devices[x].isBind ){}
+						var vPosition = 3;
+						/*}else {
+						 var vPosition = 4;
+						 }*/
+					}
+					ret.devices[x].productName = ret.devices[x].alias || ret.devices[x].productName;
+					$api.after($api.dom('.deviceList ul:nth-child(' + vPosition + ') li.empty'), '<li tapmode="opacity" ' + (vPosition === 3 ? '' : 'onclick="fnSetSubscribe(this);"') + ' class="list id_' + ret.devices[x].did + '" >' + ' 	<data class="hide" >' + JSON.stringify(ret.devices[x]) + '</data>' + '	<div class="flex-wrap ic-device-' + (vPosition === 3 ? 'no' : 'ok' ) + '">' + '		<div class="flex-con row-nowrap">' + '			<h6 class="row-nowrap" >' + (ret.devices[x].productName ? ret.devices[x].productName : ' ' ) + '</h6>' + '			<p class="row-nowrap" >' + ret.devices[x].mac + '</p>' + '		</div>' + '		<div class="ic-arrow-r ' + (vPosition === 3 ? 'no-arrow' : '') + '">' + '			<span>' + (ret.devices[x].netStatus ? (ret.devices[x].isBind ? (ret.devices[x].isLAN ? '局域网' : '远程') : '未绑定' ) : '') + '</span>' + '		</div>' + '	</div>' + (vPosition !== 2 ? ('<div class="right-btns"><div tapmode="opacity" onclick="fnUnbindDevice(this)" class="red" ><span>删除</span></div>') : '') + '    </div>' + '</li>');
+				}
+				iniRightBtns('ul.canDo li.list');
+			} else {
+				$api.addCls($api.dom('.addDevice'), 'show');
+				$api.removeCls($api.dom('.deviceList'), 'show');
+			}
+			var eUl = $api.domAll('ul');
+			for (var i = 0; i < eUl.length; i++) {
+				if (eUl[i].querySelectorAll('li').length > 2) {
+					$api.addCls(eUl[i].querySelector('li.empty'), 'hide');
+				} else {
+					$api.removeCls(eUl[i].querySelector('li.empty'), 'hide');
+				}
+			}
+			api.parseTapmode();
+		}
+
+		function fnUnbindDevice(el) {
+			event.stopPropagation();
+			api.showProgress({
+				animationType : 'zoom',
+				title : '正在解除绑定...'
+			});
+			api.getPrefs({
+				key : 'user'
+			}, function(ret, err) {
+				var uid = null;
+				var token = null;
+				if (ret.value) {
+					uid = JSON.parse(ret.value).uid;
+					token = JSON.parse(ret.value).token;
+				}
+				gizWifiSDK.unbindDevice({
+					uid : uid,
+					token : token,
+					did : JSON.parse($api.closest(el, 'li').querySelector('data.hide').innerHTML).did
+				}, function(ret, err) {
+					receive_fnUnbindDevice(ret, err);
+				});
+			});
+		}
+
+		function receive_fnUnbindDevice(ret, err) {
+			if (ret) {
+				var eLi = $api.domAll('li.list');
+				for (var i = 0; i < eLi.length; i++) {
+					$api.remove(eLi[i]);
+				}
+				var eUl = $api.domAll('ul');
+				for (var i = 0; i < eUl.length; i++) {
+					if (eUl[i].querySelectorAll('li').length > 2) {
+						$api.addCls(eUl[i].querySelector('li.empty'), 'hide');
+					} else {
+						$api.removeCls(eUl[i].querySelector('li.empty'), 'hide');
+					}
+				}
+				fnPopup({
+					msg : '解除成功'
+				}, function() {
+					fnAppear();
+				});
+			} else {
+				fnNotes(err);
+			}
+			api.hideProgress();
+		}
+
+		function fnSetSubscribe(el) {
+			if (! el.querySelector('.no-arrow')) {
+				api.showProgress({
+					animationType : 'zoom'
+				});
+				var obj = JSON.parse(el.querySelector('data.hide').innerHTML);
+				$api.setStorage('device_message', obj);
+				gizWifiDevice.setSubscribe({
+					subscribed : true,
+					device : {
+						mac : obj.mac,
+						did : obj.did
+					}
+				}, function(ret, err) {
+					receive_fnSetSubscribe(ret, err);
+				})
+			}
+		}
+
+		function fnCheckbox(el) {
+			if ($api.hasCls($api.closest(el, '.btns'), 'active')) {
+				$api.removeCls($api.closest(el, '.btns'), 'active');
+			} else {
+				$api.addCls($api.closest(el, '.btns'), 'active');
+			}
+		}
+
+		//扫码失败
+		function fnScannerfailed() {
+			fnPopup({
+				msg : '扫码失败'
+			}, function() {
+			});
+			//alert(1);
+		}
+	</script>
+</html>

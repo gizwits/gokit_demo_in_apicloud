@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <link rel="stylesheet" href="../../css/api.css">
+    <style>
+   		.bg-select{  background: none; text-align: center; padding: 20px 20px 0 20px; font-size: 14px; color: #333; }
+   		.bg-select p{ line-height: 42px; color: #0080ff; }
+    	
+    	.btns{ padding: 10px; }
+    	.btns .submit{ background-color: #f3d41d; color: #333333;  line-height: 35px; border-radius: 35px; text-align: center; font-size: 13px; }
+    	.btns .hint{ line-height: 60px; text-align: center; }
+    	.btns .hint .ic-warning{  background-position: left center; background-size: auto 18px; padding-left: 20px; font-size: 10px; color: #9a9a9a; }
+    	
+    	.img-connection{ background-color: white; text-align: center; }
+    	.img-connection img{ max-width: 100%; vertical-align: middle; }
+    </style>
+</head>
+<body>
+	<div class="img-connection">
+		<img src="../../image/img-connection.gif" />
+	</div>
+	<div class="bg-select">请将手机的	Wi-Fi连接到”XPG-GAgent-XXX”后，返回APP<p tapmode="opacity" onclick="fnJumpWin({name: 'connectionDeviceNext', path: '/main'});" >找不到设备的Wi-Fi？</p></div>
+	<div class="btns">
+		<div class="hint"><span class="ic-warning">当前连接xx</span></div>
+		<div tapmode="opacity" onclick="fnJumpSetting()" class="submit">去连接设备的WI-Fi</div>
+	</div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/base.js"></script>
+<script type="text/javascript">
+	var setDeviceOnboarding = false;
+
+	apiready = function(){
+		api.execScript({
+		    name: 'root',
+		    script: 'fnGetPhoneSSID('+JSON.stringify({
+				winName: api.winName,
+				frameName: api.frameName
+			})+')'
+		});
+
+		api.addEventListener({name: 'viewappear'}, fnAppear);
+		api.addEventListener({name: 'viewdisappear'}, fnDisappear);
+        fnAppear();
+	}
+
+	function fnAppear() {
+		api.addEventListener({
+		    name:'resume'
+		}, function(ret, err){        
+			api.execScript({
+			    name: 'root',
+			    script: 'fnGetPhoneSSID('+JSON.stringify({
+					winName: api.winName,
+					frameName: api.frameName
+				})+')'
+			});	
+			setDeviceOnboarding = true;		
+			//setDeviceOnboarding = true;
+		});
+	}
+	
+	function fnDisappear() {
+		api.removeEventListener({
+			name: 'resume'
+		});
+	}
+	
+	function fnJumpSetting(){
+		if( api.systemType === 'ios' ){
+			if( parseInt(api.systemVersion) >= 10 ){
+				fnPopup({msg:'请手动点击桌面的"设置"图标，然后选择 "无线局域网"'});
+			}
+			var param = {iosUrl: 'prefs:root=WIFI' };
+		}else{
+			var param = {androidPkg:'android.settings.WIFI_SETTINGS'};
+		}
+		api.openApp(param,function(ret,err){
+			
+			api.showProgress({
+			    animationType: 'zoom',
+			    title: '获取 WiFi'
+			});
+			// api.execScript({
+			//     name: 'root',
+			//     script: 'fnGetPhoneSSID('+JSON.stringify({
+			// 		winName: api.winName,
+			// 		frameName: api.frameName
+			// 	})+')'
+			// });
+			
+		})
+	}
+	
+	
+	
+	function receive_fnGetPhoneSSID( ret, err ){
+		//alert(1);
+		if(ret.SSID !== '<unknown ssid>'){
+				//alert(JSON.stringify("当前连接"+ret.SSID));
+			$api.dom( '.ic-warning' ).innerHTML = '当前连接'+ret.SSID;
+			//alert( $api.getStorage('wifi') +'  '+ $api.getStorage('wifi_password'));
+			if (api.connectionType == 'wifi' && ret.SSID.indexOf('XPG-GAgent') !== -1 && setDeviceOnboarding) {
+				//alert( $api.getStorage('wifi') +'  '+ $api.getStorage('wifi_password'));
+					//alert(1);	
+				fnPopup({
+					msg:'选择成功'
+			 	}, function(){
+			 		fnJumpWin({name: 'searchDeviceSoftAP', path: '/main', data: null, slidBackEnabled: true});
+			 	});
+			}
+			//$api.dom( '.ic-warning' ).innerHTML = '当前连接'+ret.SSID;
+		}else{
+			alert( JSON.stringify( err ) )
+		}
+		api.hideProgress();
+	}
+</script>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <link rel="stylesheet" href="../../css/api.css">
+    <style>
+        .bg-fail{ padding-top: 190px; background-size: 150px auto; text-align: left; padding-left: 20px; color: #999; font-size: 12px; font-family: "Microsoft YaHei"}
+        .div-subtitle{ background: none; text-align: left; padding-left: 48px; color: #999; font-size: 12px; font-family: "Microsoft YaHei"}
+        .btns .submit{ background-color: #f3d41d; color: #333333; line-height: 35px; border-radius: 35px; text-align: center; font-size: 15px; margin: 50px 0; }
+     </style>
+</head>
+<body>
+    <div class="bg-fail">设备连接网络不成功，请检查：</div><br>
+    <div class="div-subtitle">1、wifi密码是否正确；<br>
+2、网络是否能正常上网；<br>
+3、手机、设备与路由器是否离得比较远；<br>
+4、路由器是否设置了限制。</div>
+	<div class="btns">
+		<div tapmode="opacity" onclick="fnRetry()" class="submit">重试</div>
+	</div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/base.js"></script>
+<script type="text/javascript">
+    apiready = function(){
+
+    }
+
+    function fnRetry() {
+        fnJumpWin({name: 'configCheckPassword', path: '/main' });
+    }
+</script>
+</html>

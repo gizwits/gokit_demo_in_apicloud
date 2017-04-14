@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Features>
+  <feature name="zip" desc="压缩及解压缩功，支持压缩多个文件，可设置压缩密码" isAndroid="true" isIOS="true" type="5"/>
+  <feature name="weiXin" desc="微信分享接口，微信支付" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="timeSelector" desc="时间选择器" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="trans" desc="把xml文件解析成json" isAndroid="true" isIOS="true" type="5"/>
+  <feature name="tabBar" desc="支持滑动的底部功能栏，可定义内容、色彩等，支持提醒" isAndroid="true" isIOS="true" type="4"/>
+  <feature name="speechRecognizer" desc="语音识别功能" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="sinaWeiBo" desc="新浪微博授权登陆及分享内容到微博" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="searchBar" desc="搜索及搜索记录，支持内容、位置、色彩等定义" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="scanner" desc="全屏二维码扫描器;自定义二维码扫描器" isAndroid="true" isIOS="true" type="5"/>
+  <feature name="push" desc="推送模块，用于推送服务的支持" isAndroid="true" isIOS="true" type="9"/>
+  <feature name="qq" desc="QQ授权登陆及分享内容到QQ" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="pullMenu" desc="顶部多功能菜单，支持内容、大小、色彩、位置定义" isAndroid="true" isIOS="true" type="4"/>
+  <feature name="pieChart" desc="可随手势旋转的饼形图，支持内容、色彩、数据自定义" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="loadingLabel" desc="加载标签" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="pdfReader" desc="PDF阅读器" isAndroid="true" isIOS="true" type="5"/>
+  <feature name="periodSelector" desc="时间段选择器" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="msm" desc="安全管理模块，用于安全服务支持" isAndroid="true" isIOS="true" type="9"/>
+  <feature name="navigationMenu" desc="顶部功能导航栏" isAndroid="true" isIOS="true" type="4"/>
+  <feature name="panorama" desc="球状体全景图片展示;立方体全景图片展示" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="mcm" desc="内容管理模块，用于应用内容管理服务支持" isAndroid="true" isIOS="true" type="9"/>
+  <feature name="mam" desc="移动应用管理模块，用于管理移动设备应用提供服务支持" isAndroid="true" isIOS="true" type="9"/>
+  <feature name="lineChart" desc="数据的折线图表，支持数据内容、色彩、位置的自定义" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="fs" desc="文件系统，可创建、删除、复制、移动、修改等" isAndroid="true" isIOS="true" type="5"/>
+  <feature name="imageBrowser" desc="相册功能，支持放大浏览、本地保存" isAndroid="true" isIOS="true" type="5"/>
+  <feature name="fileBrowser" desc="文件管理器功能，支持批量删除、排序" isAndroid="true" isIOS="true" type="5"/>
+  <feature name="downloadManager" desc="下载功能，支持显示进度、断点续传等" isAndroid="true" isIOS="true" type="5"/>
+  <feature name="docReader" desc="文档阅读器，Android需第三方软件支持" isAndroid="true" isIOS="true" type="5"/>
+  <feature name="cityList" desc="支持自动定位和搜索的城市列表" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="contact" desc="对联系人进行增删查改等操作的功能" isAndroid="true" isIOS="true" type="2"/>
+  <feature name="coverFlow" desc="图片3D界面形式展示，支持背景色定义" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="cardReader" desc="银联或信用卡片阅读功能" isAndroid="true" isIOS="true" type="5"/>
+  <feature name="calendar" desc="日历显示，支持位置定义上下滑动切换月份" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="bluetooth" desc="通络蓝牙传输数据" isAndroid="true" isIOS="true" type="2"/>
+  <feature name="barChart" desc="数据的柱状图，支持数据内容、位置的自定义" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="baiduLocation" desc="百度定位，可获得当前位置信息" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="actionButton" desc="多屏按钮功能，支持滑动切换，支持内容、位置、色彩定义" isAndroid="true" isIOS="true" type="4"/>
+  <feature name="aliPay" desc="支付宝支付模块" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="arcMenu" desc="动画菜单，支持菜单自定义" isAndroid="true" isIOS="true" type="4"/>
+  <feature name="arcProgress" desc="圆形进度条（环形、扇形、累月牙形），可定义色彩、进度等" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="touchID" desc="用户指纹识别身份验证功能" isAndroid="false" isIOS="true" type="2"/>
+  <feature name="bubbleMenu" desc="气泡菜单，浮动菜单多用于内容操作的功能" isAndroid="true" isIOS="true" type="4"/>
+  <feature name="graph" desc="贝塞尔曲线" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="netAudio" desc="网络音频播放器，支持网络音频播放" isAndroid="true" isIOS="true" type="5"/>
+  <feature name="sideMenu" desc="边框菜单，屏幕左右俩侧弹动菜单" isAndroid="true" isIOS="true" type="4"/>
+  <feature name="meChat" desc="实现手机用户与企业保持随时随刻沟通的客服工具" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="circularMenu" desc="转盘菜单" isAndroid="true" isIOS="true" type="4"/>
+  <feature name="tabBarMenu" desc="底部导航条菜单" isAndroid="true" isIOS="true" type="4"/>
+  <feature name="listView" desc="列表视图，可左右滑动cell的tableView" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="citySelector" desc="城市选择器" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="scrollPicture" desc="图片自动滚动联播器" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="listContact" desc="联系人列表" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="shakeView" desc="摇一摇视图" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="scrollRotation" desc="旋转图片联播器" isAndroid="true" isIOS="true" type="4"/>
+  <feature name="db" desc="数据库操作对象" isAndroid="true" isIOS="true" type="5"/>
+  <feature name="personalCenter" desc="个人信息中心" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="slider" desc="可自定义滑块、标杆及其最大最小值的滑动器" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="multiSelector" desc="多项选择器" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="stackMenu" desc="stack菜单" isAndroid="true" isIOS="true" type="4"/>
+  <feature name="navigationBar" desc="可自定义排版、拖动的标题导航条" isAndroid="true" isIOS="true" type="4"/>
+  <feature name="bookReader" desc="带有翻页效果的阅读器，可自定义数据源和界面" isAndroid="true" isIOS="true" type="5"/>
+  <feature name="baiduMap" desc="封装了百度地图的SDK,实现了在导航添加路线搜索等功能" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="gravitySensor" desc="gravitySensor封装了android的重力传感器" isAndroid="true" isIOS="false" type="2"/>
+  <feature name="inputField" desc="文字输入框" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="chatBox" desc="" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="iap" desc="应用内支付" isAndroid="false" isIOS="true" type="5"/>
+  <feature name="UIScrollPromptView" desc="可弹出提示框的图片联播器" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="adsDomob" desc="封装了多盟广告平台的SDK" isAndroid="false" isIOS="true" type="8"/>
+  <feature name="pushGeTui" desc="封装了个推消息推送的sdk" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="baiXing" desc="封装了百姓网的SDK" isAndroid="true" isIOS="false" type="8"/>
+  <feature name="ajpush" desc="封装了极光推送的sdk" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="pingpp" desc="聚合支付宝、微信、银联等多支付渠道的Ping++ SDK" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="rongCloud" desc="封装了免费即时通讯云服务的sdk" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="brightBeacon" desc="封装了智石与iBeacon设备互动的SDK库" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="customSelector" desc="可自定义样式及其数据源的选择器" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="baiduNavigation" desc="封装了百度导航的SDK" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="brokenLine" desc="可自定义样式，刷新数据源的折线视图" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="socketManager" desc="封装了Socket&quot;套接字&quot;服务的模块" isAndroid="true" isIOS="true" type="5"/>
+  <feature name="tencentPush" desc="" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="tulingapi" desc="封装了图灵机器人的SDK" isAndroid="true" isIOS="false" type="8"/>
+  <feature name="slipList" desc="可自定义item样式和左右侧滑方式的列表视图模块" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="imageFilter" desc="封装了图片滤镜的功能" isAndroid="true" isIOS="true" type="5"/>
+  <feature name="uscSpeechRecognizer" desc="封装了云之声的语音识别的SDK" isAndroid="true" isIOS="false" type="8"/>
+  <feature name="ipaynow" desc="封装了众多主流支付方式的SDK" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="ksisdk" desc="提供电子数据的签名和验证服务的SDK" isAndroid="true" isIOS="false" type="8"/>
+  <feature name="orderList" desc="可自定义样式的列表视图" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="imageClip" desc="封装了图片剪裁的接口，开发者可自定义裁剪界面 " isAndroid="true" isIOS="true" type="5"/>
+  <feature name="marketScore" desc="调用已安装市场，对指定app评分" isAndroid="true" isIOS="false" type="5"/>
+  <feature name="yzxVerification" desc="封装了云之讯的智能验证SDK" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="superID" desc="预发布测试版" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="csOpenApi" desc=" 扫描全能王Open API ( CamScanner Open API ) 是基于扫描全能王强大的图像处理能力，为第三方应用提供图像处理方案的公开接口。" isAndroid="true" isIOS="false" type="8"/>
+  <feature name="maketionCardReader" desc="封装了脉可寻名片识别的SDK    " isAndroid="false" isIOS="true" type="8"/>
+  <feature name="ttsModule" desc="ttsModule封装了android的本地TTS语音合成模块" isAndroid="true" isIOS="false" type="5"/>
+  <feature name="bmobPush" desc="封装了Bmob后端云的免费推送SDK" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="mediaScanner" desc="封装了从媒体库（相册）读取资源的功能" isAndroid="true" isIOS="true" type="2"/>
+  <feature name="clipBoard" desc="封装了系统剪切板的功能" isAndroid="true" isIOS="true" type="2"/>
+  <feature name="wifi" desc="获取当前设备链接的wifi的ssid" isAndroid="true" isIOS="true" type="2"/>
+  <feature name="pasteboard" desc="调用原生的代码将数据拷贝到剪切板" isAndroid="true" isIOS="true" type="2"/>
+  <feature name="patternLock" desc="手势解锁，提供解锁，设置密码，重置密码和自定义外观颜色功能" isAndroid="false" isIOS="true" type="5"/>
+  <feature name="screenLock" desc="图案解锁功能，主要用在某些需要进入时验证图案密码的应用。" isAndroid="true" isIOS="false" type="5"/>
+  <feature name="cloudwiseMAgent" desc="封装了免费的APP性能监控和管理的SDK" isAndroid="false" isIOS="true" type="8"/>
+  <feature name="moduleShareSMS" desc="封装了mob.com平台的免费短信验证码SDK，每天1万条免费短信额度" isAndroid="true" isIOS="false" type="8"/>
+  <feature name="sendSms" desc="封装了mob的短信验证服务，发免费发送验证短信" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="spModule" desc="spModule封装了android的SharedPreferences，使用此模块可轻松实" isAndroid="true" isIOS="false" type="2"/>
+  <feature name="screenClip" desc="屏幕截图的功能" isAndroid="true" isIOS="true" type="5"/>
+  <feature name="voiceMag" desc="voiceMag是用来控制手机的声音在听筒播放还是在扩音器播放。" isAndroid="true" isIOS="true" type="5"/>
+  <feature name="talkingData" desc="基于App数据，透析运营指标，掌握用户行为" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="cchelperModule" desc="模块封装了领通科技移动应用远程协助服务平台的SDK" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="lightSensor" desc="lightSensor封装了android的光传感器" isAndroid="true" isIOS="false" type="2"/>
+  <feature name="aMapNavigation" desc="封装了高德地图导航的相关接口，可内部嵌入高德导航功能" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="wifiSSID" desc="获取当前设备WIFI的SSID" isAndroid="true" isIOS="false" type="2"/>
+  <feature name="cameraTool" desc="cameraTool封装了android的系统相机，可实现拍照后照片路径回调" isAndroid="true" isIOS="false" type="2"/>
+  <feature name="pingModule" desc="ping单次测试和连环测试" isAndroid="true" isIOS="false" type="2"/>
+  <feature name="alarmNotification" desc="alarmNotification模块封装了定时本地通知提醒功能" isAndroid="true" isIOS="true" type="5"/>
+  <feature name="coinport" desc="coinport封装了币丰支付的移动端SDK，使用此模块可实现比特币支付功能。" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="UILineChart" desc="折线图模块" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="accelerometerSensor" desc="accelerometerSensor封装了android的加速度传感器" isAndroid="true" isIOS="false" type="2"/>
+  <feature name="proximitySensor" desc="proximitySensor封装了android的接近传感器" isAndroid="true" isIOS="false" type="2"/>
+  <feature name="orientationSensor" desc="orientationSensor封装了android的方向传感器" isAndroid="true" isIOS="false" type="2"/>
+  <feature name="magneticFieldSensor" desc="magneticFieldSensor封装了android的地磁场传感器" isAndroid="true" isIOS="false" type="2"/>
+  <feature name="rotationVector" desc="rotationVector封装了android的旋转矢量传感器" isAndroid="true" isIOS="false" type="2"/>
+  <feature name="gyroscopeSensor" desc="gyroscopeSensor封装了android的陀螺仪" isAndroid="true" isIOS="false" type="2"/>
+  <feature name="imageTool" desc="imageTool封装了android的系统相册" isAndroid="true" isIOS="false" type="5"/>
+  <feature name="linearAcceleration" desc="linearAcceleration封装了android的线性加速度传感器" isAndroid="true" isIOS="false" type="2"/>
+  <feature name="messageList" desc="可自定义item样式、显示徽章的消息列表" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="hintChatBox" desc="带提示文本的聊天输入框" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="dkSDK" desc="封装了点开科技广告的sdk" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="overviewList" desc="封装了一个开发者可自定义单条item样式的列表视图模块" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="button" desc="" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="udesk" desc="udesk是一款实现手机用户与企业客服保持实时沟通的在线工具" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="arcColorPicker" desc="" isAndroid="true" isIOS="true" type="5"/>
+  <feature name="zhugeio" desc="诸葛io，是一款基于用户洞察的精细化运营分析工具" isAndroid="true" isIOS="false" type="8"/>
+  <feature name="bMap" desc="预发布测试版" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="moduleSMS" desc="获取本机号码（只支持联通单卡手机）；监听本机短信；" isAndroid="true" isIOS="false" type="2"/>
+  <feature name="micoMqtt" desc="标准的mqtt协议进行数据传输" isAndroid="true" isIOS="true" type="5"/>
+  <feature name="matrixLock" desc="可自定义样式大小的矩阵锁屏模块" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="audio" desc="封装了音频播放的功能，支持本地和网络音频文件" isAndroid="true" isIOS="true" type="5"/>
+  <feature name="runBackground" desc="一键退到后台运行，安卓手机可以在后台运行做的app。" isAndroid="true" isIOS="false" type="5"/>
+  <feature name="tuberBar" desc="可自定义为中间按钮突起效果的tabBar" isAndroid="true" isIOS="true" type="4"/>
+  <feature name="imageCrop" desc="封装了Android原生图片剪裁功能，实现图片获取和剪切需求。" isAndroid="true" isIOS="false" type="5"/>
+  <feature name="goodsList" desc="可自定义item头像标签及其样式的列表模块" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="jd" desc="封装了京东登陆的SDK，可通过此模块集成京东账号登陆功能" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="ksi" desc="提供电子数据的签名和验证服务的SDK" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="selectList" desc="可自定义样式的多项选择列表器" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="huanxin" desc="环信即时通讯云SDK" isAndroid="true" isIOS="false" type="8"/>
+  <feature name="geeTest" desc="封装了极验验证sdk" isAndroid="false" isIOS="true" type="8"/>
+  <feature name="kf5" desc="逸创云客服是一款能让移动端用户和企业客服进行反馈沟通的工具。" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="gizWifiSDK" desc="机智云让智能产品开发像写《hello world》一样简单" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="appManage" desc="安装/卸载Apk，判断是否系统应用，判断是否安装应用" isAndroid="true" isIOS="false" type="5"/>
+  <feature name="UIScrollPicture" desc="预发布测试模块" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="shareTool" desc="shareTool可分享文字，图片至手机所有具有分享功能的app" isAndroid="true" isIOS="false" type="5"/>
+  <feature name="wx" desc="预发布测试模块" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="imageSelect" desc="通过拍照或者从相册选取图片，再剪裁图片的功能。" isAndroid="true" isIOS="false" type="5"/>
+  <feature name="simInfo" desc="封装了获取sim卡信息的方法，暂仅支持android平台" isAndroid="true" isIOS="false" type="2"/>
+  <feature name="brightness" desc="brightness封装了android调节当前窗体亮度的功能" isAndroid="true" isIOS="false" type="5"/>
+  <feature name="tingyun" desc="封装了听云开放SDK，暂仅支持IOS平台" isAndroid="false" isIOS="true" type="8"/>
+  <feature name="UIMediaScanner" desc="" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="ipaynowScanner" desc="封装了主流扫码支付方式的SDK" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="UISearchBar" desc="可自定义的搜索界面" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="UIChatBox" desc="聊天表情输入框，可自定义表情集，选择相册事件" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="wxPay" desc="封装了微信开放SDK的支付功能" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="UICustomPicker" desc="可自定义级数、内容及其样式的选择器" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="ciaYi" desc="封装CIA易验证，轻松替代短信验证码，99%送达，不被拦截。" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="UICityList" desc="可自定义数据源的城市列表" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="contacts" desc="封装了系统通讯录相关接口" isAndroid="true" isIOS="true" type="2"/>
+  <feature name="btmodule" desc="蓝牙4.0模块，支持数据写入" isAndroid="true" isIOS="false" type="2"/>
+  <feature name="chanceAd" desc="封装了畅思广告的sdk" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="UICalendar" desc="支持特殊日期标记的日历模块" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="iflytekvoiceads" desc="封装了讯飞移动广告平台的SDK" isAndroid="true" isIOS="false" type="8"/>
+  <feature name="weibo" desc="新浪微博授权登陆及分享内容到微博" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="FNScanner" desc="二维码扫描器，支持生成条码/二维码" isAndroid="true" isIOS="true" type="5"/>
+  <feature name="UIListView" desc="可配置item侧滑方式的列表模块" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="unionPay" desc="中国银联支付SDK" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="beecloud" desc="预发布测试版" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="UIInput" desc="用原生代码实现了 input 标签的功能" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="recordVideo" desc="录制视频模块，封装了爱拍SDK" isAndroid="true" isIOS="false" type="8"/>
+  <feature name="UIGraph" desc="预发布测试版" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="adsYoumi" desc="封装了有米广告的SDK" isAndroid="true" isIOS="false" type="8"/>
+  <feature name="launchImage" desc="获取APP的启动图地址，可用来实现动态广告效果。" isAndroid="true" isIOS="true" type="5"/>
+  <feature name="mobVerify" desc="免费的短信验证模块，每天10000条语音/短信" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="MNStack" desc="封装了一个stack菜单" isAndroid="true" isIOS="true" type="4"/>
+  <feature name="UISelector" desc="预发布测试版" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="UILinkedPicker" desc="预发布测试版" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="slidingList" desc="仿IOS下方弹出滑动选择器，高逼格列表" isAndroid="true" isIOS="false" type="3"/>
+  <feature name="mico" desc="物联网，控制智能家居，智能硬件" isAndroid="true" isIOS="false" type="8"/>
+  <feature name="logCrash" desc="监听已发布应用闪退日志，闪退手机型号、当前手机版本等信息。" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="3DTouch" desc="3DTouch封装了iPhone6s、iPhone6s plus以后版本的手机特有的3DTouch功能" isAndroid="false" isIOS="true" type="2"/>
+  <feature name="mdReader" desc="预发布测试版" isAndroid="true" isIOS="true" type="5"/>
+  <feature name="galaxySpecials" desc="APP提交三星应用商店时，三星要求该APP必须嵌入其SDK，并加入相关权限，勾选该模块即可。" isAndroid="true" isIOS="false" type="8"/>
+  <feature name="rongCloud2" desc="封装了免费即时通讯云服务的sdk" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="youkuPlayer" desc="封装了优酷土豆开放平台的SDK" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="shareAction" desc="封装了系统的分享控件" isAndroid="true" isIOS="true" type="5"/>
+  <feature name="privacy" desc="预发布测试版本" isAndroid="false" isIOS="true" type="5"/>
+  <feature name="UIBarChart" desc="可点击查看数据的柱状图" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="jyVerify" desc="封装极验验证的滑动验证功能" isAndroid="true" isIOS="false" type="8"/>
+  <feature name="shortCut" desc="为安卓手机软件添加快捷方式" isAndroid="true" isIOS="false" type="5"/>
+  <feature name="polyVideo" desc="封装了保利威视的开放SDK,可播放本地、网络媒体资源" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="mobShare" desc="集成了 mob 的 shareSDK，可分享信息到微信、新浪、QQ等N多个pin" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="gpsState" desc="获取安卓 苹果手机当前的GPS状态 并可以打开安卓GPS设置界面" isAndroid="true" isIOS="true" type="2"/>
+  <feature name="appStore" desc="应用商店" isAndroid="true" isIOS="true" type="9"/>
+  <feature name="chromeDebug" desc="通过chrome的inspect调试HTML5页面，如打印console日志等" isAndroid="true" isIOS="false" type="5"/>
+  <feature name="tyRTC" desc="天翼RTC，实时语音视频通讯专家" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="shareMorePic" desc="将多张图片和文字一起分享到微信朋友圈" isAndroid="true" isIOS="false" type="8"/>
+  <feature name="audioCover" desc="封装了设置锁屏音频播放界面的相关接口" isAndroid="true" isIOS="true" type="5"/>
+  <feature name="zhiChi" desc="封装了智齿SDK" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="camera360" desc="封装了 Camera360 的开放 SDK" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="photoSelect" desc="从相册选择多张图片并返回压缩后的图片地址" isAndroid="true" isIOS="false" type="5"/>
+  <feature name="seckenModule" desc="洋葱SDK是帮助移动应用快速集成多维身份验证的开发工具集" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="videoPlayer" desc="封装了视频播放的相关功能" isAndroid="true" isIOS="true" type="5"/>
+  <feature name="UIPullRefreshFlash" desc="封装了可自自定义下拉、加载两过程动画效果的下拉刷新模块" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="vtingPlayer" desc="网络音频播放，支持m3u8纯音频播放" isAndroid="true" isIOS="true" type="5"/>
+  <feature name="phoneInfo" desc="封装了获取手机设备信息的相关接口" isAndroid="true" isIOS="false" type="2"/>
+  <feature name="UIButton" desc="可拖动的自定义按钮模块" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="miniVideoRecord" desc="可拍自定义时长的小视频，最小1秒到最大5分钟。封装了秒拍SDK" isAndroid="true" isIOS="false" type="8"/>
+  <feature name="compactPicture" desc="批量压缩图片 用户可以自定义图片压缩质量" isAndroid="true" isIOS="true" type="5"/>
+  <feature name="alibaichuan" desc="基于百川提供的一键登录、交易闭环，让开发的APP迅速盈利" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="qCloudVODPlayer" desc="腾讯云点播(VOD)播放器。" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="aMap" desc="封装了高德地图的开放 SDK" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="hanvonCloudBcardReader" desc="封装了汉王云名片识别的sdk" isAndroid="true" isIOS="false" type="8"/>
+  <feature name="playModule" desc="playModule 封装了视频播放功能。" isAndroid="true" isIOS="true" type="5"/>
+  <feature name="MNActionButton" desc="可弹出的菜单模块，支持侧滑切换" isAndroid="true" isIOS="true" type="4"/>
+  <feature name="logger" desc="支持debug模式下通过console.log将日志输出到studio控制台" isAndroid="false" isIOS="true" type="5"/>
+  <feature name="umengTJ" desc="友盟统计模块" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="duiBa" desc="duiBa模块封装了兑吧平台的SDK，使用此模块可对接兑吧积分商城" isAndroid="true" isIOS="false" type="8"/>
+  <feature name="smsVerify" desc="Mob免费短信验证模块，同时支持短信验证与语音验证。" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="UIActionSelector" desc="可自定义样式及数据源的 Action Selector" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="navigator" desc="集成聚合了调用高德、百度、谷歌、苹果自带地图的导航功能" isAndroid="true" isIOS="true" type="5"/>
+  <feature name="paypal" desc="封装了 PayPal 支付的开放 SDK" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="welcomePage" desc="自定义首次启动应用的导航页模块。" isAndroid="true" isIOS="false" type="3"/>
+  <feature name="groupList" desc="预发布测试版" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="getWebUrl" desc="获取页面的地址Url和标题Title，支持Android与iOS" isAndroid="true" isIOS="true" type="5"/>
+  <feature name="MNNavigationMenu" desc="可隐藏、显示的导航栏按钮菜单" isAndroid="true" isIOS="true" type="4"/>
+  <feature name="UISlider" desc="可显示设置数值气泡、大小值、当前值的滑动器，slider模块的优化升级版" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="appControl" desc="跳转应用、检测应用前台运行时间，以及检测应用是否安装" isAndroid="true" isIOS="false" type="5"/>
+  <feature name="photoBrowser" desc="可自定义界面及功能的图片浏览器" isAndroid="true" isIOS="true" type="5"/>
+  <feature name="callRecord" desc="封装了系统通话记录的相关接口" isAndroid="true" isIOS="false" type="2"/>
+  <feature name="wallPaper" desc="wallPaper封装了原生设置壁纸功能，可设置指定图片为桌面背景" isAndroid="true" isIOS="false" type="5"/>
+  <feature name="meiQia" desc="实现手机用户与企业保持随时随刻沟通的客服工具。" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="appleUnionPay" desc="封装了中国银联的 Apple Pay 控件开发包" isAndroid="false" isIOS="true" type="8"/>
+  <feature name="customToast" desc="弹出定时自动关闭的提示框，自定义提示框颜色、透明度、字体等" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="FNImageClip" desc="封装了图片裁剪的相关接口，开发者可自定义裁剪界面" isAndroid="true" isIOS="true" type="5"/>
+  <feature name="qupai" desc="趣拍短视频拍摄、水印、自带美颜" isAndroid="true" isIOS="false" type="8"/>
+  <feature name="UIMultiSelector" desc="自定义数据源的多项选择器" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="miniQuPai" desc="实现了IOS, Android 平台集成趣拍SDK极简版本模块功能" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="googleAnalytics" desc="封装了谷歌统计分析的功能" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="UIPullRefresh" desc="可播放GIF图片的下拉刷新模块" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="baiduMTJ" desc="百度移动app统计模块" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="kf5sdk" desc="逸创云客服是一款能让移动端用户和企业客服进行反馈沟通的工具。" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="zhuge" desc="诸葛io，是一款基于用户洞察的精细化运营分析工具" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="UICoverFlow" desc="封面流转效果模块" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="polyvVideo" desc="封装了保利威视的开放SDK,可播放本地、网络媒体资源" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="MNRotationMenu" desc="图片旋转滚动联播菜单" isAndroid="true" isIOS="true" type="4"/>
+  <feature name="pullRefreshLoop" desc="可旋转图片的下拉刷新模块" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="umengAnalytics" desc="APP数据统计，以便开发商利用数据进行产品运营、推广策略的决策" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="touchDebugger" desc="touchDebugger用于在Mac+Win平台下，调试APICould Android App" isAndroid="true" isIOS="false" type="5"/>
+  <feature name="tencentMTA" desc="腾讯云统计平台SDK模块" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="ble" desc="封装了蓝牙4.0的相关功能接口" isAndroid="true" isIOS="true" type="2"/>
+  <feature name="liveAudioPlayer" desc="音频直播流播放器,播放后台不会被杀,断网重连.来电暂停" isAndroid="true" isIOS="true" type="5"/>
+  <feature name="qiniuUpfile" desc="封装的七牛文件上传SDK" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="upyunUpfile" desc="又拍云上传SDK封装" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="brightness2016" desc="调节屏幕亮度。安卓是针对当前App界面，IOS是针对系统亮度调节。" isAndroid="true" isIOS="true" type="2"/>
+  <feature name="svideo" desc="手机录像_手机视频录像,svideo模块是仿微信小视频录制功能的模块,可以录制8秒小视频" isAndroid="true" isIOS="true" type="5"/>
+  <feature name="dialogBox" desc="封装了各种弹窗接口" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="webBrowser" desc="提供基于腾讯X5引擎和WKWebView的内置浏览器服务" isAndroid="true" isIOS="true" type="5"/>
+  <feature name="xGprinter" desc="基于佳博打印机，实现蓝牙/USB/网口连接，自定义打印票据" isAndroid="true" isIOS="false" type="8"/>
+  <feature name="MNPopups" desc="弹出纵向气泡菜单" isAndroid="true" isIOS="true" type="4"/>
+  <feature name="audioPlayer" desc="可缓存网络资源的音频播放器" isAndroid="true" isIOS="true" type="5"/>
+  <feature name="imagePalette" desc="自动计算出任意图片中的主要色彩,便于进行UI风格定制" isAndroid="true" isIOS="false" type="5"/>
+  <feature name="UILoading" desc="封装了加载状态标签的功能" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="aMapLocation" desc="" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="qupaiLive" desc="qupaiLive模块封装了趣拍官方直播功能(暂时仅支持ios)" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="photoBrowserTouTiao" desc="多功能图片浏览器（类似今日头条图片浏览器）" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="myAppInfo" desc="读取手机应用基本信息" isAndroid="true" isIOS="false" type="2"/>
+  <feature name="mogoAds" desc="封装了芒果移动广告平台的sdk" isAndroid="true" isIOS="false" type="8"/>
+  <feature name="mogoAdsBaidu" desc="芒果广告平台所使用的百度广告联盟SDK" isAndroid="true" isIOS="false" type="8"/>
+  <feature name="mogoAdsGDT" desc="芒果广告平台所使用的腾讯广告联盟SDK" isAndroid="true" isIOS="false" type="8"/>
+  <feature name="videoRecorder" desc="封装了视频录像的功能接口" isAndroid="true" isIOS="true" type="5"/>
+  <feature name="photoBrowserWeiXin" desc="轮播图制作,在photoBrowser的基础上深度封装了微信图片浏览器的功能" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="mogoAdsdomob" desc="芒果广告平台所使用的多盟广告SDK" isAndroid="true" isIOS="false" type="8"/>
+  <feature name="drawingBoard" desc="电子签名制作,可以自定义线条样式的画板模块" isAndroid="true" isIOS="true" type="5"/>
+  <feature name="wapsAd" desc="封装了万普世纪移动营销服务平台sdk" isAndroid="true" isIOS="false" type="8"/>
+  <feature name="signature" desc="字符串加密,封装了几种加密解密的功能" isAndroid="true" isIOS="true" type="5"/>
+  <feature name="ytylive" desc="直播,视频直播rtmp推流模块" isAndroid="true" isIOS="true" type="5"/>
+  <feature name="baiduTrace" desc="封装了百度鹰眼的开放 SDK" isAndroid="true" isIOS="false" type="8"/>
+  <feature name="gotyeLiveCore" desc="亲加视频直播基础模块" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="gotyeLiveChat" desc="亲加视频直播聊天室模块" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="gotyeLivePlayer" desc="亲加视频直播播放器模块" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="gotyeLivePublisher" desc="亲加视频直播直播模块" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="UIPullRefreshMotive" desc="js 下拉刷新,自定义下拉刷新动画图标的下拉刷新模块" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="UIVividLine" desc="公测版" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="NVTabBar" desc="自定义tabbar,可自定义实现中间突起的底部导航模块（公测版）" isAndroid="true" isIOS="true" type="4"/>
+  <feature name="photoBrowserWeiBo" desc="js 图片切换_手机图片浏览器,封装了新浪微博的图片浏览器功能" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="tencentPlayer" desc="app视频播放_app视频直播,封装了腾讯直播视频的播放器" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="anyRTCModule" desc="直播,AnyRTC直播功能" isAndroid="true" isIOS="false" type="8"/>
+  <feature name="UIWebBrowser" desc="移动web开发,是一个可加载 html 文件的 webView（公测版）" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="addressView" desc="selector_js选择器,仿京东商城APP省市区三级联动效果。" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="photoBrowserQQ" desc="js 图片切换_手机图片浏览器,封装了QQ图片浏览功能" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="didi" desc="打车,滴滴出行集成到自己的应用中，轻松构建打车服务，为您的用户提供一段美好旅程。" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="mySettingInfo" desc="启动系统设置" isAndroid="true" isIOS="true" type="2"/>
+  <feature name="ximalaya" desc="喜马拉雅音乐,童工关键字等获取喜马拉雅的声音" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="aMapLBS" desc="封装了高德地图定位的开放 SDK" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="pedometer" desc="计步器,封装了计步器的功能（公测版）" isAndroid="true" isIOS="true" type="2"/>
+  <feature name="calendarMemo" desc="日历事件,往系统日历写入事件的模块（公测版）" isAndroid="true" isIOS="true" type="2"/>
+  <feature name="baiduSpeechRecognizer" desc="封装了百度语音识别的开放 SDK" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="playRtsp" desc="rtsp，封装了播放rtsp://格式直播流功能。" isAndroid="true" isIOS="true" type="5"/>
+  <feature name="taobao" desc="淘宝, 本模块实现淘宝交易闭环所有功能，帮助开发者快速利用APP获利" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="bugTags" desc="APP测试平台, bugTags 是一个基于BugTags测试平台开发的模块" isAndroid="true" isIOS="false" type="8"/>
+  <feature name="mipush" desc="封装了小米推送的开放 SDK（公测版）" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="duibaView" desc="兑吧_积分商城,duiBa模块封装了兑吧平台的SDK，使用此模块可对接兑吧积分商城" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="bcapplepay" desc="Apple Pay,移动支付, bcapplepay 封装了Apple Pay(APPLE)支付接口" isAndroid="false" isIOS="true" type="8"/>
+  <feature name="discuz" desc="discuz X论坛的部分接口封装，支持X2.5-3.2版本，UTF-8" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="leCloudLive" desc="leCloudLive模块,封装了乐视云移动直播SDK" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="simInfoImp" desc="读取手机SIM卡相关信息" isAndroid="true" isIOS="false" type="2"/>
+  <feature name="aliPush" desc="阿里移动推送,封装了阿里云移动推送功能。" isAndroid="true" isIOS="true" type="8"/>
+  <feature name="sharePics" desc="分享多图加文字到微信朋友圈
+" isAndroid="true" isIOS="true" type="5"/>
+  <feature name="UISwitchButton" desc="UISwitchButton" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="UIPullRefreshDrop" desc="js 下拉刷新,带水滴效果的下拉刷新模块" isAndroid="true" isIOS="true" type="3"/>
+  <feature name="hanvonCloudOcrFormulaReader" desc="封装了汉王云题目识别的sdk" isAndroid="true" isIOS="false" type="8"/>
+  <feature name="suspensionWindow" desc="悬浮窗口,悬浮窗口的实现，显示于APP，桌面上" isAndroid="true" isIOS="false" type="3"/>
+  <feature name="audioRecorder" desc="手机录音,模块通过封装系统的录音接口，能够快速的为开发者提供一个完整的" isAndroid="true" isIOS="true" type="5"/>
+  <feature name="qianBao" desc="流量钱包充值 SDK" isAndroid="false" isIOS="true" type="8"/>
+  <feature name="hanvonCloudTableReader" desc="封装了汉王云文本商务版识别的sdk" isAndroid="true" isIOS="false" type="8"/>
+  <feature name="hanvonCloudNumberReader" desc="封装了汉王云数字识别的sdk" isAndroid="true" isIOS="false" type="8"/>
+  <feature name="hanvonCloudIdCardReader" desc="封装了汉王云身份证识别的sdk" isAndroid="true" isIOS="false" type="8"/>
+  <feature name="liuLiangQianBao" desc="预发布测试版" isAndroid="false" isIOS="true" type="8"/>
+</Features>

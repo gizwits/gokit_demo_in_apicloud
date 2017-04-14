@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+		<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+		<link rel="stylesheet" href="../../css/api.css">
+		<style>
+			body > .flex-con {
+				overflow: hidden;
+				min-height: 300px;
+			}
+			.input {
+				margin-top: 30px;
+				padding: 0 16px;
+				background-color: white;
+				border: 1px solid #c9c9c9;
+				border-width: 1px 0;
+			}
+			.input .flex-wrap {
+				background-position: left center;
+				background-size: 18px auto;
+				position: relative;
+				padding: 16px 0 13px 30px;
+			}
+			.input .flex-wrap:last-child {
+				border-top: 1px solid #c9c9c9;
+			}
+			.input .flex-wrap input {
+				display: block;
+				font-size: 13px;
+			}
+			.input .flex-wrap input::-webkit-input-placeholder {
+				color: #999;
+			}
+			.input .flex-wrap .ic-eye {
+				width: 45px;
+				height: 45px;
+				background-position: center 18px;
+				position: absolute;
+				right: 0;
+				top: 0;
+				background-size: 18px auto;
+			}
+			.input .flex-wrap .ic-eye.active {
+				background-position: center -15px;
+			}
+			.btns {
+				padding: 0 22px;
+			}
+			.btns .operation {
+				font-size: 11px;
+				color: #999;
+				line-height: 18px;
+				padding: 13px 0;
+			}
+			.btns .operation span:last-child {
+				float: right;
+				border-bottom: 1px solid #c9c9c9;
+			}
+			.btns .submit {
+				background-color: #f3d41d;
+				color: #333333;
+				line-height: 34px;
+				border-radius: 20px;
+				text-align: center;
+				font-size: 15px;
+				margin-top: 31px;
+			}
+			.btns .jump {
+				text-align: center;
+				padding: 9px 0 60px;
+				font-size: 13px;
+				color: #333;
+			}
+			.ic-qq {
+				border-top: 1px solid #c9c9c9;
+				text-align: center;
+				padding: 50px 0 15px;
+				margin: 0 22px;
+				background-position: center 16px;
+				background-size: 30px auto;
+				font-size: 11px;
+				color: #999;
+			}
+		</style>
+	</head>
+	<body class="flex-wrap flex-vertical">
+		<div class="flex-con">
+			<div class="input">
+				<div class="flex-wrap ic-phone">
+					<input class="flex-con userName" type="text" placeholder="请输入手机号" />
+				</div>
+				<div class="flex-wrap  ic-lock">
+					<input class="flex-con password" type="password" placeholder="请输入登录密码" />
+					<div tapmode="opacity" onclick="fnEye(this)" class="ic-eye"></div>
+				</div>
+			</div>
+			<div class="btns">
+				<div class="operation">
+					<span tapmode="opacity" onclick="fnJumpWin({name: 'register', path: '/user'});">注册新用户</span>
+					<span tapmode="opacity" onclick="fnJumpWin({name: 'forgetPassword', path: '/user'});">忘记密码？</span>
+				</div>
+				<div tapmode="opacity" onclick="fnUserLogin();" class="submit">
+					登录
+				</div>
+				<div tapmode="opacity" onclick="fnUserLoginAnonymous();" class="jump">
+					跳过&gt;&gt;
+				</div>
+			</div>
+		</div>
+		<div tapmode="opacity" onclick="fnUserLoginWithThirdAccountType();" class="ic-qq">
+			QQ 登录
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/base.js"></script>
+	<script type="text/javascript">
+		//var UIInput = null;
+		apiready = function() {
+			//UIInput = api.require('UIInput');
+			//      移除启动页
+			api.removeLaunchView();
+			localStorage.setItem('moduleType', JSON.stringify({
+				index : '4',
+				name : '乐鑫'
+			}));
+			// alert( JSON.stringify(api.pageParam));
+			//fnUIInputusername();
+			//      若用户已登录过，则自动登录
+			api.getPrefs({
+				key : 'user'
+			}, function(ret, err) {
+				if (ret.value) {
+					var urserName = JSON.parse(ret.value).userName;
+					var pass = JSON.parse(ret.value).password;
+					if (urserName) {
+						$api.dom('.userName').value = urserName;
+						$api.dom('.password').value = pass;
+						fnUserLogin({
+							password : JSON.parse(ret.value).password
+						});
+					}
+				}
+			});
+		}
+		//启用UIInput模块实现手机端输入
+		/*function fnUIInputusername() {
+		UIInput.open({
+		rect: {
+		x: 42,
+		y: 31,
+		w: api.winWidth,
+		h: 42
+		},
+		styles: {
+		bgColor: '#fff',
+		size: 15,
+		color: '#333333',
+		placeholder: {
+		color: '#999999'
+		}
+		},
+		autoFocus: false,
+		maxRows: 1,
+		placeholder: '',
+		keyboardType: 'default',
+		fixedOn: api.frameName
+		}, function(ret, err) {
+		if (ret) {
+		} else {
+		}
+		});
+		}*/
+		/*function fnUIInputpassword(){
+		UIInput.open({
+		rect: {
+		x: 42,
+		y: 76,
+		w: api.winWidth,
+		h: 42
+		},
+		styles: {
+		bgColor: '#fff',
+		size: 14,
+		color: '#000',
+		placeholder: {
+		color: '#ccc'
+		}
+		},
+		autoFocus: false,
+		maxRows: 1,
+		placeholder: '',
+		keyboardType: 'default',
+		fixedOn: api.frameName
+		}, function(ret, err){
+		if( ret ){
+		}else{
+		}
+		});
+		}*/
+		//  设置/清空登录信息
+		//  fnEmpty({className: value});
+		function fnEmpty(obj) {
+			for (var x in obj) {
+				//	$api.dom('.' + x).value = obj[x];
+			}
+		}
+
+		function fnUserLoginWithThirdAccountType() {
+			api.require('qq').login(function(ret, err) {
+				if (ret.status) {
+					api.execScript({
+						name : 'root',
+						script : 'fnUserLoginWithThirdAccountType(' + JSON.stringify({
+							winName : api.winName,
+							frameName : api.frameName,
+							uid : ret.openId,
+							token : ret.accessToken
+						}) + ')'
+					});
+				} else {
+					fnNotes(err);
+				}
+			});
+		}
+
+		function receive_fnUserLoginWithThirdAccountType(ret, err) {
+			if (ret) {
+			ret.myuser = "1234";
+				fnSaveUser(ret);
+			} else {
+				fnNotes(err);
+			}
+		}
+
+		function fnUserLogin(obj) {
+			/*UIInput.value(function(ret, err) {
+			 if (ret) {
+			 var userName = obj ? {
+			 value: obj.userName || ret.msg
+			 } : ret.msg,
+			 password = obj ? {
+			 value: obj.password || $api.dom('.password').value
+			 } : $api.dom('.password');
+			 if (!userName.trim()) {
+			 fnPopup({
+			 msg: '请输入登录账号',
+			 hasJump: true
+			 })
+			 } else if (!password.value.trim()) {
+			 fnPopup({
+			 msg: '请输入密码',
+			 hasJump: true
+			 })
+			 } else if (password.value.length < 6) {
+			 fnPopup({
+			 msg: '密码不能小于 6 位',
+			 hasJump: true
+			 })
+			 } else {
+			 api.showProgress({
+			 animationType: 'zoom',
+			 title: '正在登陆'
+			 });
+			 api.execScript({
+			 name: 'root',
+			 script: 'fnUserLogin(' + JSON.stringify({
+			 winName: api.winName,
+			 frameName: api.frameName,
+			 userName: userName,
+			 password: password.value
+			 }) + ')'
+			 });
+			 }
+			 } else {
+			 }
+			 });*/
+			var userName = obj ? {
+				value : obj.userName || $api.dom('.userName').value
+			} : $api.dom('.userName'), password = obj ? {
+				value : obj.password || $api.dom('.password').value
+			} : $api.dom('.password');
+			if (!userName.value.trim()) {
+				fnPopup({
+					msg : '请输入登录账号',
+					//hasJump: true
+				})
+			} else if (!password.value.trim()) {
+				fnPopup({
+					msg : '请输入密码',
+					//hasJump: true
+				})
+			}
+			// else if (password.value.length < 6) {
+			//              fnPopup({
+			//                  msg: '密码不能小于 6 位',
+			//                  //hasJump: true
+			//              })
+			//          }
+			else {
+				api.showProgress({
+					animationType : 'zoom',
+					title : '正在登录'
+				});
+				api.execScript({
+					name : 'root',
+					script : 'fnUserLogin(' + JSON.stringify({
+						winName : api.winName,
+						frameName : api.frameName,
+						userName : userName.value,
+						password : password.value
+					}) + ')'
+				});
+			}
+		}
+
+		function receive_fnUserLogin(ret, err, userName, password) {
+			// alert("receive_fnUserLogin ret = " + JSON.stringify(ret));
+			// alert("receive_fnUserLogin err = " + JSON.stringify(err));
+			if (ret) {
+				ret.userName = userName;
+				ret.password = password;
+				$api.dom('.userName').value = userName;
+				$api.dom('.password').value = password;
+				fnSaveUser(ret);
+			} else {
+				fnNotes(err);
+			}
+			api.hideProgress();
+		}
+
+		function fnUserLoginAnonymous() {
+			fnJumpWin({
+				name : 'deviceList',
+				path : '/main'
+			});
+			api.execScript({
+				name : 'root',
+				script : 'fnUserLoginAnonymous(' + JSON.stringify({
+					winName : api.winName,
+					frameName : api.frameName
+				}) + ')'
+			});
+		}
+
+		function receive_fnUserLoginAnonymous(ret, err) {
+			// alert("receive_fnUserLoginAnonymous ret = " + JSON.stringify(ret));
+			// alert("receive_fnUserLoginAnonymous err = " + JSON.stringify(err));
+			if (ret) {
+				fnSaveUser(ret, true);
+			} else {
+				fnSaveUser(err, true);
+			}
+			api.hideProgress();
+		}
+
+		function fnSaveUser(ret, hasJump) {
+			api.setPrefs({
+				key : 'user',
+				value : JSON.stringify(ret)
+			});
+			fnPopup({
+				msg : '登录成功'
+			}, function() {
+				!hasJump && fnJumpWin({
+					name : 'deviceList',
+					path : '/main',
+					slidBackEnabled : true
+				});
+			});
+		}
+
+		function fnEye(el) {
+			if ($api.hasCls(el, 'active')) {
+				$api.removeCls(el, 'active');
+				$api.closest(el, '.ic-lock').querySelector('input').setAttribute('type', 'password');
+			} else {
+				$api.addCls(el, 'active');
+				$api.closest(el, '.ic-lock').querySelector('input').setAttribute('type', 'text');
+			}
+		}
+	</script>
+</html>

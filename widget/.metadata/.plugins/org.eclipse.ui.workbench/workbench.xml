@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workbench version="2.0">
+<workbenchAdvisor/>
+<window height="708" maximized="true" width="1024" x="129" y="21">
+<fastViewData fastViewLocation="1024">
+<orientation position="512" view="org.tigris.subversion.subclipse.ui.repository.RepositoriesView"/>
+</fastViewData>
+<perspectiveBar>
+<itemSize x="160"/>
+</perspectiveBar>
+<coolbarLayout>
+<coolItem id="group.file" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.ui.workbench.file" itemType="typeToolBarContribution" x="124" y="22"/>
+<coolItem id="additions" itemType="typeGroupMarker"/>
+<coolItem id="OpenExplorer.actionSet" itemType="typeToolBarContribution" x="38" y="22"/>
+<coolItem id="com.apicloud.navigator.APICloudActionSet" itemType="typeToolBarContribution" x="290" y="22"/>
+<coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="55" y="22"/>
+<coolItem id="group.nav" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="95" y="22"/>
+<coolItem id="group.editor" itemType="typeGroupMarker"/>
+<coolItem id="com.aptana.editor.js" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="com.aptana.editor.html" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="group.help" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
+</coolbarLayout>
+<page focus="true" label="工作空间 - APICloud">
+<editors>
+<editorArea activeWorkbook="DefaultEditorWorkbook">
+<info part="DefaultEditorWorkbook">
+<folder appearance="1" expanded="2">
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+<part id="2"/>
+</presentation>
+</folder>
+</info>
+</editorArea>
+<editor id="com.aptana.editor.html" name="index.html" partName="index.html" path="E:/yi.shen/机智云项目/IOT/IOT/index.html" title="index.html" tooltip="IOT/index.html" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/IOT/index.html"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="508" selectionTopPixel="6704"/>
+</editor>
+<editor id="com.aptana.editor.js" name="chart.js" partName="chart.js" path="E:/yi.shen/机智云项目/IOT/IOT/script/chart.js" title="chart.js" tooltip="IOT/script/chart.js" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/IOT/script/chart.js"/>
+<editorState selectionHorizontalPixel="0" selectionLength="213" selectionOffset="15398" selectionTopPixel="0"/>
+</editor>
+<editor activePart="true" focus="true" id="com.aptana.editor.js" name="base.js" partName="base.js" path="E:/yi.shen/机智云项目/IOT/IOT/script/base.js" title="base.js" tooltip="IOT/script/base.js" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/IOT/script/base.js"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="6415" selectionTopPixel="3233"/>
+</editor>
+</editors>
+<views>
+<view id="org.eclipse.ui.navigator.ProjectExplorer" partName="我的APP项目">
+<viewState CommonNavigator.LINKING_ENABLED="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0"/>
+</view>
+<view id="org.tigris.subversion.subclipse.ui.repository.RepositoriesView" partName="云端资源库">
+<viewState/>
+</view>
+</views>
+<perspectives activePart="com.aptana.editor.js" activePerspective="com.apicloud.navigator.perspective">
+<perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
+<descriptor class="com.apicloud.navigator.Perspective" id="com.apicloud.navigator.perspective" label="APICloud"/>
+<alwaysOnActionSet id="OpenExplorer.actionSet"/>
+<alwaysOnActionSet id="com.apicloud.navigator.APICloudActionSet"/>
+<alwaysOnActionSet id="org.eclipse.search.searchActionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.annotationNavigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.navigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.convertLineDelimitersTo"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.keyBindings"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.openFiles"/>
+<new_wizard_action id="com.apicloud.navigator.CreateAPICloudProjectWizard"/>
+<hide_menu_item_id id="org.eclipse.ui.window.showKeyAssist"/>
+<hide_menu_item_id id="org.eclipse.search.ui.performTextSearchWorkspace"/>
+<hide_menu_item_id id="org.eclipse.search.ui.performTextSearchWorkingSet"/>
+<hide_menu_item_id id="org.eclipse.search.ui.performTextSearchFile"/>
+<hide_menu_item_id id="org.eclipse.search.ui.performTextSearchProject"/>
+<hide_menu_item_id id="org.eclipse.ui.edit.findIncremental"/>
+<hide_menu_item_id id="org.eclipse.ui.edit.findIncrementalReverse"/>
+<hide_menu_item_id id="org.eclipse.mylyn.tasks.ui.command.openTask"/>
+<hide_menu_item_id id="org.eclipse.mylyn.tasks.ui.command.deactivateAllTasks"/>
+<hide_menu_item_id id="org.eclipse.mylyn.tasks.ui.command.activateTask"/>
+<hide_menu_item_id id="org.eclipse.mylyn.context.ui.commands.open.context.dialog"/>
+<hide_menu_item_id id="project"/>
+<hide_menu_item_id id="org.eclipse.ui.edit.text.openLocalFile"/>
+<hide_menu_item_id id="navigate"/>
+<hide_menu_item_id id="edit"/>
+<hide_menu_item_id id="org.eclipse.ui.help.helpSearch"/>
+<hide_menu_item_id id="org.eclipse.ui.help.dynamicHelp"/>
+<hide_menu_item_id id="org.eclipse.ui.help.tipsAndTricksAction"/>
+<hide_menu_item_id id="org.eclipse.mylyn.doc.actionSet"/>
+<hide_menu_item_id id="org.eclipse.ui.cheatsheets.actionSet"/>
+<hide_menu_item_id id="org.eclipse.jdt.debug.ui.JDTDebugActionSet"/>
+<hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.copy.qualified.name"/>
+<hide_menu_item_id id="org.eclipse.ui.edit.selectAll"/>
+<hide_menu_item_id id="org.eclipse.ui.edit.findReplace"/>
+<hide_menu_item_id id="org.eclipse.ui.edit.addBookmark"/>
+<hide_menu_item_id id="org.eclipse.ui.edit.addTask"/>
+<hide_menu_item_id id="org.eclipse.ui.navigate.addToWorkingSet"/>
+<hide_menu_item_id id="org.eclipse.ui.navigate.removeFromWorkingSet"/>
+<hide_menu_item_id id="org.eclipse.ui.edit.text.contentAssist.proposals"/>
+<hide_menu_item_id id="expandSelectionToMenuId"/>
+<hide_menu_item_id id="org.eclipse.wst.sse.ui.structure.select.enclosing"/>
+<hide_menu_item_id id="org.eclipse.wst.sse.ui.structure.select.next"/>
+<hide_menu_item_id id="org.eclipse.wst.sse.ui.structure.select.previous"/>
+<hide_menu_item_id id="org.eclipse.wst.sse.ui.structure.select.last"/>
+<hide_menu_item_id id="sourceMenuId"/>
+<hide_menu_item_id id="org.eclipse.wst.sse.ui.toggle.comment"/>
+<hide_menu_item_id id="org.eclipse.wst.sse.ui.add.block.comment"/>
+<hide_menu_item_id id="org.eclipse.wst.sse.ui.remove.block.comment"/>
+<hide_menu_item_id id="org.eclipse.ui.edit.text.shiftLeft"/>
+<hide_menu_item_id id="org.eclipse.ui.edit.text.shiftRight"/>
+<hide_menu_item_id id="org.eclipse.wst.sse.ui.cleanup.document"/>
+<hide_menu_item_id id="org.eclipse.wst.sse.ui.format.document"/>
+<hide_menu_item_id id="org.eclipse.wst.sse.ui.format.active.elements"/>
+<hide_menu_item_id id="org.eclipse.wst.sse.ui.search.find.occurrences"/>
+<hide_menu_item_id id="refactorMenuId"/>
+<hide_menu_item_id id="org.eclipse.wst.xsd.ui.refactor.rename.element"/>
+<hide_menu_item_id id="org.eclipse.wst.xsd.ui.refactor.makeElementGlobal"/>
+<hide_menu_item_id id="org.eclipse.wst.xsd.ui.refactor.makeTypeGlobal"/>
+<hide_menu_item_id id="org.eclipse.ui.navigate.goInto"/>
+<hide_menu_item_id id="goTo"/>
+<hide_menu_item_id id="org.eclipse.ui.navigate.back"/>
+<hide_menu_item_id id="org.eclipse.ui.navigate.forward"/>
+<hide_menu_item_id id="org.eclipse.ui.navigate.up"/>
+<hide_menu_item_id id="org.eclipse.jdt.ui.navigate.gototype"/>
+<hide_menu_item_id id="org.eclipse.jdt.ui.navigate.gotopackage"/>
+<hide_menu_item_id id="org.eclipse.ui.navigate.goToResource"/>
+<hide_menu_item_id id="org.eclipse.wst.sse.ui.goto.matching.bracket"/>
+<hide_menu_item_id id="org.eclipse.wst.xml.ui.nextSibling"/>
+<hide_menu_item_id id="org.eclipse.wst.xml.ui.previousSibling"/>
+<hide_menu_item_id id="org.eclipse.mylyn.tasks.ui.command.goToPreviousUnread"/>
+<hide_menu_item_id id="org.eclipse.mylyn.tasks.ui.command.goToNextUnread"/>
+<hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.open.editor"/>
+<hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.open.type.hierarchy"/>
+<hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.open.call.hierarchy"/>
+<hide_menu_item_id id="org.eclipse.ui.edit.text.open.hyperlink"/>
+<hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.open.implementation"/>
+<hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.open.super.implementation"/>
+<hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.open.external.javadoc"/>
+<hide_menu_item_id id="org.eclipse.jdt.debug.ui.command.OpenFromClipboard"/>
+<hide_menu_item_id id="org.eclipse.jdt.ui.navigate.open.type"/>
+<hide_menu_item_id id="org.eclipse.jdt.ui.navigate.open.type.in.hierarchy"/>
+<hide_menu_item_id id="org.eclipse.ui.navigate.openResource"/>
+<hide_menu_item_id id="org.eclipse.pde.ui.openPluginArtifact"/>
+<hide_menu_item_id id="org.eclipse.egit.ui.team.OpenCommit"/>
+<hide_menu_item_id id="org.eclipse.mylyn.tasks.ui.command.openRemoteTask"/>
+<hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.gotoBreadcrumb"/>
+<hide_menu_item_id id="showIn"/>
+<hide_menu_item_id id="viewsShowIn"/>
+<hide_menu_item_id id="org.eclipse.mylyn.task.ui.editor.QuickOutline"/>
+<hide_menu_item_id id="org.eclipse.ui.navigate.next"/>
+<hide_menu_item_id id="org.eclipse.ui.navigate.previous"/>
+<hide_menu_item_id id="org.eclipse.ui.edit.text.gotoLastEditPosition"/>
+<hide_menu_item_id id="org.eclipse.ui.navigate.backwardHistory"/>
+<hide_menu_item_id id="org.eclipse.ui.navigate.forwardHistory"/>
+<hide_menu_item_id id="org.eclipse.ui.project.openProject"/>
+<hide_menu_item_id id="org.eclipse.ui.project.closeProject"/>
+<hide_menu_item_id id="org.eclipse.team.ui.ConfigureProject"/>
+<hide_menu_item_id id="org.eclipse.ui.project.buildAll"/>
+<hide_menu_item_id id="org.eclipse.ui.project.buildProject"/>
+<hide_menu_item_id id="org.eclipse.jface.action.MenuManager"/>
+<hide_menu_item_id id="org.eclipse.ui.internal.ide.actions.BuildSetMenu"/>
+<hide_menu_item_id id="org.eclipse.ui.project.cleanAction"/>
+<hide_menu_item_id id="org.eclipse.ui.project.buildAutomatically"/>
+<hide_menu_item_id id="org.eclipse.jdt.ui.generate.javadoc"/>
+<hide_menu_item_id id="org.eclipse.team.ui.applyPatch"/>
+<hide_menu_item_id id="org.eclipse.ui.project.properties"/>
+<hide_menu_item_id id="org.eclipse.ui.run"/>
+<hide_menu_item_id id="org.eclipse.debug.ui.commands.Resume"/>
+<hide_menu_item_id id="org.eclipse.debug.ui.commands.Suspend"/>
+<hide_menu_item_id id="org.eclipse.debug.ui.commands.Terminate"/>
+<hide_menu_item_id id="org.eclipse.debug.ui.commands.StepInto"/>
+<hide_menu_item_id id="org.eclipse.debug.ui.commands.StepOver"/>
+<hide_menu_item_id id="org.eclipse.debug.ui.commands.StepReturn"/>
+<hide_menu_item_id id="org.eclipse.debug.ui.commands.RunToLine"/>
+<hide_menu_item_id id="org.eclipse.debug.ui.commands.ToggleStepFilters"/>
+<hide_menu_item_id id="org.eclipse.debug.ui.commands.RunLast"/>
+<hide_menu_item_id id="org.eclipse.debug.ui.commands.DebugLast"/>
+<hide_menu_item_id id="org.eclipse.debug.ui.commands.ProfileLast"/>
+<hide_menu_item_id id="org.eclipse.debug.internal.ui.actions.ProfileHistoryMenuAction"/>
+<hide_menu_item_id id="org.eclipse.debug.internal.ui.actions.ProfileWithConfigurationAction"/>
+<hide_menu_item_id id="org.eclipse.debug.ui.commands.OpenProfileConfigurations"/>
+<hide_menu_item_id id="org.eclipse.debug.internal.ui.actions.RunHistoryMenuAction"/>
+<hide_menu_item_id id="org.eclipse.debug.internal.ui.actions.RunWithConfigurationAction"/>
+<hide_menu_item_id id="org.eclipse.debug.ui.commands.OpenRunConfigurations"/>
+<hide_menu_item_id id="org.eclipse.debug.internal.ui.actions.DebugHistoryMenuAction"/>
+<hide_menu_item_id id="org.eclipse.debug.internal.ui.actions.DebugWithConfigurationAction"/>
+<hide_menu_item_id id="org.eclipse.debug.ui.commands.OpenDebugConfigurations"/>
+<hide_menu_item_id id="org.eclipse.debug.ui.commands.ToggleBreakpoint"/>
+<hide_menu_item_id id="org.eclipse.debug.ui.commands.ToggleLineBreakpoint"/>
+<hide_menu_item_id id="org.eclipse.debug.ui.commands.ToggleMethodBreakpoint"/>
+<hide_menu_item_id id="org.eclipse.debug.ui.commands.ToggleWatchpoint"/>
+<hide_menu_item_id id="org.eclipse.debug.ui.commands.SkipAllBreakpoints"/>
+<hide_menu_item_id id="org.eclipse.debug.ui.commands.RemoveAllBreakpoints"/>
+<hide_menu_item_id id="org.eclipse.jdt.debug.ui.commands.AddExceptionBreakpoint"/>
+<hide_menu_item_id id="org.eclipse.jdt.debug.ui.commands.AddClassPrepareBreakpoint"/>
+<hide_menu_item_id id="breakpointTypes"/>
+<hide_menu_item_id id="org.eclipse.debug.ui.actions.BreakpointTypesContribution"/>
+<hide_menu_item_id id="com.aptana.js.debug.ui.actions.AddExceptionBreakpoint"/>
+<hide_menu_item_id id="com.aptana.js.debug.ui.actions.Watch"/>
+<hide_menu_item_id id="com.aptana.debug.ui.commands.Inspect"/>
+<hide_menu_item_id id="org.eclipse.jdt.debug.ui.commands.AllReferences"/>
+<hide_menu_item_id id="org.eclipse.jdt.debug.ui.commands.AllInstances"/>
+<hide_menu_item_id id="org.eclipse.jdt.debug.ui.commands.InstanceCount"/>
+<hide_menu_item_id id="org.eclipse.jdt.debug.ui.commands.Watch"/>
+<hide_menu_item_id id="org.eclipse.jdt.debug.ui.commands.Inspect"/>
+<hide_menu_item_id id="org.eclipse.jdt.debug.ui.commands.Display"/>
+<hide_menu_item_id id="org.eclipse.jdt.debug.ui.commands.Execute"/>
+<hide_menu_item_id id="org.eclipse.jdt.debug.ui.commands.ForceReturn"/>
+<hide_menu_item_id id="org.eclipse.jdt.debug.ui.commands.StepIntoSelection"/>
+<hide_menu_item_id id="org.eclipse.ui.externaltools.ExternalToolMenuDelegateMenu"/>
+<hide_menu_item_id id="org.eclipse.wst.xml.ui.designMenuId"/>
+<hide_menu_item_id id="org.eclipse.wst.xml.ui.disable.grammar.constraints"/>
+<hide_menu_item_id id="org.eclipse.wst.xml.ui.reload.dependencies"/>
+<hide_menu_item_id id="sed.tabletree.expandAll"/>
+<hide_menu_item_id id="sed.tabletree.collapseAll"/>
+<hide_menu_item_id id="org.eclipse.ui.window.newWindow"/>
+<hide_menu_item_id id="org.eclipse.ui.window.newEditor"/>
+<hide_menu_item_id id="org.eclipse.ui.window.savePerspective"/>
+<hide_menu_item_id id="org.eclipse.ui.window.closePerspective"/>
+<hide_menu_item_id id="org.eclipse.ui.window.closeAllPerspectives"/>
+<hide_menu_item_id id="shortcuts"/>
+<hide_menu_item_id id="org.eclipse.ui.window.showSystemMenu"/>
+<hide_menu_item_id id="org.eclipse.ui.window.showViewMenu"/>
+<hide_menu_item_id id="org.eclipse.ui.window.quickAccess"/>
+<hide_menu_item_id id="org.eclipse.ui.window.maximizePart"/>
+<hide_menu_item_id id="org.eclipse.ui.window.minimizePart"/>
+<hide_menu_item_id id="org.eclipse.ui.window.activateEditor"/>
+<hide_menu_item_id id="org.eclipse.ui.window.nextEditor"/>
+<hide_menu_item_id id="org.eclipse.ui.window.previousEditor"/>
+<hide_menu_item_id id="org.eclipse.ui.window.switchToEditor"/>
+<hide_menu_item_id id="org.eclipse.ui.window.nextView"/>
+<hide_menu_item_id id="org.eclipse.ui.window.previousView"/>
+<hide_menu_item_id id="org.eclipse.ui.window.nextPerspective"/>
+<hide_menu_item_id id="org.eclipse.ui.window.previousPerspective"/>
+<hide_menu_item_id id="openWindows"/>
+<hide_menu_item_id id="org.eclipse.mylyn.wikitext.ui.editor.showCheatSheetCommand"/>
+<hide_menu_item_id id="org.eclipse.mylyn.tasks.ui.bug.report"/>
+<hide_menu_item_id id="org.eclipse.ui.cheatsheets.actions.CheatSheetHelpMenuAction"/>
+<hide_menu_item_id id="aptanahelp"/>
+<hide_menu_item_id id="com.aptana.jira.ui.commands.submit"/>
+<hide_menu_item_id id="com.aptana.portal.ui.command.openStartPage"/>
+<hide_menu_item_id id="com.aptana.ui.command.diagnostic"/>
+<hide_menu_item_id id="com.aptana.ui.command.viewlog"/>
+<hide_menu_item_id id="com.aptana.ui.command.clearlog"/>
+<hide_menu_item_id id="org.eclipse.update.ui.updateMenu"/>
+<hide_menu_item_id id="org.eclipse.ui.update.findAndInstallUpdates"/>
+<hide_menu_item_id id="org.eclipse.ui.update.manageConfiguration"/>
+<hide_menu_item_id id="org.eclipse.equinox.p2.ui.sdk.update"/>
+<hide_menu_item_id id="org.eclipse.ui.file.close"/>
+<hide_menu_item_id id="org.eclipse.ui.file.closeAll"/>
+<hide_menu_item_id id="org.eclipse.ui.file.save"/>
+<hide_menu_item_id id="org.eclipse.ui.file.saveAs"/>
+<hide_menu_item_id id="org.eclipse.ui.file.saveAll"/>
+<hide_menu_item_id id="org.eclipse.ui.file.revert"/>
+<hide_menu_item_id id="org.eclipse.ui.edit.move"/>
+<hide_menu_item_id id="org.eclipse.ui.edit.rename"/>
+<hide_menu_item_id id="org.eclipse.ui.file.refresh"/>
+<hide_menu_item_id id="converstLineDelimitersTo"/>
+<hide_menu_item_id id="org.eclipse.ui.edit.text.delimiter.windows"/>
+<hide_menu_item_id id="org.eclipse.ui.edit.text.delimiter.unix"/>
+<hide_menu_item_id id="org.eclipse.ui.edit.text.delimiter.macOS9"/>
+<hide_menu_item_id id="org.eclipse.ui.file.import"/>
+<hide_menu_item_id id="org.eclipse.ui.file.export"/>
+<hide_menu_item_id id="reopenEditors"/>
+<hide_menu_item_id id="org.eclipse.epp.mpc.ui.command.showMarketplaceWizard"/>
+<hide_menu_item_id id="org.eclipse.equinox.p2.ui.sdk.install"/>
+<hide_menu_item_id id="org.eclipse.ui.help.helpContents"/>
+<hide_toolbar_item_id id="org.eclipse.ui.externaltools.ExternalToolMenuDelegateToolbar"/>
+<hide_toolbar_item_id id="org.eclipse.mylyn.tasks.ui.command.openTask"/>
+<hide_toolbar_item_id id="org.eclipse.jdt.ui.actions.OpenProjectWizard"/>
+<hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
+<hide_toolbar_item_id id="org.eclipse.egit.ui.team.OpenCommit"/>
+<hide_toolbar_item_id id="org.eclipse.jdt.ui.navigate.open.type"/>
+<hide_toolbar_item_id id="org.eclipse.ui.workbench.navigate"/>
+<hide_toolbar_item_id id="org.eclipse.ui.navigate.next"/>
+<hide_toolbar_item_id id="org.eclipse.ui.navigate.previous"/>
+<hide_toolbar_item_id id="org.eclipse.ui.edit.text.gotoLastEditPosition"/>
+<hide_toolbar_item_id id="org.eclipse.ui.navigate.backwardHistory"/>
+<hide_toolbar_item_id id="org.eclipse.ui.navigate.forwardHistory"/>
+<hide_toolbar_item_id id="org.eclipse.mylyn.tasks.ui.navigate.task.history"/>
+<view id="org.eclipse.ui.navigator.ProjectExplorer"/>
+<fastViews>
+<view id="org.tigris.subversion.subclipse.ui.repository.RepositoriesView" ratio="0.29970545"/>
+</fastViews>
+<fastViewBars/>
+<viewLayoutRec closeable="false" id="org.tigris.subversion.subclipse.ui.repository.RepositoriesView" moveable="false"/>
+<layout>
+<mainWindow>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@6e5053">
+<folder activePageID="org.eclipse.ui.navigator.ProjectExplorer" appearance="2" expanded="2">
+<page content="org.eclipse.ui.navigator.ProjectExplorer" label="我的APP项目"/>
+<page content="org.tigris.subversion.subclipse.ui.repository.RepositoriesView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="stickyFolderRight" ratio="0.75" ratioLeft="750" ratioRight="250" relationship="2" relative="org.eclipse.ui.internal.ViewStack@6e5053">
+<folder appearance="2" expanded="2">
+<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
+</folder>
+</info>
+<info part="org.eclipse.ui.editorss" ratio="0.26" ratioLeft="260" ratioRight="740" relationship="2" relative="org.eclipse.ui.internal.ViewStack@6e5053"/>
+<info part="org.eclipse.ui.console.ConsoleView" ratio="0.7495712" ratioLeft="437" ratioRight="146" relationship="4" relative="org.eclipse.ui.editorss"/>
+</mainWindow>
+</layout>
+</perspective>
+</perspectives>
+<workingSets/>
+<navigationHistory>
+<editors>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.aptana.editor.html" path="/IOT/index.html"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.aptana.editor.js" path="/IOT/script/chart.js"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.aptana.editor.js" path="/IOT/script/base.js"/>
+</editors>
+<item historyLabel="index.html" index="0">
+<position info="not_deleted" x="508" y="0"/>
+</item>
+<item historyLabel="chart.js" index="1">
+<position info="not_deleted" x="15398" y="213"/>
+</item>
+<item active="true" historyLabel="base.js" index="2">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+</navigationHistory>
+<input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
+</page>
+<workbenchWindowAdvisor/>
+<actionBarAdvisor/>
+<trimLayout>
+<trimArea IMemento.internal.id="128">
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
+</trimArea>
+<trimArea IMemento.internal.id="1024">
+<trimItem IMemento.internal.id="org.eclise.ui.internal.FastViewBar"/>
+<trimItem IMemento.internal.id="org.eclipse.jface.action.StatusLineManager"/>
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.HeapStatus"/>
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.progress.ProgressRegion"/>
+<trimItem IMemento.internal.id="com.apicloud.navigator.toolbar"/>
+<trimItem IMemento.internal.id="com.apicloud.navigator.toolbar1"/>
+</trimArea>
+</trimLayout>
+</window>
+<mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.aptana.editor.js" name="base.js" tooltip="IOT/script/base.js">
+<persistable path="/IOT/script/base.js"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.aptana.editor.js" name="chart.js" tooltip="IOT/script/chart.js">
+<persistable path="/IOT/script/chart.js"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.aptana.editor.html" name="index.html" tooltip="IOT/index.html">
+<persistable path="/IOT/index.html"/>
+</file>
+</mruList>
+</workbench>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <link rel="stylesheet" href="../../css/api.css">
+    <style>
+   		.bg-connection-status{ padding-top: 20px; backgound-size: 154px auto; text-align: center; color: #383838; font-size: 12px; background: none;}
+    	.btns{ text-align: center; line-height: 42px; padding:  0 24px 40px; }
+    	.btns .submit{ color: #333; font-size: 14px; line-height: 32px; border: 1px solid #999; border-radius: 32px; text-align: center;  margin: 0 23px; }
+    	.btns .ic-checkbox{ background-position: left -51px; padding-left: 24px; font-size: 13px; color: #383838; }
+    	.btns.active .ic-checkbox{ background-position: left 13px; }
+    	.btns.active .submit{ background-color: #f3d41d; border-color: #f3d41d; color: #333333; }
+    	.img-connection{ background-color: white; text-align: center; }
+    	.img-connection img{ max-width: 100%; vertical-align: middle; }
+    </style>
+</head>
+<body class="flex-wrap flex-vertical">
+	<div class="flex-con">
+		<div class="img-connection">
+			<img src="../../image/airlink.gif" />
+		</div>
+		<div class="bg-connection-status">接通电源，长按【KEY2】直到【RGB LED】亮绿灯<p>你选择了 <label class="selectType">xx</label> 模组</p></div>
+	</div>
+	<div class="btns">
+		<div class="checkbox"><span tapmode="opacity" onclick="fnCheckbox(this)" class="ic-checkbox">已完成上述操作</span></div>
+		<div tapmode="opacity" onclick="fnNext();" class="submit">下一步</div>
+	</div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/base.js"></script>
+<script type="text/javascript">
+	apiready = function(){
+        $api.dom('.selectType').innerHTML = api.pageParam.selectText;
+	}
+	
+	function fnNext(){
+		if( $api.hasCls( $api.dom( '.btns' ), 'active' ) ){
+			fnJumpWin({name: 'searchDevice', path: '/main', data: api.pageParam, slidBackEnabled: true});
+		};
+	}
+
+
+	function fnCheckbox( el ){
+		if( $api.hasCls( $api.closest( el, '.btns' ), 'active' ) ){
+			$api.removeCls( $api.closest( el, '.btns' ), 'active' );
+		}else{
+			$api.addCls( $api.closest( el, '.btns' ), 'active' );
+		}
+	}
+</script>
+</html>

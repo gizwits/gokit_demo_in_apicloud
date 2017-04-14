@@ -1,0 +1,16 @@
+OccurrenceIndicationColor=204,71,121
+eclipse.preferences.version=1
+htmlTagPairOccurrenceIndication=true
+htmlTagPairOccurrenceIndicationColor=144,144,137
+htmlTagPairOccurrenceIndicationHighlighting=false
+htmlTagPairOccurrenceIndicationTextStyle=BOX
+overviewRuler_migration=migrated_3.1
+rubyBlockPairOccurrenceIndication=true
+rubyBlockPairOccurrenceIndicationColor=144,144,137
+rubyBlockPairOccurrenceIndicationHighlighting=false
+rubyBlockPairOccurrenceIndicationTextStyle=BOX
+searchResultIndicationColor=204,71,121
+xmlTagPairOccurrenceIndication=true
+xmlTagPairOccurrenceIndicationColor=144,144,137
+xmlTagPairOccurrenceIndicationHighlighting=false
+xmlTagPairOccurrenceIndicationTextStyle=BOX

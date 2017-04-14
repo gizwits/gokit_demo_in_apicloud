@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <link rel="stylesheet" href="../../css/api.css">
+    <style>
+    	ul{ padding-top: 30px;  }
+    	ul li{ padding: 0 23px; line-height: 44px; background-color: white; font-size: 13px; color: #333333; }
+    	ul li .ic-arrow-r{ background-position: right center; background-size: 18px auto; }
+    </style>
+</head>
+<body>
+	<ul>
+		<li tapmode="opacity" onclick="fnJumpWin({name: 'about', path: '/public'});" >
+			<div class="ic-arrow-r">关于</div>
+		</li>
+	</ul>
+</body>
+<script type="text/javascript" src="../../script/base.js"></script>
+<script type="text/javascript">
+	apiready = function(){
+//		alert( JSON.stringify( api.pageParam ) )
+	}
+</script>
+</html>

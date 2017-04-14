@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <link rel="stylesheet" href="../../css/api.css">
+    <style>
+   		.bg-select{  background: none; text-align: center; padding: 25px 20px 13.51px 20px; font-size: 15px; color: #333; }
+    	
+    	.btns{  line-height: 42px; padding:  0 24px 40px; text-align: center; }
+    	.btns .submit{  background-color: #ddd; line-height: 35px; border-radius: 35px; border: 1px solid #ddd; color: #333333; text-align: center; font-size: 13px; }
+    	.btns .hint{ line-height: 60px; text-align: center; }
+    	.btns .hint .ic-warning{  background-position: left center; background-size: auto 26px; padding-left: 30px; }
+    	.btns .ic-checkbox{ background-position: left -51px; padding-left: 24px; }
+    	.btns.active .ic-checkbox{ background-position: left 13px; }
+    	.btns.active .submit{ background-color: #f3d41d; border-color: #f3d41d; color: #333333; }
+    	
+    
+    	.img-connection{ background-color: white; text-align: center; width: 200px; height: 124px; margin:0 auto;}
+    	.img-connection img{ max-width: 100%; vertical-align: middle; }
+    </style>
+</head>
+<body class="flex-wrap flex-vertical">
+	<div class="flex-con">
+        <div class="bg-select">如下图，按以下【KEY2】,看到【RGB LED】亮红灯，代表重置成功</div>
+		<div class="img-connection">
+			<img src="../../image/480-softap.gif" />
+		</div>
+	</div>
+	<div class="btns">
+		<div class="checkbox"><span tapmode="opacity" onclick="fnCheckbox(this)" class="ic-checkbox">已完成上述操作</span></div>
+		<div tapmode="opacity" onclick="api.closeWin();" class="submit">下一步</div>
+	</div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/base.js"></script>
+<script type="text/javascript">
+	apiready = function(){
+//		alert( JSON.stringify( api.pageParam ) )
+	}
+	function fnCheckbox( el ){
+		if( $api.hasCls( $api.closest( el, '.btns' ), 'active' ) ){
+			$api.removeCls( $api.closest( el, '.btns' ), 'active' );
+		}else{
+			$api.addCls( $api.closest( el, '.btns' ), 'active' );
+		}
+	}
+</script>
+</html>

@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport"
+		content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width"/>
+		<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+		<link rel="stylesheet" href="../../css/api.css">
+		<style>
+			header:not(:empty) {
+				display: none;
+				position: relative;
+				background-color: #f3d41d;
+				border-bottom: 1px solid #c9c9c9;
+				line-height: 43px;
+				text-align: center;
+				color: #212121;
+				font-size: 16px;
+			}
+			header [class*=ic-back] {
+				padding-left: 21px;
+				padding-right: 28px;
+				line-height: 49px;
+			}
+			header .no-arrow {
+				padding-left: 21px;
+				padding-right: 28px;
+				float: left;
+			}
+			header .no-icon-right {
+				padding-left: 28px;
+				padding-right: 21px;
+				float: right;
+			}
+			header .selectWiFi {
+				position: absolute;
+				left: 41%;
+				margin-left: 0px;
+			}
+			header .wifiNotSame {
+				position: absolute;
+				left: 37%;
+				margin-left: 0px;
+			}
+			header [class*=ic-]:not(.ic-refresh),
+			header .left {
+				position: absolute;
+				bottom: 0;
+				background-position: 5px 60%;
+				background-size: 18px auto;
+				min-width: 44px;
+				height: 44px;
+			}
+			header .left {
+				left: 0;
+			}
+			header .right {
+				right: 0;
+				background-position: center 50% !important;
+			}
+			header.deviceList .ic-refresh {
+				width: 18px;
+				height: 18px;
+				background-size: 100% auto;
+				margin: 12px 6px;
+				transition: all .3s;
+				-webkit-transition: all .3s;
+			}
+			header.deviceList .left.opacity .ic-refresh {
+				transform: rotate(360deg);
+				-webkit-transform: rotate(360deg);
+			}
+			header.purifier > div {
+				position: relative;
+				display: none;
+				background-color: #39b47b;
+				min-height: 43px;
+			}
+			header.purifier {
+				border: 0;
+				color: white;
+			}
+			header.purifier .sleep {
+				background-color: #14b7c6;
+			}
+			header.object {
+				background-color: #39b47b;
+				color: white;
+				border: 0;
+			}
+			footer {
+				display: none;
+				background-color: white;
+			}
+			footer.purifier .flex-con {
+				padding-top: 57px;
+				color: #585858;
+				padding-bottom: 7px;
+				font-size: 9px;
+				text-align: center;
+				background-size: 39px auto;
+				background-position: center 12px;
+				font-size: 11px;
+			}
+			footer.purifier .flex-con.active {
+				background-position: center -67px;
+			}
+			footer.purifier .flex-con.ic-footer-off:after {
+				content: '关机';
+			}
+			footer.purifier .flex-con.ic-footer-off.active:after {
+				content: '开机';
+			}
+			footer.purifier .flex-con.ic-footer-off.active {
+				color: white;
+			}
+			footer.purifier .flex-con.ic-footer-sleep.active {
+				color: #15aebe;
+			}
+			footer.purifier .flex-con.ic-footer-auto.active {
+				color: #37ad76;
+			}
+		</style>
+	</head>
+	<body class="flex-wrap flex-vertical">
+		<header class="login" >
+			机智云账号登录
+		</header>
+		<header class="register" >
+			<div tapmode="opacity" onclick="api.closeWin();" class="ic-back">
+				返回
+			</div>
+			注册新用户
+		</header>
+		<header class="forgetPassword" >
+			<div tapmode="opacity" onclick="api.closeWin();" class="ic-back">
+				返回
+			</div>
+			忘记密码
+		</header>
+		<header class="selectType" >
+			<div tapmode="opacity" onclick="api.closeWin();" class="ic-back">
+				添加设备
+			</div>
+			模组类型选择
+		</header>
+		<header class="connectionStatus" >
+			<div tapmode="opacity" onclick="api.closeWin();" class="ic-back">
+				返回
+			</div>
+			确认设备处于连接状态
+		</header>
+		<header class="searchDevice" >
+			<div tapmode="opacity" onclick="fnSearchDevice();" class="ic-back">
+				取消
+			</div>
+			搜索并连接设备
+		</header>
+		<header class="searchDeviceSoftAP" >
+			<div tapmode="opacity" onclick="fnSearchDevice();" class="ic-back">
+				取消
+			</div>
+			搜索并连接设备
+		</header>
+		<header class="connectionDevice" >
+			<div tapmode="opacity" onclick="fnAddDevice();" class="no-arrow">
+				取消
+			</div>
+			<div class="wifiNotSame">
+				手动连接设备
+			</div>
+		</header>
+		<header class="connectionDeviceNext" >
+			<div tapmode="opacity" onclick="api.closeWin();" class="ic-back">
+				返回
+			</div>
+			配置设备
+		</header>
+		<header class="configCheckPassword">
+			<div tapmode="opacity" onclick="fnCancelDevice();" class="ic-back-auto"></div>
+			检查密码
+		</header>
+		<header class="configConnectionFailed">
+			<div tapmode="opacity" onclick="api.closeToWin({name: 'win_deviceList'});" class="no-arrow">
+				取消
+			</div>
+			<div class="wifiNotSame">
+				连接不成功
+			</div>
+		</header>
+		<header class="configSoftAPNotSame">
+			<div tapmode="opacity" onclick="api.closeToWin({name: 'win_deviceList'});" class="no-arrow">
+				取消
+			</div>
+			<div class="wifiNotSame">
+				Wi-Fi不一致
+			</div>
+		</header>
+		<header class="deviceList" >
+			<div tapmode="opacity" onclick="fnGetListInfo();" class="left">
+				<div class="ic-refresh"></div>
+			</div>
+			<div tapmode="opacity" onclick="fnActionSheet();" class="ic-more right"></div>
+			我的设备
+		</header>
+		<header class="deviceSeting" >
+			<div tapmode="opacity" onclick="api.closeWin();" class="ic-back">
+				我的设备
+			</div>
+			设置
+		</header>
+		<header class="selectWiFi" >
+			<div tapmode="opacity" onclick="fnAddDevice();" class="no-arrow">
+				取消
+			</div>
+			<div tapmode="opacity" onclick="fnCustomConfig();" class="no-icon-right">
+				手动配置
+			</div>
+			<div class="selectWiFi">
+				添加设备
+			</div>
+		</header>
+		<header class="FNScanner" ></header>
+		<header class="about" >
+			<div tapmode="opacity" onclick="api.closeWin();" class="ic-back">
+				返回
+			</div>
+			关于
+		</header>
+		<header class="control" >
+			<div tapmode="opacity" onclick="fnCancelDevice();" class="ic-back-auto"></div>
+			<div class="controlTitle">
+				控制设备
+			</div>
+		</header>
+		<div class="flex-con main"></div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/base.js"></script>
+	<script type="text/javascript">
+		var eHeader = null, eFooter = null;
+		apiready = function() {
+			eHeader = $api.dom('header.' + api.pageParam.name), eFooter = $api.dom('footer.' + api.pageParam.name);
+			// alert(JSON.stringify(api.pageParam));
+			$api.addCls(eHeader, 'show');
+			if (eFooter)
+				$api.addCls(eFooter, 'show');
+			if (eHeader.querySelectorAll('.sub-header').length <= 0)
+				$api.fixStatusBar(eHeader);
+			switch( api.pageParam.name ) {
+				case 'FNScanner':
+					if (api.systemType === 'ios') {
+						fnFNScanner()
+					} else {
+					
+					alert('暂不支持扫码')
+					}
+					break;
+				default:
+					y = eHeader.offsetHeight;
+					// alert(JSON.stringify(api.pageParam.name)+11);
+					$api.setStorage('pageY', y);
+					api.openFrame({
+						name : 'frm_' + api.pageParam.name,
+						url : api.wgtRootDir + '/html' + api.pageParam.path + '/' + api.pageParam.name + '.html',
+						rect : {
+							x : 0,
+							y : eHeader.offsetHeight,
+							h : api.winHeight - eHeader.offsetHeight
+						},
+						bgColor : api.pageParam.bg || 'rgba(0,0,0,0)',
+						pageParam : api.pageParam
+					});
+			}
+			api.addEventListener({
+				name : 'keyback'
+			}, function(ret, err) {
+				if (ret) {
+					switch( api.winName ) {
+						case 'win_login':
+							api.closeWidget({
+								id : api.appId
+							});
+							break;
+						case 'win_deviceList':
+							api.closeWidget({
+								id : api.appId
+							});
+							break;
+						case 'win_searchDevice' :
+							fnSearchDevice();
+							break;
+						case 'win_connectionDevice' :
+							fnConnectionDevice();
+							break;
+						default:
+							fnHasBack();
+					};
+				}
+			});
+		}
+		function fnSearchDevice() {
+			if (localStorage.getItem('searchDevice')) {
+				if (api.systemType === 'ios') {
+					api.confirm({
+						title : '提示',
+						msg : '确定要放弃配置吗？',
+						buttons : ['不了', '确定']
+					}, function(ret, err) {
+						if (ret.buttonIndex === 2) {
+							localStorage.setItem('hasConfigure', api.winName);
+							localStorage.removeItem('searchDevice');
+							api.closeToWin({
+								name : 'win_deviceList'
+							});
+						}
+					});
+				} else {
+					api.confirm({
+						title : '提示',
+						msg : '确定要放弃配置吗？',
+						buttons : ['确定', '不了']
+					}, function(ret, err) {
+						if (ret.buttonIndex === 1) {
+							localStorage.setItem('hasConfigure', api.winName);
+							localStorage.removeItem('searchDevice');
+							api.closeToWin({
+								name : 'win_deviceList'
+							});
+						}
+					});
+				}
+			} else {
+				api.closeWin();
+			}
+		}
+
+		function fnAddDevice() {
+			if (api.systemType === 'ios') {
+				api.confirm({
+					title : '提示',
+					msg : '是否退出配置？',
+					buttons : ['不了', '确定']
+				}, function(ret, err) {
+					if (ret.buttonIndex === 2) {
+						api.closeToWin({
+							name : 'win_deviceList'
+						});
+					}
+				});
+			} else {
+				api.confirm({
+					title : '提示',
+					msg : '是否退出配置？',
+					buttons : ['确定', '不了']
+				}, function(ret, err) {
+					if (ret.buttonIndex === 1) {
+						api.closeToWin({
+							name : 'win_deviceList'
+						});
+					}
+				});
+			}
+		}
+
+		function fnCancelDevice() {
+			api.execScript({
+				name : 'win_control',
+				frameName : 'frm_control',
+				script : 'fnUnsubscribe();'
+			});
+			api.closeWin();
+		}
+
+		function fnGetListInfo() {
+			api.execScript({
+				name : 'win_deviceList',
+				frameName : 'frm_deviceList',
+				script : 'fnGetBoundDevices()'
+			});
+		}
+
+		function fnActionSheet() {
+			api.getPrefs({
+				key : 'user'
+			}, function(ret, err) {
+				if (ret.value) {
+					var urserName = JSON.parse(ret.value).userName;
+					var myuser = JSON.parse(ret.value).myuser;
+					if (urserName | myuser) {
+						var buttons = ['扫码绑定设备', '添加设备', '设置', '注销'];
+					} else {
+						var buttons = ['扫码绑定设备', '添加设备', '设置', '登录'];
+					}
+					api.actionSheet({
+						cancelTitle : '取消',
+						buttons : buttons
+					}, function(ret, err) {
+						if (ret.buttonIndex === 1) {
+							fnJumpWin({
+								name : 'FNScanner'
+							})
+						} else if (ret.buttonIndex === 2) {
+							fnJumpWin({
+								name : 'selectWiFi',
+								path : '/main'
+							});
+						} else if (ret.buttonIndex === 3) {
+							fnJumpWin({
+								name : 'deviceSeting',
+								path : '/user'
+							});
+						} else if (ret.buttonIndex === 4) {
+							if (buttons.indexOf('登录') === -1) {
+								if (api.systemType === 'ios') {
+									api.confirm({
+										title : '提示',
+										msg : '确定要退出账号吗？',
+										buttons : ['不了', '确定']
+									}, function(ret, err) {
+										if (ret.buttonIndex === 2) {
+											api.execScript({
+												name : 'win_login',
+												frameName : 'frm_login',
+												script : 'fnEmpty({userName: "", password: ""})'
+											});
+											api.removePrefs({
+												key : 'user'
+											});
+											api.closeWin();
+										}
+									});
+								} else {
+									api.confirm({
+										title : '提示',
+										msg : '确定要退出账号吗？',
+										buttons : ['确定', '不了']
+									}, function(ret, err) {
+										if (ret.buttonIndex === 1) {
+											api.execScript({
+												name : 'win_login',
+												frameName : 'frm_login',
+												//   	script: 'fnEmpty({userName: "", password: ""})'
+											});
+											api.removePrefs({
+												key : 'user'
+											});
+											api.closeWin();
+										}
+									});
+								}
+							} else {
+								api.closeWin();
+							}
+						}
+					});
+				}
+			});
+		}
+
+		function fnCustomConfig() {
+			api.execScript({
+				name : 'win_selectWiFi',
+				frameName : 'frm_selectWiFi',
+				script : 'fnCustomConfig()'
+			});
+		}
+
+		function fnSetNavigationTitle(obj) {
+			var header = $api.dom(obj.name);
+			header.innerHTML = obj.value;
+		}
+
+		function fnFNScanner() {
+			var fNScanner = api.require('FNScanner');
+			fNScanner.openView({
+				//			    autorotation: true
+			}, function(ret, err) {
+				//alert(JSON.stringify(ret));
+				if (ret) {
+					//alert(JSON.stringify(ret));
+					if (ret.eventType === 'show') {
+						setTimeout(function() {
+							api.openFrame({
+								name : 'frm_FNScanner',
+								url : api.wgtRootDir + '/html/public/FNScanner.html'
+							})
+						}, 300);
+					} else if (ret.eventType === 'success') {
+						// alert("content = " + JSON.stringify(ret.content));
+						if (ret.content.indexOf("product_key") > 0) {
+							var vTemp = {};
+							var b = ret.content.split( '?' )[1].split('&');
+							for (var x in b ) {
+								vTemp[b[x].split( '=' )[0]] = b[x].split( '=' )[1]
+							}
+							if (vTemp.product_key && vTemp.did && vTemp.passcode) {
+								api.execScript({
+									name : 'win_deviceList',
+									frameName : 'frm_deviceList',
+									script : 'fnBindDevice(' + JSON.stringify({
+										winName : api.winName,
+										frameName : api.frameName,
+										data : vTemp
+									}) + ')'
+								});
+								api.closeWin();
+							}
+						} else {
+							api.execScript({
+								name : 'win_deviceList',
+								frameName : 'frm_deviceList',
+								script : 'fnBindDeviceByQRCode(' + JSON.stringify({
+									winName : api.winName,
+									frameName : api.frameName,
+									data : ret.content
+								}) + ')'
+							});
+							api.closeWin();
+						}
+					} else if (ret.eventType == 'fail') {
+						//alert(2);
+						api.execScript({
+							name : 'win_deviceList',
+							frameName : 'frm_deviceList',
+							script : 'fnScannerfailed();'
+						});
+						api.closeWin();
+					}
+				} else {
+					alert(JSON.stringify(err));
+				}
+			});
+		}
+
+		function fnConnectionDevice() {
+			api.closeToWin({
+				name : 'win_deviceList'
+			});
+		}
+
+		function fnHasBack() {
+			var hasBack = $api.getStorage('hasBack');
+			if (hasBack) {
+				if (api.systemType === 'ios') {
+					api.confirm({
+						title : '提示',
+						msg : hasBack.msg,
+						buttons : ['不了', '确定']
+					}, function(ret, err) {
+						if (ret.buttonIndex === 2) {
+							$api.rmStorage('hasBack');
+							api.closeWin();
+						}
+					});
+				} else {
+					api.confirm({
+						title : '提示',
+						msg : hasBack.msg,
+						buttons : ['确定', '不了']
+					}, function(ret, err) {
+						if (ret.buttonIndex === 1) {
+							$api.rmStorage('hasBack');
+							api.closeWin();
+						}
+					});
+				}
+			} else {
+				api.closeWin();
+			}
+		}
+	</script>
+</html>

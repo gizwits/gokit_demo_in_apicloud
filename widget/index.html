@@ -1,0 +1,307 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <style>
+    
+    </style>
+</head>
+<body>
+
+</body>
+<script type="text/javascript" src="./script/api.js"></script>
+<script type="text/javascript" src="./script/base.js"></script>
+<script type="text/javascript">
+	apiready = function(){
+		api.setStatusBarStyle({
+		    style: 'dark',
+		    color: '#fff'
+		});
+		['gizWifiSDK', 'gizWifiDevice'].map(function(){
+			window[ arguments[0] ] = api.require( arguments[0] );
+		});
+		$api.rmStorage( 'hasBack' );
+		$api.setStorage('appID', '342778f9eb0246ef99ee59de45a6f270');
+		$api.setStorage('appSecret', 'e956c333e66041718a123ad150a54f0a');
+
+//		初始化机智云模块
+		gizWifiSDK.startWithAppID({
+			appID: $api.getStorage('appID'),
+			appSecret: $api.getStorage('appSecret'),
+			specialProductKeys: $api.getStorage('specialProductKeys'),
+			cloudServiceInfo: null,
+			autoSetDeviceDomain: false
+		 }, function(ret, err) {
+
+			if( ret.errorCode === 8316 ){
+				fnJumpWin({
+					name:  'login',
+					path: '/user',
+					slidBackEnabled: true,
+					y: 0
+				})	
+			}else{
+				fnNotes( err );
+			}
+		});
+	}
+	
+	
+//	[设备控制相关 -> 写入数据点]( http://site.gizwits.com/zh-cn/developer/product )
+	function fnWrite( obj ){
+		gizWifiDevice.write({
+		    device: obj.device,
+		    sn: 5,
+		    data: obj.data
+		}, function(ret, err) {
+			api.execScript({
+			    name: obj.winName,
+			    frameName: obj.frameName,
+			    script: 'receive_fnWrite('+JSON.stringify( ret )+','+JSON.stringify( err )+')'
+			});
+		});
+	}
+	
+//	修改设备别名
+	function fnSetCustomInfo( obj ){
+		gizWifiDevice.setCustomInfo({
+		    device: obj.device,
+		    alias: obj.alias,
+		    remark: '修改后的名称'
+		},function(ret, err) {
+			api.execScript({
+			    name: obj.winName,
+			    frameName: obj.frameName,
+			    script: 'receive_fnSetCustomInfo('+JSON.stringify( ret )+','+JSON.stringify( err )+')'
+			});
+		});
+	}
+		
+//	设备控制相关->获取设备状态。
+	function fnGetDeviceStatus( obj ){
+		var vSpeed = 20000,
+			vCall = true
+		if( obj.data.isLAN ){
+			vSpeed = 10000;
+		}
+		var vTime = setTimeout(function(){
+			vCall = false;
+			api.execScript({
+			    name: obj.winName,
+			    frameName: obj.frameName,
+			    script: 'receive_fnGetDeviceStatus(true)'
+			});
+		}, vSpeed);
+		gizWifiDevice.getDeviceStatus({
+		    device: {
+		        mac:  obj.data.mac,
+		        did: obj.data.did
+		    }
+		},function(ret, err) {
+			if( vCall ){
+				clearTimeout( vTime );
+				api.execScript({
+				    name: obj.winName,
+				    script: 'receive_fnGetDeviceStatus('+JSON.stringify( ret )+','+JSON.stringify( err )+')'
+				});
+			}
+		});
+	}
+	
+//	设备搜索和绑定->把设备从云端解绑
+	function fnUnbindDevice( obj ){
+		api.getPrefs({
+		    key:'user'
+		}, function(ret, err){
+			if( ret.value ){
+				gizWifiSDK.unbindDevice({
+					uid: JSON.parse( ret.value ).uid,
+					token: JSON.parse( ret.value ).token,
+					did: obj.did
+				},function(ret, err) {
+					api.execScript({
+					    name: obj.winName,
+					    frameName: obj.frameName,
+					    script: 'receive_fnUnbindDevice('+JSON.stringify( ret )+','+JSON.stringify( err )+')'
+					});
+				});
+			} else {
+				alert("获取用户信息失败");
+			}
+		});
+	}
+	
+//	gizWifiSDK -> 注册 SDK 事件通知
+	function fnRegisterNotifications( obj ){
+		gizWifiSDK.registerNotifications(function(ret, err) {
+			api.execScript({
+			    name: 'win_deviceList',
+			    frameName: 'frm_deviceList',
+			    script: 'receive_fnRegisterNotifications('+JSON.stringify( ret )+','+JSON.stringify( err )+')'
+			});
+		});
+	}
+	
+	// 获取 SDK 版本
+	function fnGetVersion( obj ){
+		gizWifiSDK.getVersion(function(ret, err) {
+			api.execScript({
+			    name: obj.winName,
+			    frameName: obj.frameName,
+			    script: 'receive_fnGetVersion('+JSON.stringify( ret )+','+JSON.stringify( err )+')'
+			});
+		});
+	}
+	
+
+//配置设备路由
+	function fnSetDeviceOnboarding( obj ){
+		//alert('['+parseInt( JSON.parse( localStorage.getItem( 'moduleType' ) ).index )+']');
+		//alert( obj.ssid+' '+obj.key);
+		//alert(localStorage.getItem( 'moduleType' ));
+		//alert('['+parseInt( JSON.parse( localStorage.getItem( 'moduleType' ) ).index )+']');
+		// alert(JSON.stringify(obj));
+		gizWifiSDK.setDeviceOnboarding({
+	        ssid: obj.ssid,
+	        key: obj.key,
+	        mode: typeof obj.mode !== 'undefined' ? 0 : 1,	//设备配置方式 0:GizWifiSoftAP  	1:GizWifiAirLink
+	        softAPSSIDPrefix: obj.softAPSSIDPrefix || 'XPG-GAgent',
+	        timeout: 60,
+	        gagentTypes: obj.gagentTypes
+		}, function(ret, err) {
+				//alert(JSON.stringify(ret));
+			//alert(JSON.stringify(err));
+        	if( ! localStorage.getItem( 'hasConfigure' ) ){
+				api.execScript({
+				    name: obj.winName,
+				    frameName: obj.frameName,
+				    script: 'receive_fnSetDeviceOnboarding('+JSON.stringify( ret )+','+JSON.stringify( err )+')'
+				});
+			}
+		});
+	}
+	
+//	获取手机当前Wifi的SSID
+	function fnGetPhoneSSID( obj ){
+		//alert(JSON.stringify(obj));
+		gizWifiSDK.getPhoneSSID(function(ret, err) {
+			//alert(JSON.stringify(ret));
+			api.execScript({
+			    name: obj.winName,
+			    frameName: obj.frameName,
+			    script: 'receive_fnGetPhoneSSID('+JSON.stringify( ret )+','+JSON.stringify( err )+')'
+			});
+		});
+	}
+
+//	获取手机当前Wifi的SSID,与选择wifi页面区分
+	// function fnGetPhoneSSID1( obj ){
+	// 	alert(JSON.stringify(obj));
+	// 	gizWifiSDK.getPhoneSSID(function(ret, err) {
+	// 		//alert(JSON.stringify(ret));
+	// 		api.execScript({
+	// 		    name: obj.winName,
+	// 		    frameName: obj.frameName,
+	// 		    script: 'receive_fnGetPhoneSSID1('+JSON.stringify( ret )+','+JSON.stringify( err )+')'
+	// 		});
+	// 	});
+	// }
+	
+//	QQ 登录
+	function fnUserLoginWithThirdAccountType( obj ){
+
+		gizWifiSDK.userLoginWithThirdAccountType({
+		    thirdAccountType: '2',
+		    uid: obj.uid,
+		    token: obj.token
+		}, function(ret, err){
+			//alert(JSON.stringify(ret));
+			//alert(JSON.stringify(err));
+			api.execScript({
+			    name: obj.winName,
+			    frameName: obj.frameName,
+			    script: 'receive_fnUserLoginWithThirdAccountType('+JSON.stringify( ret )+','+JSON.stringify( err )+')'
+			});
+		})
+	}
+	
+//	匿名登录
+	function fnUserLoginAnonymous( obj ){
+		gizWifiSDK.userLoginAnonymous(function(ret, err){
+			api.execScript({
+			    name: obj.winName,
+			    frameName: obj.frameName,
+			    script: 'receive_fnUserLoginAnonymous('+JSON.stringify( ret )+','+JSON.stringify( err )+')'
+			});
+		})
+	}
+	
+//	重置密码
+	function fnResetPassword( obj ){
+		gizWifiSDK.resetPassword({
+		    userName: obj.userName,
+		    verifyCode: obj.verifyCode,
+		    newPassword: obj.newPassword,
+		    accountType: '1'
+		}, function(ret, err){
+			api.execScript({
+			    name: obj.winName,
+			    frameName: obj.frameName,
+			    script: 'receive_fnResetPassword('+JSON.stringify( ret )+','+JSON.stringify( err )+')'
+			});
+		})
+	}
+		
+//	用户登录
+	function fnUserLogin( obj ){
+		gizWifiSDK.userLogin({
+		    userName: obj.userName,
+	    	password: obj.password
+		}, function(ret, err){
+			api.execScript({
+			    name: 'win_login',
+			    frameName: 'frm_login',
+			    script: 'receive_fnUserLogin('+JSON.stringify( ret )+','+JSON.stringify( err )+',\''+obj.userName+'\',\''+obj.password+'\')'
+			});
+		})
+	}
+	
+//	发送短信
+	function fnRequestSendVerifyCode( obj ){
+		//alert(JSON.stringify(obj));
+		gizWifiSDK.requestSendVerifyCode({
+	        appSecret: $api.getStorage( 'appSecret' ),
+	        phone: obj.phone
+	        //alert(JSON.stringify(appSecret));
+	        //alert(JSON.stringify(phone));
+		}, function(ret, err) {
+			  // alert(JSON.stringify(ret)+' 11 '+JSON.stringify(err));
+			 // alert(JSON.stringify(err));
+			api.execScript({
+			    name: obj.winName,
+			    frameName: obj.frameName,
+			    script: 'receive_fnRequestSendVerifyCode('+JSON.stringify( ret )+','+JSON.stringify( err )+')'
+			});
+		});
+	}
+	
+//	用户注册
+	function fnRegisterUser( obj ){
+		gizWifiSDK.registerUser({
+		    userName: obj.phone,
+		    password: obj.password,
+		    verifyCode: obj.verify_code,
+		    accountType: '1'
+		}, function(ret, err) {
+			api.execScript({
+			    name: obj.winName,
+			    frameName: obj.frameName,
+			    script: 'receive_fnRegisterUser('+JSON.stringify( ret )+','+JSON.stringify( err )+')'
+			});
+		});
+	}	
+</script>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <link rel="stylesheet" href="../../css/api.css">
+    <style>
+   		.bg-select{ padding-top: 190px; background-size: 150px auto; text-align: center; color: #999; font-size: 12px; font-family: "Microsoft YaHei"}
+   		.bg-select p{ line-height: 24px; color: #0c73eb; }
+    	.hint{ line-height: 60px; text-align: center; color: #999; font-size: 12px; position: absolute;
+    		bottom: 0.1; left: 50%; margin-left: -160px; width: 320px;}
+    	
+    	.input{ margin-top: 11px; padding: 0 15px; background-color: white; border: 1px solid #ddd; border-width: 1px 0; }
+    	.input .flex-wrap{background-position: left center; padding: 15px 0; padding-left: 32px; position: relative; background-size: 18px auto;  }
+    	.input .flex-wrap:last-child{ border-top: 1px solid #ddd; }
+    	.input .flex-wrap input,
+    	.input .flex-wrap p{ display: block; font-size: 15px; font-family: "Arial"}
+    	.input .flex-wrap [class=ic-]{ width: 42px; background-size: 18px auto; }
+    	.input .flex-wrap .ic-eye{ width: 45px; height: 45px; background-position: center 18px; position: absolute; right: 0; top: 0; background-size: 18px auto; }
+    	.input .flex-wrap .ic-eye.active{ background-position: center -15px; }
+    	
+    	.btns{ padding: 0 22px; }
+    	.btns .submit{ background-color: #f3d41d; color: #333333; line-height: 35px; border-radius: 35px; text-align: center; font-size: 15px; margin: 32px 0; }
+    	.btns .msg{ text-align: center; font-size: 12px; color: red; }
+    </style>
+</head>
+<body>
+	<div>
+		<div class="bg-select">请输入 Wi-Fi 密码，连接您的智能设备</div>
+		<div class="input">
+			<div tapmode="opacity" onclick="fnJumpSetting()" class="flex-wrap ic-wifi" >
+				<div class="flex-con"><p class="selectWiFi">请选择设备工作 Wi-Fi</p></div>
+				<div class="ic-arrow-r"></div>
+			</div>
+			<div class="flex-wrap ic-lock" >
+				<input class="flex-con password" type="password" onclick="fnhide_footer()" placeholder="请输入 Wi-Fi 密码" />
+				<div tapmode="opacity" onclick="fnEye(this)" class="ic-eye"></div>
+			</div>
+		</div>
+		<div class="btns">
+			<div tapmode="opacity" onclick="fnNext();" class="submit">下一步</div>
+			<div class="msg">提示：请切换至 Wi-Fi 环境</div>
+		</div>
+		<div class="hint">提示：暂不支持 5G 频道的 Wi-Fi 网络</div>
+	</div>
+</body>	 
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/base.js"></script>
+<script type="text/javascript">
+	apiready = function(){
+		api.execScript({
+		    name: 'root',
+		    script: 'fnGetPhoneSSID('+JSON.stringify({
+				winName: api.winName,
+				frameName: api.frameName
+			})+')'
+		});
+
+		api.addEventListener({name: 'viewappear'}, fnAppear);
+		api.addEventListener({name: 'viewdisappear'}, fnDisappear);
+        fnAppear();
+	}
+
+	function fnAppear() {
+		api.addEventListener({
+		    name:'resume'
+		}, function(ret, err){
+			api.execScript({
+			    name: 'root',
+			    script: 'fnGetPhoneSSID('+JSON.stringify({
+					winName: api.winName,
+					frameName: api.frameName
+				})+')'
+			});	
+		});
+	}
+
+	function fnDisappear() {
+		api.removeEventListener({
+			name: 'resume'
+		});
+	}
+		
+	function fnJumpSetting(){
+		var param;
+		//alert(parseInt(api.systemVersion));
+		if( api.systemType === 'ios' ){
+			//ialert(JSON.stringify(api.version));
+			if( parseInt(api.systemVersion) >= 10 ){
+				fnPopup({msg:'请手动点击桌面的"设置"图标，然后选择 "无线局域网"'});
+			}
+			param = {iosUrl: 'prefs:root=WIFI' };
+		}else{
+			param = {androidPkg:'android.settings.WIFI_SETTINGS'};
+		}
+		api.openApp(param);
+	}
+	
+	function fnEye( el){
+		if( $api.hasCls( el, 'active' ) ){
+			$api.removeCls( el, 'active' );
+			$api.closest( el, '.ic-lock' ).querySelector( 'input' ).setAttribute( 'type', 'password' );
+		}else{
+			$api.addCls( el, 'active' );
+			$api.closest( el, '.ic-lock' ).querySelector( 'input' ).setAttribute( 'type', 'text' );
+		}
+	}
+	
+	function fnhide_footer(){
+		// $api.css( $api.dom( '.hint'), 'display:none');
+	}
+
+	function fnCustomConfig() {
+		var selectWiFi = $api.dom( '.selectWiFi' ).innerHTML,
+			password = $api.dom( '.password' ).value;
+		$api.setStorage('wifi', selectWiFi);
+		$api.setStorage('wifi'+selectWiFi+'password', password);
+		fnJumpWin({name: 'connectionDevice', path: '/main' });
+	}
+
+	function fnNext(){
+		var selectWiFi = $api.dom( '.selectWiFi' ).innerHTML,
+			password = $api.dom( '.password' ).value;
+			// selectType = $api.dom('.bg-select p').getAttribute('data-type');
+		$api.setStorage('wifi', selectWiFi);
+		$api.setStorage('wifi'+selectWiFi+'password', password);
+		if ( ! selectWiFi.trim() || selectWiFi === '请选择设备工作 Wi-Fi') {
+			fnPopup({msg:'请选择 Wi-Fi'});
+		} else if( ! password.trim() ) {
+			if ( api.systemType === 'ios' ) {
+				api.confirm({
+			    	title: '提示',
+			    	msg: '确定密码为空吗？',
+			    	buttons: ['不了', '确定']
+				}, function(ret, err){
+					if( ret.buttonIndex === 2 ){
+						fnJumpWin({name: 'selectType', path: '/main'});
+				}
+				});
+			} else {
+				api.confirm({
+			    	title: '提示',
+			    	msg: '确定密码为空吗？',
+			    	buttons: ['确定', '不了']
+				}, function(ret, err){
+					if( ret.buttonIndex === 1 ){
+						fnJumpWin({name: 'selectType', path: '/main'});
+				}
+				});				
+			}
+		} else {
+			fnJumpWin({name: 'selectType', path: '/main'});
+		}
+	}
+	
+	function receive_fnGetPhoneSSID( ret, err ){
+		var msg = $api.dom('.msg');
+		//alert(JSON.stringify(ret.SSID));
+		if( ret ){
+			if( ret.SSID !== '<unknown ssid>' ){
+				//$api.dom( '.selectWiFi' ).innerHTML = ret ? ret.SSID : '请选择设备工作 Wi-Fi';
+				$api.dom( '.selectWiFi' ).innerHTML = ret.SSID ;	
+				msg.style.display = 'none';		
+				var password = $api.getStorage('wifi'+ret.SSID+'password');
+				if (typeof password != 'undefined') {
+					$api.dom( '.password' ).value = password;
+				} else {
+					$api.dom( '.password' ).value = "";
+				}
+			} 
+		}else{
+			msg.style.display = 'block';
+
+			api.alert({
+			    title: '提示',
+			    msg: '请切换至Wi-Fi环境',
+			}, function(ret, err){
+			    if( ret ){
+			         
+			    }else{
+			     
+			    }
+			});
+		}
+	}
+</script>
+</html>

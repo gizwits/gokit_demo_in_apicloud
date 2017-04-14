@@ -1,58 +1,45 @@
-gokit_demo_in_apicloud
-====================
+# 机智云开源框架App工程
+==================
 
-Gizwits GoKit Demo App
+    使用机智云开源APP之前，需要先在机智云开发平台创建您自己的产品和应用。
 
-    APICloud GoKit App是一款使用 gizWifiSDK 模块的 HTML5 开源代码示例 APP，可以帮助开发者快速入手开发连接机智云的物联 APP。
+    开源APP需要使用您申请的AppId、AppSecret以及您自己的产品ProductKey才能正常运行。
+
+    具体申请流程请参见：http://docs.gizwits.com/hc/
+
+    开源框架工程可通过修改配置文件配置开发者的个人应用信息，请参考使用说明中的 第5节 配置文件说明 进行替换。
+
+    使用QQ、微信登录或百度或极光推送功能之前，需要您先到相应网站申请对应的应用信息，在配置文件中作相应的替换。
+
+
+# GizWifiSDK 版本号
+
+    2.06.06.1
+
+
+# 功能介绍
+
+    本文档为机智云物联网开源基础App套件使用说明，旨在为机智云物联网开发者提供一个快速开发模板，可在此工程基础上进行快速开发或参考相关代码进行开发。
+
+
+# GoKit硬件依赖
+
+    需要有调试设备的支持，您可以使用虚拟设备或者实体设备搭建调试环境。
+
+    ▪	虚拟设备
+        机智云官网提供GoKit虚拟设备的支持，链接地址：
+        http://site.gizwits.com/developer/product/631/virtualdevice
+
+    ▪	实体设备
+        GoKit开发板。您可以在机智云官方网站上免费预约申请（限量10000台），申请地址：
+        http://gizwits.com/zh-cn/gokit
+
+    GoKit开发板提供MCU开源代码供智能硬件设计者参考，请去此处下载：https://github.com/gizwits/gokit-mcu
+
+
+# 问题反馈
+
+    您可以给机智云的技术支持人员发送邮件，反馈您在使用过程中遇到的任何问题。
+    邮箱：club@gizwits.com
+
     
-    与原生的iOS和Android APP不一样的是，APICloud GoKit用JS写成，一次开发的版本可以同时支持iOS和Android平台，大大降低了手机APP开发的门槛。
-    
-    APICloud GoKit功能包含配置入网、设备搜索、设备绑定、设备登陆、设备控制、远程控制、状态更新、本地远程切换等。
-
-gizWifiSDK 模块版本号
-
-    1.6.1.15123015-1.2.1
-
-
-功能介绍
-
-    GoKit 主要展示如何使用XPGWifiSDK，开发基于GAgent智能硬件APP。项目中用到了大部分主要SDK接口，供使用XPGWifiSDK的开发者参考。主要功能如下：
-
-	▪ 初始化SDK
-	▪ 匿名登录到云端
-	▪ 设备配置入网
-	▪ 搜索设备列表
-	▪ 绑定或解绑设备
-	▪ 设备登录
-	▪ 设备控制
-	▪ 扫描二维码
-
-项目依赖和安装
-
-	▪ gizWifiSDK 模块
-    登录ApiCloud官方网站http://www.apicloud.com/的模块Store添加最新版本的SDK。
-    添加后，在项目目录的模块目录中的自定义模块找到并且添加GizWifiSDK。
-
-	▪ Gokit Demo 代码使用说明
-    1、登录ApiCloud官方网站http://www.apicloud.com/ 的下载开发工具
-    2、导入该项目代码。
-    3、登录Apicloud官方网站，进入控制台选择相应的项目目录，添加GizWifiSDK模块后，进入云编译打包即可。
-
-GoKit 硬件依赖
-
-	GoKit项目调试，需要有调试设备的支持，您可以使用虚拟设备或者实体设备搭建调试环境。
-
-	▪ 虚拟设备
-    机智云官网提供GoKit虚拟设备的支持，链接地址：
-    http://site.gizwits.com/developer/product/631/virtualdevice
-
-	▪ 实体设备
-    GoKit开发板。您可以在机智云官方网站上免费预约申请（限量10000台），申请地址：
-    http://gizwits.com/zh-cn/gokit
-
-	GoKit开发板提供MCU开源代码供智能硬件设计者参考，请去此处下载：https://github.com/gizwits/gokit-mcu
-
-问题反馈
-
-	您可以给机智云的技术支持人员发送邮件，反馈您在使用过程中遇到的任何问题。
-	邮箱：club@gizwits.com

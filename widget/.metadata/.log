@@ -1,0 +1,84 @@
+!SESSION 2016-09-05 11:37:21.446 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.7.0_79
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=zh_CN
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY com.apicloud.authentication 4 0 2016-09-05 11:37:36.116
+!MESSAGE {  "status": 1,  "result": {    "userid": 451071,    "username": "yi.shen@apicloud.com",    "state": 1  }}
+
+!ENTRY com.apicloud.loader.platforms.ios 4 0 2016-09-05 11:37:38.287
+!MESSAGE earlyStartup() find device 
+
+!ENTRY org.eclipse.ui 4 4 2016-09-05 11:39:31.756
+!MESSAGE Plug-in 'org.tigris.subversion.subclipse.ui' contributed an invalid Menu Extension (Path: 'group.add' is invalid): org.tigris.subversion.subclipse.ui.createRemoteFolder
+
+!ENTRY org.eclipse.ui 4 4 2016-09-05 11:39:32.716
+!MESSAGE Plug-in 'org.tigris.subversion.subclipse.ui' contributed an invalid Menu Extension (Path: 'group.add' is invalid): org.tigris.subversion.subclipse.ui.createRemoteFolder
+
+!ENTRY org.eclipse.ui 4 4 2016-09-05 11:39:35.964
+!MESSAGE Plug-in 'org.tigris.subversion.subclipse.ui' contributed an invalid Menu Extension (Path: 'group.add' is invalid): org.tigris.subversion.subclipse.ui.createRemoteFolder
+
+!ENTRY org.eclipse.osgi 2 1 2016-09-05 11:39:50.396
+!MESSAGE NLS unused message: RunSimulatorDialog_RUN_SIMULATOR in: com.apicloud.navigator.dialogs.messages
+
+!ENTRY com.apicloud.updatemanager 0 0 2016-09-05 11:40:45.131
+!MESSAGE ok
+
+!ENTRY org.eclipse.ui 4 4 2016-09-05 11:41:02.406
+!MESSAGE Plug-in 'org.tigris.subversion.subclipse.ui' contributed an invalid Menu Extension (Path: 'group.add' is invalid): org.tigris.subversion.subclipse.ui.createRemoteFolder
+
+!ENTRY com.apicloud.navigator 4 0 2016-09-05 11:41:32.096
+!MESSAGE when sync,  found ios device num = 0
+
+!ENTRY com.apicloud.navigator 4 0 2016-09-05 11:42:52.723
+!MESSAGE when sync,  found ios device num = 0
+
+!ENTRY com.apicloud.navigator 4 0 2016-09-05 11:43:07.387
+!MESSAGE when sync,  found ios device num = 0
+
+!ENTRY com.apicloud.navigator 4 0 2016-09-05 11:44:30.277
+!MESSAGE when sync,  found ios device num = 0
+
+!ENTRY com.apicloud.navigator 4 0 2016-09-05 11:45:50.500
+!MESSAGE when sync,  found ios device num = 0
+
+!ENTRY com.apicloud.navigator 4 0 2016-09-05 11:48:15.504
+!MESSAGE when sync,  found ios device num = 0
+
+!ENTRY org.eclipse.jface 2 0 2016-09-05 11:48:44.696
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2016-09-05 11:48:44.697
+!MESSAGE A conflict occurred for CTRL+D:
+Binding(CTRL+D,
+	ParameterizedCommand(Command(io.emmet.eclipse.commands.match_pair_outward,Match Pair Outward,
+		,
+		Category(io.emmet.eclipse.commands.category,Emmet,null,true),
+		io.emmet.eclipse.handlers.DefaultAction@1a633d8,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.textEditorScope,,,system)
+Binding(CTRL+D,
+	ParameterizedCommand(Command(org.eclipse.ui.edit.text.delete.line,删除行,
+		删除一行文本,
+		Category(org.eclipse.ui.category.textEditor,文本编辑,文本编辑命令,true),
+		LegacyHandlerWrapper(ActionHandler(action=org.eclipse.ui.texteditor.DeleteLineAction@95b502)),
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.textEditorScope,,,system)
+
+!ENTRY com.apicloud.navigator 4 0 2016-09-05 11:49:57.428
+!MESSAGE when sync,  found ios device num = 0
+
+!ENTRY com.apicloud.navigator 4 0 2016-09-05 11:50:16.784
+!MESSAGE when sync,  found ios device num = 0
+
+!ENTRY org.eclipse.core.jobs 2 2 2016-09-05 13:31:36.520
+!MESSAGE Job found still running after platform shutdown.  Jobs should be canceled by the plugin that scheduled them during shutdown: com.apicloud.navigator.start.WebSocketServerStart$1
+
+!ENTRY org.eclipse.core.jobs 2 2 2016-09-05 13:31:36.543
+!MESSAGE Job found still running after platform shutdown.  Jobs should be canceled by the plugin that scheduled them during shutdown: com.apicloud.loader.platforms.ios.ANBActivator$1
+
+!ENTRY org.eclipse.core.jobs 2 2 2016-09-05 13:31:36.544
+!MESSAGE Job found still running after platform shutdown.  Jobs should be canceled by the plugin that scheduled them during shutdown: com.apicloud.navigator.start.HttpFileServerStart$1

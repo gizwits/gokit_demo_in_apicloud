@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <link rel="stylesheet" href="../../css/api.css">
+    <style>
+    	.about{ padding: 63px 0;  text-align: center; line-height: 18px; font-size: 14px; color: #383838;}
+    	.about img{ vertical-align: middle; margin-bottom: 35px; width: 65px; }
+    </style>
+</head>
+<body>
+	<div class="about">
+		<img src="../../image/img-logo.png" />
+		<p>程序版本：0.0.0</p>
+		<p>SDK版本：0.0.0</p>
+	</div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/base.js"></script>
+<script type="text/javascript">
+	apiready = function(){
+		$api.dom( '.about p' ).innerHTML = '程序版本：2.1.0.041311';
+		api.execScript({
+		    name: 'root',
+		    script: 'fnGetVersion('+JSON.stringify({
+				winName: api.winName,
+				frameName: api.frameName
+			})+')'
+		});
+	}
+	
+	function receive_fnGetVersion( ret, err){
+		$api.dom( '.about p:last-child' ).innerHTML = 'SDK版本：'+ret.version;
+	}
+</script>
+</html>

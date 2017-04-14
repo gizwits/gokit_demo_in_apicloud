@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <link rel="stylesheet" href="../../css/api.css">
+    <style>
+		body{ display: table; text-align: center; width: 100%; }
+		.hint{ display: table-cell;  vertical-align: middle;  }
+		.arcProgress{ position: fixed; left:0; width: 100%; top: 25%; color: #f2d736; }
+    </style>
+</head>
+<body>
+	<div class="arcProgress">0%</div>
+	<div class="hint">搜索并连接设备</div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/base.js"></script>
+<script type="text/javascript">
+	var hasSuccess = false;
+	apiready = function(){	
+		fnSetDeviceOnboarding( api.pageParam.data );
+	}
+	
+	function fnSetDeviceOnboarding( obj ){
+		hasSuccess = false;
+		localStorage.setItem( 'searchDevice', api.winName );
+		var arcProgress = api.require('arcProgress');	
+		var progress = $api.dom( '.arcProgress' );
+		var hint = $api.dom('.hint');
+
+		arcProgress.open({
+		    type: 'annular',
+		    centerX: api.frameWidth / 2,
+		    centerY: progress.offsetTop+progress.clientHeight/2,
+		    radius: api.frameWidth / 4,
+		    loopWidth: 6,
+		    bgColor: '#fcfcfc',
+		    pgColor: '#f2d736',
+		    fixedOn: api.frameName
+		},function(ret,err){
+	    	setValue( { id: ret.id, value: 0 } )
+		});
+
+		var startTs = Math.floor(Date.now()/1000);
+		function setValue(obj){
+			var elapsed = Math.floor(Date.now()/1000) - startTs;
+		    if (elapsed >= 60) { 
+		    	//msg: '配置超时'
+		    } else {
+				setTimeout(function() {
+					if (!hasSuccess) {
+						obj.value = parseInt(Math.sin(elapsed/120*3.14159)*100.5);
+						arcProgress.setValue({
+							id: obj.id,
+							value: obj.value
+						});
+						setValue(obj);
+						//设置不同搜索时段时候出现的文字
+						if (obj.value > 0 && obj.value < 13.3) {
+							hint.innerHTML = '正在搜索设备...';
+						} else if (obj.value >= 13.3 && obj.value < 16.6) {
+							hint.innerHTML = '已搜索到设备';				    
+						} else {
+							hint.innerHTML = '正在尝试与设备连接';
+						}
+						progress.innerHTML = obj.value+'%';
+					}
+				}, 250);
+			}
+		}
+
+		var selectWiFi = $api.getStorage('wifi');
+		var password = $api.getStorage('wifi'+selectWiFi+'password');
+
+		localStorage.removeItem( 'hasConfigure' );
+		api.execScript({
+	    	name: 'root',
+		   	script: 'fnSetDeviceOnboarding('+JSON.stringify({
+				winName: api.winName,
+				frameName: api.frameName,
+				ssid: selectWiFi,
+				key: password,
+				mode: obj.mode,
+  				gagentTypes: [parseInt(obj.selectType)]
+			})+')'
+		});
+	}
+
+	function fnJump() {
+		localStorage.removeItem( 'searchDevice' );
+		fnJumpWin({name: 'connectionDevice', path: '/main' });
+	}
+	
+	function receive_fnSetDeviceOnboarding(ret, err){
+		if( ret ){
+			hasSuccess = true;
+			fnPopup({
+				msg: '配置成功'
+		 	}, function(){
+				localStorage.removeItem( 'searchDevice' );
+				api.closeToWin({
+				    name: 'win_deviceList'
+				});	 	
+		 	});
+		} else {
+ 			if (err.errorCode == 8021) {
+				fnPopup({
+					msg: '配置信息发送失败'
+				}, function(){
+					fnJump();
+				});
+			} else if (err.errorCode == 8308 || err.errorCode == 8023) {
+				fnPopup({
+					msg: '配置超时'
+				}, function(){
+					fnJump();
+				});
+			} else if (err.errorCode == 8022) {
+				fnPopup({
+					msg: '执行配置的操作过于频繁，请稍后再试'
+				}, function(){
+					fnJump();
+				});
+			} else {
+				fnPopup({
+					msg: '执行配置的操作遇到其他错误，errorCode = ' + err.errorCode
+				}, function(){
+					fnJump();
+				});
+			}
+		}
+	}
+</script>
+</html>

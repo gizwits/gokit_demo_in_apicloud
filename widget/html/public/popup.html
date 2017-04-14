@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <link rel="stylesheet" href="../../css/api.css">
+    <style>
+    	.toast{ display: none; font-size: 13px; width: 170px; position: fixed; left: 50%; top: 50%; margin-top: -60px; margin-left: -85px; background-color: rgba(0,0,0,.6); border-radius: 12px; text-align: center; line-height: 26px; padding: 47px 0; color: white; }
+    	.toast .jump{ color: #333;  display: none; }
+    	.toast.active{ margin-top: -73px; }
+    </style>
+</head>
+<body>
+	<div class="toast">
+		<div tapmode="opacity" onclick="fnUserLoginAnonymous();" class="jump">跳过 &gt;&gt;</div>
+		<msg>提示</msg>
+	</div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript">
+	apiready = function(){
+		$api.dom( '.toast msg' ).innerHTML = api.pageParam.msg;
+		if( api.pageParam.hasJump ){
+			$api.addCls($api.dom( '.toast' ), 'active' );
+			$api.addCls($api.dom( '.toast .jump' ), 'show' );
+		}
+		$api.addCls($api.dom( '.toast' ), 'show' );
+	}
+	
+	function fnUserLoginAnonymous(){
+		api.execScript({
+		    name: 'win_login',
+		    frameName: 'frm_login',
+		    script: 'fnUserLoginAnonymous()'
+		});
+	}
+</script>
+</html>	

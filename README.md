@@ -37,7 +37,8 @@
     
     这里填写的是在qq开发者网站申请到的信息：
     
-    <feature name="qq"> 
+    
+     <feature name="qq"> 
     
         <param name="urlScheme" value="***"/>  
     

@@ -14,12 +14,29 @@
 
 # GizWifiSDK 版本号
 
-    2.06.06.1
+    1.3.1_2.06.06.1
 
 
 # 功能介绍
 
     本文档为机智云物联网开源基础App套件使用说明，旨在为机智云物联网开发者提供一个快速开发模板，可在此工程基础上进行快速开发或参考相关代码进行开发。
+
+# 使用说明
+
+    在widget目录下找到config.xml文件，把以下内容修改为自己申请到的内容：
+
+    这里需要填写在APICloud控制台创建应用时得到的id：
+    <widget id="***" version="0.0.1">
+    
+    这里要填写自己应用的包名：
+    <name>***</name>
+    ……
+    
+    这里填写的是在qq开发者网站申请到的信息：
+    <feature name="qq"> 
+        <param name="urlScheme" value="***"/>  
+        <param name="apiKey" value="***"/> 
+    </feature>
 
 
 # GoKit硬件依赖

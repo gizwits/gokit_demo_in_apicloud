@@ -23,19 +23,21 @@
 
 # 使用说明
 
-    在widget目录下找到config.xml文件，把以下内容修改为自己申请到的内容：
+    在widget目录下找到并修改config.xml文件：
 
-    这里需要填写在APICloud控制台创建应用时得到的id：
-    <widget id="***" version="0.0.1">
+    这里需要填写在APICloud控制台创建应用时得到的id：<widget id="***" version="0.0.1">
     
-    这里要填写自己应用的包名：
-    <name>***</name>
+    这里要填写自己应用的包名：<name>***</name>
     ……
     
     这里填写的是在qq开发者网站申请到的信息：
+    
     <feature name="qq"> 
+    
         <param name="urlScheme" value="***"/>  
+    
         <param name="apiKey" value="***"/> 
+    
     </feature>
 
 

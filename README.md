@@ -1,50 +1,35 @@
-# 机智云开源框架App工程
+# APICloud GoKit iOS App
 ==================
+
+   这是一款使用GizWifiSDK的APICloud开源代码示例APP，可以帮助开发者快速入手使用GizWifiSDK开发连接机智云的物联APP。
+
+	GoKit App可作为Wi-Fi设备接入机智云的手机调试工具，功能包含了设备网络配置、用户注册登录、设备状态查询、设备远程控制等功能的参考实现，开发者可通过此开源程序学习物联网硬件相关的App实现方法。
+  请注意：
 
     使用机智云开源APP之前，需要先在机智云开发平台创建您自己的产品和应用。
 
     开源APP需要使用您申请的AppId、AppSecret以及您自己的产品ProductKey才能正常运行。
 
     具体申请流程请参见：http://docs.gizwits.com/hc/
-
-    开源框架工程可通过修改配置文件配置开发者的个人应用信息，请参考使用说明中的 第5节 配置文件说明 进行替换。
-
-    使用QQ、微信登录或百度或极光推送功能之前，需要您先到相应网站申请对应的应用信息，在配置文件中作相应的替换。
+    上述信息申请好之后，在代码中请找到"your_ios_appid"、"your_android_appid"、"your_ios_appsecret"、"your_android_appsecret"、your_product_key"字符串做相应的替换。
 
 
 # GizWifiSDK 版本号
 
-    1.3.1_2.06.06.1
+    1.3.1_2.06.06.1
 
 
 # 功能介绍
 
-    本文档为机智云物联网开源基础App套件使用说明，旨在为机智云物联网开发者提供一个快速开发模板，可在此工程基础上进行快速开发或参考相关代码进行开发。
+    项目主要展示如何使用GizWifiSDK开发基于GAgent的智能硬件APP，用到了大部分主要SDK接口，供使用GizWifiSDK的开发者参考。主要功能如下：
 
-# 使用说明
-
-    在widget目录下找到并修改config.xml文件：
-
-    这里需要填写在APICloud控制台创建应用时得到的id：
-    
-    <widget id="***" version="0.0.1">
-    
-    这里要填写自己应用的包名：
-    
-    <name>***</name>
-    
-    ……
-    
-    这里填写的是在qq开发者网站申请到的信息：
-    
-     <feature name="qq"> 
-    
-        <param name="urlScheme" value="***"/>  
-    
-        <param name="apiKey" value="***"/> 
-    
-    </feature>
-
+    ▪   初始化SDK
+	▪	匿名登录到云端
+	▪	设备配置入网
+	▪	搜索设备列表
+	▪	绑定或解绑设备
+	▪	设备登录
+	▪	设备控制
 
 # GoKit硬件依赖
 

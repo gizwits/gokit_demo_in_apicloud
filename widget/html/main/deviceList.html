@@ -269,14 +269,14 @@
 			} else {
 				fnScannerfailed();
 			}
-//			api.execScript({
-//				name : 'root',
-//				script : 'fnRegisterNotifications(' + JSON.stringify({
-//					winName : api.winName,
-//					frameName : api.frameName
-//				}) + ')'
-//			});
-		fnAppear();
+			api.execScript({
+				name : 'root',
+				script : 'fnRegisterNotifications(' + JSON.stringify({
+					winName : api.winName,
+					frameName : api.frameName
+				}) + ')'
+			});
+			fnAppear();
 			// alert( 'receive_fnBindDevice'+JSON.stringify( ret ) )
 			//alert( 'receive_fnBindDevice'+JSON.stringify( err ) )
 		}
@@ -353,8 +353,8 @@
 				}
 				gizWifiSDK.getBoundDevices({
 					uid : uid,
-					token : token
-					// specialProductKeys:
+					token : token,
+					specialProductKeys:$api.getStorage('specialProductKeys')
 				}, function(ret, err) {
 					receive_fnGetBoundDevices(ret, err);
 				});
@@ -375,9 +375,10 @@
 			api.hideProgress();
 			if (ret) {
 				fnJumpWin({
-					name : 'control',
-					path : '/object',
-					pageParam : $api.getStorage('device_message')
+					name : 'deviceControl',
+					path : '/deviceControl',
+					pageParam : $api.getStorage('device_message'),
+					slidBackEnabled: false
 				});
 				fnAppear();
 			} else {

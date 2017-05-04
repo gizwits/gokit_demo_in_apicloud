@@ -24,9 +24,10 @@
 			window[ arguments[0] ] = api.require( arguments[0] );
 		});
 		$api.rmStorage( 'hasBack' );
-		$api.setStorage('appID', '342778f9eb0246ef99ee59de45a6f270');
-		$api.setStorage('appSecret', 'e956c333e66041718a123ad150a54f0a');
-
+		$api.setStorage('appID', api.systemType === 'ios' ? 'your_ios_appid':'your_android_appid');
+		$api.setStorage('appSecret', api.systemType === 'ios' ? 'your_ios_appsecret':'your_android_appsecret');
+		$api.setStorage('specialProductKeys', ['your_productKey']);
+		
 //		初始化机智云模块
 		gizWifiSDK.startWithAppID({
 			appID: $api.getStorage('appID'),

@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+     <link rel="stylesheet" href="../../css/api.css">
+    <style type="text/css">
+        body{ background-color: #f1f1f1; }
+        body, ul, li{  margin: 0px;  padding: 0px; }
+        ul { list-style: none;  background-color: white;  margin-top: 30px;
+            border-top: 1px solid #ddd;  border-bottom: 1px solid #ddd; }
+        ul li { margin-left: 5%; border-bottom: 1px solid #ddd; }
+        ul li { padding-top:10px; padding-bottom: 10px; }
+        ul li :last-child { border-bottom: 0px; }
+        .gos_rightBlock, .gos_redValue, .gos_greenValue, .gos_blueValue, .gos_motorSpeedValue {  float: right; margin-right: 5%; }
+        ul li .gos_rightBlock .x {  display: table-cell;  vertical-align: middle;
+            height: 24px;  width: 40px; }
+        ul li .gos_rightBlock .ic-arrow-r { display: inline-block;
+            min-width: 35px;  height: 0px;  padding: 6px 0;
+            background-size: 15px auto;  background-position: right center; }
+        ul li .gos_rightBlock .ios7CBox:after { width: 18px;  height: 18px;
+            top: 3px; }
+        ul li .ios7CBox{  display: table-cell;  vertical-align: middle; 
+            height: 24px;  width: 40px; }
+        ul li .gos_slideCellTop {  padding-bottom: 5px; }
+        ul li .gos_slideCellBottom #gos_redSub, #gos_greenSub, #gos_blueSub, #gos_motorSpeedSub { display: inline-block;  width: 8%;
+            height: 30px;  text-align: center; }
+        ul li .gos_slideCellBottom .gos_redSlide, .gos_greenSlide, .gos_blueSlide, .gos_motorSpeedSlide {  display: inline-block;  width: 75%;
+            text-align: right;  background-color: #fff; }
+        ul li .gos_slideCellBottom #gos_redAdd, #gos_greenAdd, #gos_blueAdd, #gos_motorSpeedAdd { display: inline-block;  width: 8%;
+            height: 30px;  text-align: center;  margin-right: 5%; }
+        
+        input[type=range] {
+            -webkit-appearance: none;
+             -moz-appearance: none;
+             -o-appearance: none;
+             width: 100%;
+             border-radius: 10px; /*这个属性设置使填充进度条时的图形为圆角*/
+            background-image: background: -webkit-linear-gradient(#059CFA, #059CFA) no-repeat;
+            background-image: background: -o-linear-gradient(#059CFA, #059CFA) no-repeat;
+            background-image: background: linear-gradient(#059CFA, #059CFA) no-repeat;
+            background-size: 0% 100%;
+        }
+        input[type=range]::-webkit-slider-thumb {
+             -webkit-appearance: none;
+             height: 25px;
+            width: 25px;
+            margin-top: -10px; /*使滑块超出轨道部分的偏移量相等*/
+            background: #ffffff; 
+            border-radius: 50%; /*外观设置为圆形*/
+            border: solid 0.125em rgba(205, 224, 230, 0.5); /*设置边框*/
+            box-shadow: 0 .125em .125em #3b4547; /*添加底部阴影*/
+        }  
+        input[type=range]::-webkit-slider-runnable-track {
+            height: 5px;
+            border-radius: 10px; /*将轨道设为圆角的*/
+            box-shadow: 0 1px 1px #def3f8, inset 0 .125em .125em #0d1112; /*轨道内置阴影效果*/
+        }
+        input[type=range]:focus {
+            outline: none;
+        }
+        input[type=range]::-moz-range-progress {
+            background: linear-gradient(to right, #059CFA, white 100%, white);
+            height: 13px;    
+            border-radius: 10px;
+        }
+        input[type=range]::-webkit-range-progress {
+            background: #333;
+            height: 13px;    
+            border-radius: 10px;
+        }
+        input[type=range]::-ms-track {
+            height: 25px;
+            border-radius: 10px;
+            box-shadow: 0 1px 1px #def3f8, inset 0 .125em .125em #0d1112;
+            border-color: transparent; /*去除原有边框*/
+            color: transparent; /*去除轨道内的竖线*/
+        }
+        input[type=range]::-ms-thumb {
+            border: solid 0.125em rgba(205, 224, 230, 0.5);
+            height: 25px;
+            width: 25px;
+            border-radius: 50%;
+            background: #ffffff;
+            margin-top: -5px;
+            box-shadow: 0 .125em .125em #3b4547;
+        }
+        input[type=range]::-ms-fill-lower {
+            /*进度条已填充的部分*/
+            height: 22px;
+            border-radius: 10px;
+            background: linear-gradient(to right, #059CFA, white 100%, white);
+        }
+        input[type=range]::-ms-fill-upper {
+            /*进度条未填充的部分*/
+            height: 22px;
+            border-radius: 10px;
+            background: #ffffff;
+        }
+        input[type=range]:focus::-ms-fill-lower {
+            background: linear-gradient(to right, #059CFA, white 100%, white);
+        }
+        input[type=range]:focus::-ms-fill-upper {
+            background: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>
+            <span>开启/关闭红色灯</span>
+            <span class="gos_rightBlock" id="gos_ledOnOffBlock"><input class="ios7CBox" id="gos_ledOnOff" type="checkbox"></span>
+        </li>
+        <li tapmode="opacity" onclick="fnJumpWin({name: 'selectedLEDColor',path: '/deviceControl', pageParam: colorDic});" >
+            <span>设定LED组合颜色</span>
+            <span class="gos_rightBlock">
+                <span class="gos_custom">自定义</span>
+                <span class="ic-arrow-r"></span>
+            </span>
+        </li>
+        <li>
+            <div class="gos_slideCellTop">
+                <span>设定LED颜色R值</span>
+                <span class="gos_redValue">0</span>
+            </div>
+            <div class="gos_slideCellBottom">
+                <span id="gos_redSub">-</span>
+                <span class="gos_redSlide">
+                   <input type="range" value="0" id="gos_rSlide" onchange="didStopMove(this)">
+                </span>
+                <span id="gos_redAdd">+</span>
+            </div>
+        </li>
+        <li>
+            <div class="gos_slideCellTop">
+                <span>设定LED颜色G值</span>
+                <span class="gos_greenValue">0</span>
+            </div>
+            <div class="gos_slideCellBottom">
+                <span id="gos_greenSub">-</span>
+                <span class="gos_greenSlide">
+                   <input type="range" value="0" id="gos_gSlide" onchange="didStopMove(this)">
+                </span>
+                <span id="gos_greenAdd">+</span>
+            </div>
+        </li>
+        <li>
+            <div class="gos_slideCellTop">
+                <span>设定LED颜色B值</span>
+                <span class="gos_blueValue">0</span>
+            </div>
+            <div class="gos_slideCellBottom">
+                <span id="gos_blueSub">-</span>
+                <span class="gos_blueSlide">
+                   <input type="range" value="0" id="gos_bSlide" onchange="didStopMove(this)">
+                </span>
+                <span id="gos_blueAdd">+</span>
+            </div>
+        </li>
+        <li>
+            <div class="gos_slideCellTop">
+                <span>设定电机转速</span>
+                <span class="gos_motorSpeedValue">-5</span>
+            </div>
+            <div class="gos_slideCellBottom">
+                <span id="gos_motorSpeedSub">-</span>
+                <span class="gos_motorSpeedSlide">
+                   <input type="range" value="-5" id="gos_mSSlide" onchange="didStopMove(this)">
+                </span>
+                <span id="gos_motorSpeedAdd">+</span>
+            </div>
+        </li>
+        <li>
+            <span>红外探测</span>
+            <span class="gos_rightBlock" id="gos_infraredBlock">
+                <input class="ios7CBox" id="gos_infrared" type="checkbox">
+            </span>
+        </li>
+        <li>
+            <span>温度</span>
+            <span class="gos_rightBlock" id="gos_temperature">-</span>
+        </li>
+        <li>
+            <span>湿度</span>
+            <span class="gos_rightBlock" id="gos_humidity">0</span>
+        </li>
+    </ul>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/base.js"></script>
+<script type="text/javascript" src="../../script/jquery.js"></script>
+<script type="text/javascript" src="../../script/fastclick.js"></script>
+<script type="text/javascript">
+
+    var device, gizWifiDevice;
+    // 数据点标识枚举
+    var dataPoint = {
+        // 可写枚举
+        GosDeviceWriteLED_onOff: 0,  //开关
+        GosDeviceWriteLED_Color: 1,   // 组合颜色
+        GosDeviceWriteLED_R: 2,
+        GosDeviceWriteLED_G: 3,
+        GosDeviceWriteLED_B: 4,
+        GosDeviceWriteMotorSpeed: 5,
+
+        // 只读
+        GosDeviceReadIR: 6, //红外
+        GosDeviceReadTemperature: 7, //温度
+        GosDeviceReadHumidity: 8, //湿度
+    }
+    
+    // 数据点名称
+    var static_LED_OnOff = "LED_OnOff";
+    var static_LED_Color = "LED_Color";
+    var static_LED_R = "LED_R";
+    var static_LED_G = "LED_G";
+    var static_LED_B = "LED_B";
+    var static_MotorSpeed = "Motor_Speed";
+    var static_LED_Infrared = "Infrared";
+    var static_Temperature = "Temperature";
+    var static_Humidity = "Humidity";
+
+    // 数据点值
+    var led_OnOff = false;
+    var led_Color = 0; //选择什么方式来显示
+    var led_R = 0; 
+    var led_G = 0;
+    var led_B = 0;
+    var motorSpeed = 0;
+    var infrared = false;
+    var temperature = 0;
+    var humidity = 0;
+    var deviceName, alias;
+
+    // 定时器
+    var timer;
+    var isController = false;  //标识是否刚从设备列表进入控制界面，若是，且设备变为可控后，值需修改为true
+    var time = 0; //次数
+    var delay; //延时时间 
+    var colorDic;
+	apiready = function(){
+        console.log('*****************apiready*****************');
+        console.log("api.pageParam.pageParam = " + api.pageParam.pageParam);
+        console.log("api.pageParam.pageParam = " + JSON.stringify(api.pageParam.pageParam));
+
+        device = api.pageParam.pageParam;
+        gizWifiDevice = api.require('gizWifiDevice')
+        // 注册页面显示与消失监听方法
+        api.addEventListener({name: 'viewappear'}, fnAppear);
+        api.addEventListener({name: 'viewdisappear'}, fnDisappear);
+        
+        api.showProgress({
+            animationType: 'zoom',
+            title: '正在更新',
+            modal: true
+        });
+
+        setupTitle();  //设置标题栏
+        registerDeviceStatusNotification(); //注册设备状态变化监听
+        setupAllButton(); //设置按钮点击事件
+        setupSlide(); // 初始化滚动条
+        checkDeviceNetStatus(); //检测设备可控状态
+
+        colorDic = {"LED_Color": led_Color, "mac": api.pageParam.pageParam.mac, "did": api.pageParam.pageParam.did};
+        api.addEventListener({
+            name: 'sendLED_ColorControl'
+            }, function(ret, err) {
+                led_Color = ret.value.LED_Color;
+                colorDic = {"LED_Color": led_Color, "mac": api.pageParam.pageParam.mac, "did": api.pageParam.pageParam.did};
+                console.log("获取到的LED_Color = " + led_Color);
+                updateUI();
+        });
+	}
+
+    function fnAppear(){
+        console.log('*****************fnAppear*****************'); 
+        getDeviceStatus(); 
+    }
+
+    function fnDisappear() {
+        console.log('*****************fnDisappear*****************'); 
+    }
+
+    // ************************检测设备可控状态相关方法************************
+    function checkDeviceNetStatus()
+    {
+        // 启动检查网络状态的定时器
+        var isLAN = JSON.stringify(api.pageParam.pageParam.isLAN);
+        delay = isLAN == 1 ? 10000 : 30000; 
+        timer = window.setInterval("run()", 1000);
+    }
+
+    // 定时器定时判断设备的可控状态
+    function run()
+    {
+        time++;
+        if (time <= (delay / 1000) ){
+            // 每1秒获取一次设备状态
+            console.log("时间还未到预期时间");
+            getDeviceStatus();
+        }
+        else
+        {
+            // 超过延时时间还进入，表明设备还不可控，直接退出控制界面
+            api.hideProgress();
+            console.log("run 关闭定时器");
+            window.clearInterval(timer);
+            api.closeWin();
+            api.hideProgress();
+            fnUnsubscribe();
+            console.log("fnUnsubscribe()");
+        }
+    }
+
+    // ************************设备控制、设置相关方法************************
+    // 下发控制指令
+    function write(dp, value){
+        var data;
+        switch(dp)
+        {
+            case dataPoint.GosDeviceWriteLED_onOff:
+                data = {"LED_OnOff": value};
+                break;
+            case dataPoint.GosDeviceWriteLED_Color:
+                data = {"LED_Color": value};
+                break;
+            case dataPoint.GosDeviceWriteLED_R:
+                data = {"LED_R": value};
+                break;
+            case dataPoint.GosDeviceWriteLED_G:
+                data = {"LED_G": value};
+                break;
+            case dataPoint.GosDeviceWriteLED_B:
+                data = {"LED_B": value};
+                break;
+            case dataPoint.GosDeviceWriteMotorSpeed:
+                data = {"Motor_Speed": value};
+                break;
+        }
+
+        console.log("下发控制指令： data = " + JSON.stringify(data) + "device = " + JSON.stringify(device) + ", device.device = " + JSON.stringify(device.device));
+        gizWifiDevice.write({
+            device: device,
+            sn: 0,
+            data: data
+        }, function(ret, err){
+            console.log('下发控制指令回调 ret = ' + JSON.stringify(ret) + ', err = ' + JSON.stringify(err));
+        });
+    }
+
+    // 注册设备状态变化监听
+    function registerDeviceStatusNotification()
+    {
+        gizWifiDevice.registerNotifications({
+            device:{
+                did: device.did,
+                mac: device.mac
+            }
+        }, function(ret, err){
+            receive_fnRegisterDeviceStatusNotification(ret, err);
+        });
+
+    }
+
+    // 设备主动上报状态回调
+    function receive_fnRegisterDeviceStatusNotification(ret, err){
+        // alert("注册通知接口, 设备主动上报状态: ret = " + JSON.stringify(ret) + ", err = " + JSON.stringify(err));
+        console.log("注册通知接口, 设备主动上报状态");
+        console.log("ret = " + JSON.stringify(ret) + ", err = " + JSON.stringify(err));
+        if (!err) {
+            var netStatus = JSON.stringify(ret.netStatus);
+            if (netStatus == 2 || netStatus == -1)
+             {
+                if (isController == false) {
+                    console.log("通知 关闭定时器");
+                    api.hideProgress();
+                    window.clearInterval(timer);
+                    isController = true;
+                }
+    
+                readData(ret);
+            }
+            else
+            {
+                api.closeWin();
+                api.hideProgress();
+                fnUnsubscribe();
+                console.log("fnUnsubscribe()");
+            }
+        }
+    }
+
+    // 获取设备状态
+    function getDeviceStatus(){
+        gizWifiDevice.getDeviceStatus({
+            device:{
+                did: device.did,
+                mac: device.mac
+            }
+        }, function(ret, err){
+            receive_fnGetDeviceStatus(ret, err);
+        });
+    }
+
+    function receive_fnGetDeviceStatus(ret, err){
+        console.log("获取设备状态回调 + ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err));
+
+        if (!err && isController == false) {
+            console.log("在获取设备状态中关闭定时器");
+            api.hideProgress();
+            isController = true;
+            window.clearInterval(timer);
+        } 
+
+        if (ret)
+        {
+            console.log("在获取设备状态中更改UI");
+            readData(ret);
+        }
+    }
+
+    function getHardwareInfo()
+    {
+        gizWifiDevice.getHardwareInfo({
+            device: {
+                did: device.did,
+                mac: device.mac
+            }
+        }, function(ret, err){
+            receive_fnGetHardwareInfo(ret, err);
+        });
+    }
+
+    // 硬件信息回调
+    function receive_fnGetHardwareInfo(ret, err)
+    {
+        var hardwareStr = "";        
+        var wifiHardVer = ret.hardwareInfo.wifiHardVer;
+        var wifiSoftVer = ret.hardwareInfo.wifiSoftVer;
+        var mcuHardVer = ret.hardwareInfo.mcuHardVer;
+        var mcuSoftVer = ret.hardwareInfo.mcuSoftVer;
+        var firmwareId = ret.hardwareInfo.firmwareId;
+        var firmwareVer = ret.hardwareInfo.firmwareVer;
+        var productKey = ret.hardwareInfo.productKey;
+        var did = api.pageParam.pageParam.did;
+        var ip = api.pageParam.pageParam.ip;
+        var mac = api.pageParam.pageParam.mac;
+
+        hardwareStr += "WiFi Hardware Version: " + wifiHardVer + ",\n"
+                    +  "WiFi Software Version: " + wifiSoftVer + ",\n"
+                    +  "MCU Hardware Version: " + mcuHardVer + ",\n"
+                    +  "MCU Software Version: " + mcuSoftVer + ",\n"
+                    +  "Firmware Id: " + firmwareId + ",\n"
+                    +  "Firmware Version: " + firmwareVer + ",\n"
+                    +  "Product Key: " + productKey + ",\n"
+                    +  "Device ID: " + did + ",\n"
+                    +  "Device IP: " + ip + ",\n"
+                    +  "Device MAC: " + mac;
+
+        api.alert({
+                      title: '设备硬件信息',
+                      msg: hardwareStr,
+                      }, function(ret, err) {
+                      });
+    }
+
+    // 设置设备别名
+    function setDeviceAlais(alias){
+        gizWifiDevice.setCustomInfo({
+            device: device,
+            alias: alias
+        }, function(ret, err){
+            receive_fnSetCustomInfo(ret, err);
+        });
+    }
+
+     // 设置设备信息回调
+    function receive_fnSetCustomInfo(ret, err)
+    {
+        api.hideProgress();
+        
+        if (err) {
+            
+            api.alert({
+                      title: '提示',
+                      msg: '设置失败',
+                      }, function(ret, err) {
+                      });
+        }
+        else
+        {
+            deviceName = alias;
+            // 修改设备名称
+            api.alert({
+                      title: '提示',
+                      msg: '设置成功',
+                      }, function(ret, err) {
+                      });
+        }
+    }
+
+    // 解除设备订阅
+    function fnUnsubscribe() {
+        console.log('解除订阅');
+        var gizWifiDevice = api.require("gizWifiDevice");
+        gizWifiDevice.setSubscribe({device: device, subscribed: false}, function(ret, err) {});
+    }
+
+    // ************************读写设备状态相关方法************************
+    function readData(ret)
+    {
+        console.log("api.pageParam.pageParam = " + JSON.stringify(api.pageParam.pageParam));
+        console.log("********************readData被调用**********************");
+        var data = ret.data;
+        // console.log("data = " + data);
+        console.log("data = " + JSON.stringify(data));
+        // console.log("data.count = " + data.count);
+        // console.log("data.length = " + data.length);
+        if (data && !$api.isEmptyObject(data)) 
+        {
+            console.log('读数据');
+                    // 读数据
+            readDataPoint(dataPoint.GosDeviceWriteLED_onOff, data);
+            readDataPoint(dataPoint.GosDeviceWriteLED_Color, data);
+            readDataPoint(dataPoint.GosDeviceWriteLED_R, data);
+            readDataPoint(dataPoint.GosDeviceWriteLED_G, data);
+            readDataPoint(dataPoint.GosDeviceWriteLED_B, data);
+            readDataPoint(dataPoint.GosDeviceWriteMotorSpeed, data);
+            readDataPoint(dataPoint.GosDeviceReadIR, data);
+            readDataPoint(dataPoint.GosDeviceReadTemperature, data);
+            readDataPoint(dataPoint.GosDeviceReadHumidity, data);
+            updateUI();
+        }
+
+        var alerts = ret.alerts;
+        var alertsStr = "";
+        if (alerts)
+         {    
+            var alertNum = 0;
+            if (alerts.Alert_1) {
+                if (alertNum == 0) {
+                    alertsStr += "设备报警:";
+                }
+                alertNum++;
+                alertsStr = (alertsStr == "" ? alertsStr : alertsStr + "\n");
+                alertsStr += "Alert_1错误码: 1";
+                console.log("alertsStr = " + alertsStr);
+            }
+            if (alerts.Alert_2) {
+                if (alertNum == 0) {
+                    alertsStr += "设备报警:";
+                }
+                alertsStr = (alertsStr == "" ? alertsStr : alertsStr + "\n");
+                alertsStr += "Alert_2错误码: 1";
+                console.log("alertsStr = " + alertsStr);
+            }
+        }
+        var faults = ret.faults;
+        if (faults)
+        {
+             var faultNum = 0;
+             if (faults.Fault_IR) {
+                if (faultNum == 0) {
+                    alertsStr = (alertsStr == "" ? alertsStr : alertsStr + "\n");
+                    alertsStr += "设备错误:";
+                }
+                faultNum++;
+                alertsStr = (alertsStr == "" ? alertsStr : alertsStr + "\n");
+                alertsStr += "Fault_IR错误码: 1";
+                console.log("alertsStr = " + alertsStr);
+             }
+             if (faults.Fault_LED) {
+                if (faultNum == 0) {
+                    alertsStr = (alertsStr == "" ? alertsStr : alertsStr + "\n");
+                    alertsStr += "设备错误:";
+                }
+                faultNum++;
+                alertsStr = (alertsStr == "" ? alertsStr : alertsStr + "\n");
+                alertsStr += "Fault_LED错误码: 1";
+                console.log("alertsStr = " + alertsStr);
+             }
+             if (faults.Fault_Motor) {
+                if (faultNum == 0) {
+                    alertsStr = (alertsStr == "" ? alertsStr : alertsStr + "\n");
+                    alertsStr += "设备错误:";
+                }
+                faultNum++;
+                alertsStr = (alertsStr == "" ? alertsStr : alertsStr + "\n");
+                alertsStr += "Fault_Motor错误码: 1";
+                console.log("alertsStr = " + alertsStr);
+             }
+             if (faults.Fault_TemHum) {
+                if (faultNum == 0) {
+                    alertsStr = (alertsStr == "" ? alertsStr : alertsStr + "\n");
+                    alertsStr += "设备错误:";
+                }
+                alertsStr = (alertsStr == "" ? alertsStr : alertsStr + "\n");
+                alertsStr += "Fault_TemHum错误码: 1";
+                console.log("alertsStr = " + alertsStr);
+             }
+        }
+
+        if (alertsStr != "") {
+            api.toast({
+                msg: alertsStr,
+                duration: 2000,
+                location: 'pan'
+            });
+        }
+        console.log("alerts = " + alerts);
+        console.log("faults = " + faults);
+    }
+
+    // 读数据点数据
+    function readDataPoint(dp, data)
+    {
+        switch(dp)
+        {
+            case dataPoint.GosDeviceWriteLED_onOff:
+            led_OnOff = data[static_LED_OnOff];
+            console.log("**************led_OnOff = " + led_OnOff + "**************");
+            break;
+  
+            case dataPoint.GosDeviceWriteLED_Color:
+            led_Color = data[static_LED_Color];
+            colorDic = {"LED_Color": led_Color, "mac": api.pageParam.pageParam.mac, "did": api.pageParam.pageParam.did};
+            break;
+
+            case dataPoint.GosDeviceWriteLED_R:
+            led_R = data[static_LED_R];
+            break;
+
+            case dataPoint.GosDeviceWriteLED_G:
+            led_G = data[static_LED_G];
+            break;
+
+            case dataPoint.GosDeviceWriteLED_B:
+            led_B = data[static_LED_B];
+            break;
+
+            case dataPoint.GosDeviceWriteMotorSpeed:
+            motorSpeed = data[static_MotorSpeed];
+            motorSpeed = motorSpeed < -5 ? -5 : motorSpeed;
+            motorSpeed = motorSpeed > 5 ? 5 : motorSpeed;
+            break;
+
+            case dataPoint.GosDeviceReadIR:
+            infrared = data[static_LED_Infrared];
+            break;
+
+            case dataPoint.GosDeviceReadTemperature:
+            temperature = data[static_Temperature];
+            break;
+
+            case dataPoint.GosDeviceReadHumidity:
+            humidity = data[static_Humidity];
+            break;
+        }
+    }
+
+    // ************************界面设置相关方法************************
+    // 根据当前数据点值，更新界面
+    function updateUI()
+    {
+        console.log("led_OnOff = " + led_OnOff);
+        console.log("infrared = " + infrared);
+        //开关灯
+        var led_OnOffB =$api.byId("gos_ledOnOffBlock");
+        console.log("led_OnOffB = " + led_OnOffB);
+        updateSwitchShow(led_OnOffB, "#gos_ledOnOff", led_OnOff);
+
+
+        $(".gos_redValue").html(led_R);
+        updateSlideColor($("#gos_rSlide"), led_R);
+
+        $(".gos_greenValue").html(led_G);
+        updateSlideColor($("#gos_gSlide"), led_G);
+
+        $(".gos_blueValue").html(led_B);
+        updateSlideColor($("#gos_bSlide"), led_B);
+
+        $(".gos_motorSpeedValue").html(motorSpeed);
+        updateSlideColor($("#gos_mSSlide"), motorSpeed);
+
+        // 红外探测
+        var infraredB = $api.byId("gos_infraredBlock");
+        console.log("infraredB = " + infraredB);
+        updateSwitchShow(infraredB, "#gos_infrared", infrared);
+
+        // 温度
+        $("#gos_temperature").html(temperature);
+        $("#gos_humidity").html(humidity);
+
+        // 界面
+        switch(led_Color)
+        {
+            case 0:
+               $(".gos_custom").html("自定义");
+               break;
+            case 1:
+               $(".gos_custom").html("黄色");
+               break;
+            case 2:
+               $(".gos_custom").html("紫色");
+               break;
+            case 3:
+               $(".gos_custom").html("粉色");
+        }
+    }
+
+    // 设置界面标题
+    function setupTitle(){
+        deviceName = device.productName;
+        if (device.alias) {
+            deviceName = device.alias;
+        }
+
+        var alias = deviceName;
+        if (alias.length > 10) {
+            alias = alias.substring(0, 10) + "...";
+        }
+        api.execScript({
+            name: 'win_deviceControl',
+            script: 'fnSetNavigationTitle({"name": ".controlTitle", "value": "' + alias + '"})'
+        });
+    }
+
+    // 根据传入的value值更新相应id的开关状态
+    function updateSwitchShow(el, id, value)
+    {
+        if (value) {
+            if ($api.hasCls(el.querySelector( id ), "checked") == false) {
+                $api.addCls(el.querySelector( id ), "checked");
+            }
+        }
+        else
+        {
+            if ($api.hasCls(el.querySelector( id ), "checked")) {
+                $api.removeCls(el.querySelector( id ), "checked");
+            }
+        }
+    }
+
+    // 设置按钮点击事件
+    function setupAllButton()
+    {
+        var ledOnOffBlock = $api.byId("gos_ledOnOffBlock");
+        FastClick.attach(ledOnOffBlock);
+        ledOnOffBlock.addEventListener("click", function(event) {
+            ios7CBoxDidClick(ledOnOffBlock);
+        }, false);
+
+        addFastClickEvent("gos_redSub");
+        addFastClickEvent("gos_redAdd");
+        addFastClickEvent("gos_greenSub");
+        addFastClickEvent("gos_greenAdd");
+        addFastClickEvent("gos_blueSub");
+        addFastClickEvent("gos_blueAdd");
+        addFastClickEvent("gos_motorSpeedSub");
+        addFastClickEvent("gos_motorSpeedAdd");
+    }
+
+    // 设置滚动条的属性和监听事件
+    $.fn.RangeSlider = function(cfg){
+        this.sliderCfg = {
+             min: cfg && !isNaN(parseFloat(cfg.min)) ? Number(cfg.min) : null, 
+             max: cfg && !isNaN(parseFloat(cfg.max)) ? Number(cfg.max) : null,
+             step: cfg && Number(cfg.step) ? cfg.step : 1,
+             callback: cfg && cfg.callback ? cfg.callback : null
+        };
+
+        var $input = $(this);
+        var min = this.sliderCfg.min;
+        var max = this.sliderCfg.max;
+        var step = this.sliderCfg.step;
+        var callback = this.sliderCfg.callback;
+
+        $input.attr("min", min)
+            .attr("max", max)
+            .attr("step", step);
+
+        $input.bind("input", function(e){
+
+        $input.attr("value", this.value);
+
+        var newValue;
+        var id = this.id;
+        if (id === "gos_rSlide" || id === "gos_gSlide" || id === "gos_bSlide") {
+            newValue = (this.value / 254 ) * 100;
+        }
+        else
+        {
+            newValue = (5 + parseFloat(this.value)) * 10; 
+        }
+        $input.css( "background-size", newValue + "% 100%" ); 
+        console.log("渲染颜色");
+        if ($.isFunction(callback)) {
+            console.log("调用callback");
+            callback(this);
+        }
+    });
+    };
+
+    // 初始化滚动条
+    function setupSlide()
+    {
+        $("#gos_rSlide").RangeSlider({ min: 0,   max: 254,  step: 1,  callback: change});
+        $("#gos_gSlide").RangeSlider({ min: 0,   max: 254,  step: 1,  callback: change});
+        $("#gos_bSlide").RangeSlider({ min: 0,   max: 254,  step: 1,  callback: change});
+        $("#gos_mSSlide").RangeSlider({ min: -5,   max: 5,  step: 1,  callback: change});
+    }
+
+     // 根据当前点击的控件，获取相应的显示控件应显示的值，并下发控制指令。
+    // el: 当前点击的控件
+    function caculatorColor(el)
+    {
+        var id = el.id;
+        var colorValue;
+        if (id == "gos_redSub") {
+            colorValue = caculatorValue(".gos_redValue", false, 254, 0);
+            updateSlideColor($("#gos_rSlide"), colorValue);
+            write(dataPoint.GosDeviceWriteLED_R, colorValue);
+        }
+        else if(id == "gos_greenSub"){
+            colorValue = caculatorValue(".gos_greenValue", false, 254, 0);
+            updateSlideColor($("#gos_gSlide"), colorValue);
+            write(dataPoint.GosDeviceWriteLED_G, colorValue);
+        }
+        else if(id == "gos_blueSub"){
+            colorValue = caculatorValue(".gos_blueValue", false, 254, 0);
+            updateSlideColor($("#gos_bSlide"), colorValue);
+            write(dataPoint.GosDeviceWriteLED_B, colorValue);
+        }
+        else if(id == "gos_motorSpeedSub"){
+            colorValue = caculatorValue(".gos_motorSpeedValue", false, 5, -5);
+            updateSlideColor($("#gos_mSSlide"), colorValue);
+            write(dataPoint.GosDeviceWriteMotorSpeed, colorValue);
+        }
+        else if (id == "gos_redAdd") {
+            colorValue = caculatorValue(".gos_redValue", true, 254, 0);
+            updateSlideColor($("#gos_rSlide"), colorValue);
+            write(dataPoint.GosDeviceWriteLED_R, colorValue);
+        }
+        else if(id == "gos_greenAdd"){
+            colorValue = caculatorValue(".gos_greenValue", true, 254, 0);
+            updateSlideColor($("#gos_gSlide"), colorValue);
+            write(dataPoint.GosDeviceWriteLED_G, colorValue);
+        }
+        else if(id == "gos_blueAdd"){
+            colorValue = caculatorValue(".gos_blueValue", true, 254, 0);
+            updateSlideColor($("#gos_bSlide"), colorValue);
+            write(dataPoint.GosDeviceWriteLED_B, colorValue);
+        }
+        else if(id == "gos_motorSpeedAdd"){
+            colorValue = caculatorValue(".gos_motorSpeedValue", true, 5, -5);
+            updateSlideColor($("#gos_mSSlide"), colorValue);
+            write(dataPoint.GosDeviceWriteMotorSpeed, colorValue);
+        }
+    }
+    // 根据当前颜色值，滑动滚动条
+    function updateSlideColor(slide, colorValue)
+    {
+        slide.attr("value", colorValue);
+        var widthValue = ((colorValue / 254)*100);
+        $(slide).css( "background-size", widthValue + "% 100%" );
+    }
+
+    // 获取id标识的控件当前应显示的值
+    // id: 界面相应的显示框， isAdd：true标识加1， false标识减1
+    // max: 当前显示框的最大值， min：当前显示框最小值
+    function caculatorValue(id, isAdd, max, min)
+    {
+        var valueObj = $(id);
+        var colorValue = parseFloat(valueObj.html());
+        colorValue = isAdd ? ++colorValue : --colorValue;
+        colorValue = colorValue > max ? max : colorValue;
+        colorValue = colorValue < min ? min : colorValue;
+        valueObj.html(colorValue.toString());
+
+        console.log("valueObj = " + JSON.stringify(valueObj));
+        console.log("valueObj.html(colorValue.toString()) = " + valueObj.html(colorValue.toString()));
+
+        return colorValue;
+    }
+
+    // ************************界面控件事件相关方法************************
+    // 开关被点击
+    function ios7CBoxDidClick( el ){
+         var id = el.id;
+         id = "#" + id.replace("Block", "");
+        
+         // 渲染颜色
+         if( $api.hasCls(el.querySelector( id ), "checked") ){
+             $api.removeCls(el.querySelector( id ), "checked");
+         }else{
+             $api.addCls(el.querySelector( id ), "checked");
+         }
+
+         var blockId = el.id;
+         if (blockId == "gos_ledOnOffBlock") {
+         var checked = $("#gos_ledOnOff").attr("checked");
+   
+            led_OnOff = !led_OnOff;
+             write(dataPoint.GosDeviceWriteLED_onOff, led_OnOff);
+         }
+    }   
+
+    // 设置界面“+”、“-”按钮的点击事件，解决单击事件会延时响应的问题
+    function addFastClickEvent(idName)
+    {
+        var temp = document.getElementById(idName)
+        FastClick.attach(temp);
+        temp.addEventListener("click", function(event) {
+            caculatorColor(temp);
+        }, false);
+    }
+
+    // 滚动条滑动过程一直调用的方法
+    var change = function($input) {
+                /*内容可自行定义*/
+          console.log("change" + $input.value);
+          var id = $input.id;
+          if (id == "gos_rSlide"){
+                led_R = $input.value;
+                $(".gos_redValue").html(led_R);
+          }
+          else if(id == "gos_gSlide"){
+                led_G = $input.value;
+                $(".gos_greenValue").html(led_G);
+          }
+          else if (id == "gos_bSlide") {
+                led_B = $input.value;
+                $(".gos_blueValue").html(led_B);
+          }
+          else if(id == "gos_mSSlide"){
+                motorSpeed = $input.value;
+                $(".gos_motorSpeedValue").html(motorSpeed);
+          }
+    }
+
+    // 滚动条滚动停止监听事件
+    function didStopMove(slide)
+    {
+        var id = slide.id;
+        if (id == "gos_rSlide"){
+                write(dataPoint.GosDeviceWriteLED_R, slide.value);
+          }
+          else if(id == "gos_gSlide"){
+                write(dataPoint.GosDeviceWriteLED_G, slide.value);
+          }
+          else if (id == "gos_bSlide") {
+                write(dataPoint.GosDeviceWriteLED_B, slide.value);
+          }
+          else if(id == "gos_mSSlide"){
+                write(dataPoint.GosDeviceWriteMotorSpeed,  slide.value);
+          }
+    }
+
+     // 更多按钮单击事件
+    function moreBtnDidClick()
+    {
+        console.log("点击了控制界面上方的更多按钮");
+        var lan = JSON.stringify(api.pageParam.pageParam.isLAN);
+
+        if (lan.toString() == "true") {
+            //局域网
+            console.log("走局域网通道, lan = " + lan);
+            api.actionSheet({
+                buttons: ['获取设备状态', '获取硬件信息', '设置设备信息']
+                }, function(ret, err) {
+                var index = ret.buttonIndex;
+                switch(index)
+                {
+                    case 1:
+                        console.log("获取设备状态");
+                        getDeviceStatus();
+                        break;
+                    case 2:
+                        console.log("获取硬件信息");
+                        getHardwareInfo();
+                        break;
+                    case 3:
+                        console.log("设置设备信息");
+                        setDevicAlaisPrompt();
+                        break;
+                }
+             });
+        }
+        else
+        {
+            console.log("走远程通道, lan = " + lan);
+            console.log("lan == false = " + lan == false);
+            api.actionSheet({
+                buttons: ['获取设备状态', '设置设备信息']
+                }, function(ret, err) {
+                var index = ret.buttonIndex;
+                
+                switch(index)
+                {
+                    case 1:
+                        console.log("获取设备状态");
+                        getDeviceStatus();
+                        break;
+                    case 2:
+                        console.log("设置设备信息");
+                        setDevicAlaisPrompt();
+                        break;
+                }
+             });
+        }
+    }
+
+     // 弹出设备别名弹框
+    function setDevicAlaisPrompt()
+    {
+        var tip;
+        if (deviceName) {
+            tip = deviceName;
+        }
+        else
+        {
+            tip = "请输入设备名称";
+        }
+        console.log("设置设备别名");
+        api.prompt({
+              title: '设置设备别名',
+              text: tip,
+              buttons: ['取消', '确定']
+              }, function(ret, err) {
+              var index = ret.buttonIndex;
+              var text = ret.text;
+              if (index == 2) {
+                   alias = text;
+                   setDeviceAlais(text);
+                   //显示加载圈
+                    api.showProgress({
+                         animationType: 'zoom',
+                         title: '正在更新',
+                         modal: true
+                    }); 
+              }
+        });
+    }
+
+</script>
+</html>

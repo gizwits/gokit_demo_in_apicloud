@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<widget id="A6939451842290" version="0.0.1">
-  <name>Gokit</name>
-  <description></description>
-  <author email="307262195@qq.com" href="http://www.apicloud.com">问豆奶</author>
+<widget id="***" version="0.0.1">
+  <name>***</name>
+  <description>Open source code for gizWifiSDK</description>
+  <author email="club@gizwits.com" href="http://www.gizwits.com/">Developer</author>
   <content src="index.html"/>
   <preference name="pageBounce" value="false"/>
   <preference name="appBackground" value="rgba(0,0,0,0.0)"/>
@@ -29,8 +29,8 @@
   <permission name="hardware"/>
   <access origin="*"/>
   <feature name="qq">
-      <param name="urlScheme" value="tencent1106019382"/>
-      <param name="apiKey" value="1106019382"/>
+      <param name="urlScheme" value="***"/>
+      <param name="apiKey" value="***"/>
   </feature>
   <feature name="arcProgress"/>
   <feature name="FNScanner"/>
